@@ -1,0 +1,123 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.span_tilte{
+    text-align: center;
+    display: block;
+    color: black;
+}
+
+span{
+    color: red;
+}
+
+
+/* 序选择器 ,如果第一个不是li,而是其他标签也会生效*/
+ol li:first-child{
+    color: red;
+    }
+
+ol li:last-child{
+ color: red;
+}
+
+
+/*让超链接点击之前是红色*/
+a:link{
+    color:red;
+}
+
+/*让超链接点击之后是绿色*/
+a:visited{
+    color:orange;
+}
+
+/*鼠标悬停，放到标签上的时候*/
+a:hover{
+    color:green;
+}
+
+/*鼠标点击链接，但是不松手的时候*/
+a:active{
+    color:black;
+}
+
+
+
+.nav{
+    width: 960px;
+    height: 50px;
+    border: 1px solid red;
+    margin: 100px auto;
+}
+.nav ul{
+    /*去掉小圆点*/
+    list-style: none;
+}
+.nav ul li{
+    float: left;
+    width: 120px;
+    height: 50px;
+    /*让内容水平居中*/
+    text-align: center;
+    /*让行高等于nav的高度，就可以保证内容垂直居中*/
+    line-height: 50px;
+}
+.nav ul li a{
+    display: block;
+    width: 120px;
+    height: 50px;
+}
+/*两个伪类的属性，可以用逗号隔开*/
+/* a:link、a:visited都是可以省略的，简写在a标签里面。也就是说，a标签涵盖了link、visited的状态（前提是都具有了相同的属性） */
+.nav ul li a:link , .nav ul li a:visited{
+    text-decoration: none;
+    background-color: purple;
+    color:white;
+}
+.nav ul li a:hover{
+    background-color: orange;
+}
+
+
+
+/*整个表格的样式*/
+table{
+    width: 300px;
+    height: 200px;
+    border: 1px solid blue;
+    /*border-collapse属性：对表格的线进行折叠*/
+    border-collapse: collapse;
+  }
+
+/*鼠标悬停时，让当前行显示#868686这种灰色*/
+  table tr:hover{
+      background: #868686;
+  }
+
+/*每个单元格的样式*/
+  table td{
+      border:1px solid red;
+  }
+
+
+
+  .triangle{
+      width: 0px;
+      height: 0px;
+      border: 50px solid white;
+      border-top-color: red;
+      border-bottom: none;
+  
+  }
+  .equilateraltriangle{
+    width: 0;
+	height: 0;
+	border-top: 30px solid red;
+	/* 通过改变 border-left 和 border-right 中的像素值，来改变三角形的形状 */
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+  }
