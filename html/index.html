@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="这是首页页面编辑">
+    <title>Document</title>
+    <style type="text/css">
+    dd{
+        margin: 0;
+    }
+
+    </style>
+</head>
+<body>
+    <a name="toTop">顶部</a>
+    <h1 style="text-align: center;">我是标题</h1>
+    <p style="text-align: center;font-size: 150%; ">排版标签</p>
+    <hr>
+    <span style="text-align: center; ">&lt;span&gt;和&lt;div&gt;唯一的区别在于：&lt;span&gt;是不换行的，而&lt;div&gt;是换行的,
+        span是一个文本级的标签。 就是说，span里面只能放置文字、图片、表单元素。 span里面不能放p、h、ul、dl、ol、div</span>
+
+        <div id="menu">
+        <ul>
+            <li>张三</li>
+            <li>李四</li>
+        </ul>
+        <center>内容居中标签center,到了HTML5里面，center标签不建议使用，建议使用css布局来实现。</center>
+        <pre>            pre标签将保留标签内部所有的空白字符(空格、换行符)，
+            原封不动地输出结果（告诉浏览器不要忽略空格和空行）</pre>
+    </div>
+    <hr>
+    <span  style="text-align: center; display: block;">字体标签和超链接</span>
+    <ol>
+        <li> <u>下划线 u</u></li>
+        <li> <del>删除线 del</del> </li>
+        <li> <em>斜体em</em></li>
+        <li><b>粗体标签b,strong</b>  </li>
+        <li> <font style="size: 18px; color: red;">字体标签font废弃</font></li>
+        <li>上标sup 0<sup>2</sup></li>
+        <li>下标 sub 0<sub>2</sub></li>
+    </ol>
+    <span>name属性是HTML4.0以前使用的，id属性是HTML4.0后才开始使用。为了向前兼容，因此，name和id这两个属性都要写上，并且值是一样的。</span>
+   <hr>
+   <span style="text-align: center; display: block;">img标签,.和..分表代表当前目录和上一层目录</span>
+   <img src="img/photo.png" alt="图片" title="这是一个很酷的男人">
+   <hr>
+   <p style="text-align: center;">标签图文详解</p>
+    <ul type="circle">
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+    </ul>
+    <dl title="dl标签">
+        <dt style="size: 20px; color: red;">购物指南</dt>
+        <dd>购物流程</dd>
+        <dd>会员介绍</dd>
+        <dd>生活旅行/团购</dd>
+        <dd>常见问题</dd>
+       
+    </dl>
+
+
+ <table border="2px" style=" border: 2px; width: 400px; height: 200px;border-collapse:collapse;text-align: center;" align="center" >
+     <tr >
+         <td>张三</td>
+         <td>25</td>
+         <td rowspan="2">女</td>
+     </tr>
+     <tr>
+        <td>李四</td>
+        <td>32</td>
+      
+    </tr>
+    <tr>
+        <td>王五</td>
+        <td colspan="2">男</td>
+    </tr>
+ </table>
+
+
+<a href="https://www.baidu.com/" target="myIframe">点我去百度</a>
+<a href="https://www.360.cn/" target="myIframe">点我去360</a><br/>
+ <iframe src="https://www.baidu.com/" frameborder="0"  align="center" width="500px" height="300px" name="myIframe"></iframe>
+ <div style="text-align: center;">
+ <marquee direction="up" behavior="scroll" scrollamount="1" scrolldelay="0" loop="-1" width="1000" height="50"  hspace="10" vspace="10" style="text-align: center;">
+    指整个Marquee对齐方式; (2)behavior:设置滚动的方式: scroll:表示由一端滚动到另一端,会重复,缺陷是不能无缝滚动。 slide:表示由一段滚动到另一端,不会重复...
+    </marquee>
+</div>
+
+
+
+
+
+   <br/><a href="879645299@qq.com">点击去邮箱</a><br/>
+    <a href="#toTop">回到顶部</a>
+   
+
+    <script src="menu.js"></script>
+    <script>
+        var variable = new Menu("#menu");
+    </script>
+</body>
+</html>

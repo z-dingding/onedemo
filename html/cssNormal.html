@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css属性</title>
+    <style>
+    
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+   body{
+    background-image: url(https://tw.battle.net/d3/static/images/layout/bg-repeat.jpg);
+     background-size: cover;
+            /* 不写方向，表示默认的方向是：从上往下 */
+     background-image: linear-gradient(yellow, green);
+   }
+        .firstP{
+         line-height: 50px;
+         padding: 15px 0;
+         background-color: green;
+         font-size: 20px;
+         color: red;
+         /* 粗体 */
+         font-weight: bold;
+         font-family: 黑体;
+         /* 斜体 */
+         font-style: italic;
+         /* 小写变大写 */
+         font-variant: small-caps; 
+
+         text-align: center;
+        }
+        .firstP :hover{
+            cursor: pointer;
+        }
+        .div_content{
+            width: 100px;
+            height: 40px;
+            background-color: sandybrown;
+            color: springgreen;
+        overflow: scroll;
+        }
+        ul{
+			list-style: none;/*去掉列表前面的圆点*/
+			width: 420px;
+			height: 60px;
+			background-color: black;/*设置整个导航栏的背景为灰色*/
+		}
+
+		li{
+			float: left;/*平铺*/
+			margin-right: 30px;
+			margin-top: 16px;
+		}
+
+		a{
+			text-decoration: none;/*去掉超链的下划线*/
+			font-size: 20px;
+			color: #BBBBBB;/*设置超链的字体为黑色*/
+			font-family:微软雅黑;
+		}
+
+    .div_backimg{
+        margin-top: 50px;
+        width: 100%;
+            height: 400px;
+            background-size: 100%;
+              background-image: url(https://tw.battle.net/d3/static/images/layout/bg-repeat.jpg) ;
+            background-repeat: no-repeat;
+            background-position: center top;
+            /* 背景就会被固定住，不会被滚动条滚走 */
+            background-attachment:fixed;
+    }
+
+    .div_backimg ol{
+      list-style: none;
+      text-align: center;
+      }
+      .div_backimg ol li{
+      float: none;
+      color: red;
+      } 
+
+    </style>
+</head>
+<body>
+    <h4 style="text-align: center;">css属性</h4>
+    <p class="firstP">字体属性测试abc,通过行高实现p标签的内容居中</p>
+    <div class="div_content">张三李四王五赵六孙七周八</div>
+    <table>
+		<tr>
+			<td>原始图片</td>
+			<td>图片加入黑白效果</td>
+		</tr>
+	<tr>
+		<td><img src="../img/photo.png"></td>
+		<td><img src="../img/photo.png" style="filter: grayscale();"></td> /*滤镜：设置图片为灰白效果*/
+	</tr>
+    </table>
+    <ul>
+		<li><a href="">博客园</a></li>
+		<li><a href="">新随笔</a></li>
+		<li><a href="">联系</a></li>
+		<li><a href="">订阅</a></li>
+		<li><a href="">管理</a></li>
+
+    </ul>
+    <hr>
+      <span style="display: block; text-align: center;">背景属性</span> 
+    <hr>
+     <div class="div_backimg">
+        <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>6</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        </ol>
+     </div>
+</body>
+</html>

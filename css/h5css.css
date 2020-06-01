@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7;
+}
+
+.tabs {
+    width: 400px;
+    margin: 30px auto;
+    background-color: #FFF;
+    border: 1px solid #C0DCC0;
+    box-sizing: border-box;
+}
+
+.tabs nav {
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+    background-color: #C0DCC0;
+    display: flex;
+}
+
+nav a {
+    display: block;
+    width: 100px;
+    border-right: 1px solid #FFF;
+    color: #000;
+    text-decoration: none;
+}
+
+nav a:last-child {
+    border-right: 0 none;
+}
+
+nav a.active {
+    background-color: #9BAF9B;
+}
+
+.cont {
+    overflow: hidden;
+    display: none;
+}
+
+.cont ol {
+    line-height: 30px;
+}
+
+
+
+.div_drag{
+
+    width: 600px;
+    height: 400px;
+    background-color: blue;
+
+}
+
+
+.div_drag > div, .div_dragTwo > div {
+    width: 98px;
+    height: 98px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background-color: red;
+    float: left;
+    text-align: center;
+    line-height: 98px;
+}
+
+.div_dragTwo{
+   
+    float: left;
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+    left: 1000px;
+    top: -200px;
+    position: relative;
+}

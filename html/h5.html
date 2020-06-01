@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- 引入缓存文件 -->
+<html lang="en" manifest="../appcache/h5.appcache">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="../css/h5css.css" type="text/css">
+</head>
+
+<body>
+    <span style="display: block; text-align: center;">h5详解</span>
+    <hr>
+    <label for="">HTML5是新一代开发 Web 富客户端应用程序整体解决方案。包括：HTML5，CSS3，Javascript API在内的一套技术组合。</label>
+    <form action="index.html">
+        <!-- <fieldset> 标签将表单里的内容进行打包，代表一组 -->
+        <fieldset>
+            <!-- <legend> 标签的则是 fieldset 里的元素定义标题 -->
+            <legend>学生信息登记</legend>
+             姓名:<input type="text" placeholder="请输入姓名"> <br>
+             年龄:<input type="text"><br>
+             email: <input type="email" name="email" required><br>
+             性别:<input type="radio" name="gender" value="male" id="nan">  <label for="nan">男</label>
+             <input type="radio" name="gender" value="female" id="nv">  <label for="nv">女</label><br>
+             考虑专业: <input type="checkbox" name="professional" id="computer"> <label for="computer">计算机</label>
+              <input type="checkbox" name="professional" id="engineer" > <label for="engineer">土木工程</label>
+               <input type="checkbox" name="professional" id="automation" > <label for="automation">器械自动化</label><br>
+             当前学历:<input type="text" list="choseList">
+               <datalist id="choseList">
+                   <option value="本科">本科</option>
+                   <option value="专科">专科</option>
+                   <option value="研究生">其他</option>
+               </datalist>
+               <br>
+            <input type="file" value="选择文件上传" multiple><br>
+            <input type="submit" value="提交信息">
+        </fieldset>
+    </form>
+    <div class="tabs">
+        <nav>
+            <a href="javascript:tabClick(0);" data-cont="local">国内新闻</a>
+            <a href="javascript:tabClick(1);" data-cont="global">国际新闻</a>
+            <a href="javascript:tabClick(2);" data-cont="sports">体育新闻</a>
+            <a href="javascript:tabClick(3);" data-cont="funny">娱乐新闻</a>
+        </nav>
+        <section class="cont" id="local">
+            <ol>
+                <li>国内新闻1</li>
+                <li>国内新闻2</li>
+                <li>国内新闻3</li>
+                <li>国内新闻4</li>
+                <li>国内新闻5</li>
+                <li>国内新闻6</li>
+                <li>国内新闻7</li>
+            </ol>
+        </section>
+        <section class="cont" id="global">
+            <ol>
+                <li>国内新闻1</li>
+                <li>国际新闻2</li>
+                <li>国际新闻3</li>
+                <li>国际新闻4</li>
+                <li>国际新闻5</li>
+                <li>国际新闻6</li>
+            </ol>
+        </section>
+        <section class="cont" id="sports">
+            <ol>
+                <li>体育新闻1</li>
+                <li>体育新闻2</li>
+                <li>体育新闻3</li>
+                <li>体育新闻4</li>
+                <li>体育新闻5</li>
+                <li>体育新闻6</li>
+                <li>体育新闻7</li>
+            </ol>
+        </section>
+        <section class="cont" id="funny">
+            <ol>
+                <li>娱乐新闻1</li>
+                <li>娱乐新闻2</li>
+                <li>娱乐新闻3</li>
+                <li>娱乐新闻4</li>
+                <li>娱乐新闻5</li>
+                <li>娱乐新闻6</li>
+                <li>娱乐新闻7</li>
+            </ol>
+        </section>
+    </div>
+    <script type="text/javascript" src="../js/menu.js"></script>
+<hr>
+    <a href="player.html">播放器</a>
+    <hr>
+    <span style="text-align: center; display: block;">h5详解二</span>
+    
+   <div class="div_drag" >
+    <div draggable="true">1</div>
+    <div draggable="true">2</div>
+    <div draggable="true">3</div>
+    <div draggable="true">4</div>
+    <div draggable="true">5</div>
+    <div draggable="true">6</div>  
+    <div draggable="true">7</div>  
+    <div draggable="true">8</div>  
+</div>
+   <div class="div_dragTwo">
+     
+   </div>
+
+   <a href="screen.html" target="">点我去全屏页面</a>
+
+  
+   <hr style="width: 100%; margin-top: 50px; display: block;">
+   <span style="display: block; margin: auto; text-align: center;" > html详解三</span>
+  
+   <hr>
+  
+   账号:<input type="text" class="account"><br>
+   密码:<input type="password"  class="pwd"><br>
+   <input type="checkbox" id="remember" > <label for="remember">记住密码</label><br>
+   <input type="submit" value="登录" class="login">
+
+
+
+   <script src="../js/h5.js"></script>
+</body>
+
+</html>
