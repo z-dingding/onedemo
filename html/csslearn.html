@@ -203,6 +203,29 @@
  <span style="display: block; text-align: center;">收缩</span>
   <p>  一个浮动的元素，如果没有设置width，那么将自动收缩为内容的宽度（这点非常像行内元素）。</p>
 
+  <hr>
+  <span style="display: block; text-align: center;">浮动的清除</span> 
+  <hr>
+  <p style="text-indent: 2em;">这里所说的清除浮动，指的是清除浮动与浮动之间的影响。</p>
+      <li>给浮动元素的祖先元素加高度,如果一个元素要浮动，那么它的祖先元素一定要有高度。有高度的盒子，才能关住浮动</li>
+      <li>clear:both;clear就是清除，both指的是左浮动、右浮动都要清除。clear:both的意思就是：不允许左侧和右侧有浮动对象。这种方法有一个非常大的、致命的问题，它所在的标签，margin属性失效了。margin失效的本质原因是：高度为零。</li>
+      <li>为了讲内墙法，我们先记住一句重要的话：一个父亲是不能被浮动的儿子撑出高度的。，内墙法的优势（本质区别）在于：内墙法可以给它所在的家撑出宽度,做法是直接写一个div</li>
+      <li>overflow:hidden;overflow:hidden;的本意是清除溢出到盒子外面的文字。一个父亲不能被自己浮动的儿子，撑出高度。但是，只要给父亲加上overflow:hidden; 那么，父亲就能被儿子撑出高了。这是一个偏方。</li>
+
+<hr>
+<span style="display: block; text-align: center;">浏览器的兼容性问题</span> 
+<hr>
+<li>兼容性的第一条：IE6不支持小于12px的盒子，任何小于12px的盒子，在IE6中看都大。即：IE 6不支持微型盒子。解决办法很简单，就是将盒子的字号大小，设置为小于盒子的高，比如，如果盒子的高为5px，那就把font-size设置为0px。于是乎，为了解决微型盒子（即height小于12px）的问题，正确写法：（注意不要忘记下划线）IE6留了一个后门：只要给css属性之前，加上下划线，这个属性就是IE6的专有属性。而其他高级浏览器不支持，无法渲染
+height: 10px;font-size:0;</li>
+<li>**兼容性的第二条：**IE6不支持用overflow:hidden;来清除浮动。解决办法，以毒攻毒。追加一条：_zoom:1;完整写法：overflow: hidden; _zoom:1;</li>
+<li>刚才学习的两个IE6的兼容问题，都是通过多写一条hack来解决的，这个我们称为伴生属性，即两个属性，要写一起写,如:overflow: hidden; _zoom:1;</li>
+<hr>
+<span style="display: block; text-align: center;">margin相关</span> 
+<hr>
+<li>标准文档流中，竖直方向的margin不叠加，比如div1margin-bottom :20px 而div2margin-top : 50px 则div1和div2垂直间距50px,(水平方向的margin是可以叠加的，即水平方向没有塌陷现象)</li>
+<li>margin的值可以为auto，表示自动。当left、right两个方向都是auto的时候，盒子居中了,简写为：margin:0 auto;理解：上下的margin为0，左右的margin都尽可能的大，于是就居中了。</li>
+<li>善于使用父亲的padding，而不是儿子的margin。margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个marign表达父子之间的距离。</li>
+<li>text-indent: 2em;em就是汉字的一个宽度。indent的意思是缩进,可以理解为增加空格</li>
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>CSS的定位属性有三种，分别是绝对定位、相对定位、固定定位。</span>
+    <span style="text-align :center; display: block;"  >相对定位position: relative;</span>
+    <p>相对定位：让元素相对于自己原来的位置，进行位置调整（可用于盒子的位置微调）</p>
+    <span>相对定位：不脱标，老家留坑，别人不会把它的位置挤走.也就是说，相对定位的真实位置还在老家，只不过影子出去了，可以到处飘。</span>
+    <ul>
+        <span >相对定位，就两个作用：</span>
+        <li>微调元素</li>
+        <li>做绝对定位的参考，子绝父相</li>
+        <span>相对定位的定位值
+            <li>left：盒子右移</li>
+            <li>right：盒子左移</li>
+            <li>top：盒子下移</li>
+            <li>bottom：盒子上移</li>
+        </span>
+    </ul>
+    <span style="text-align :center; display: block;"  >绝对定位position: absolute; </span>
+    <span>绝对定位：定义横纵坐标。原点在父容器的左上角或左下角。横坐标用left表示，纵坐标用top或者bottom表示。</span>
+    <p>绝对定位的盒子脱离了标准文档流,绝对定位之后，标签就不区分所谓的行内元素、块级元素了，不需要display:block就可以设置宽、高了。</p>
+    <p>一个绝对定位的元素，如果父辈元素中也出现了已定位（无论是绝对定位、相对定位，还是固定定位）的元素，那么将以父辈这个元素，为参考点。</p>
+    <ul>
+        <span>一下几点注意</span>
+        <li>要听最近的已经定位的祖先元素的，不一定是父亲，可能是爷爷(如：父亲没有positon属性)：</li>
+        <li>不一定是相对定位，任何定位，都可以作为儿子的参考点：</li>
+        <li>绝对定位的儿子，无视参考的那个盒子的padding</li>
+    </ul>
+
+    <span style="text-align :center; display: block;"  >固定定位position: fixed; </span>
+    <p>固定定位：就是相对浏览器窗口进行定位。无论页面如何滚动，这个盒子显示的位置不变。</p>
+    <span style="text-align :center; display: block;"  >z-index属性 </span>
+    <p>z-index属性：表示谁压着谁。数值大的压盖住数值小的。默认的z-index值是0。如果大家都没有z-index值，或者z-index值一样，那么在HTML代码里写在后面，谁就在上面能压住别人。定位了的元素，永远能够压住没有定位的元素。只有定位了的元素，才能有z-index值。也就是说，不管相对定位、绝对定位、固定定位，都可以使用z-index值。而浮动的元素不能用。从父现象：父亲怂了，儿子再牛逼也没用。意思是，如果父亲1比父亲2大，那么，即使儿子1比儿子2小，儿子1也能在最上层。z-index属性的应用还是很广泛的。当好几个已定位的标签出现覆盖的现象时，我们可以用这个z-index属性决定，谁处于最上方。也就是层级的应用。</p>
+    <ul>
+        <span>层级</span>
+        <li>必须有定位（除去static）</li>
+        <li>用z-index来控制层级数。</li>
+    </ul>
+    
+</body>
+</html>
