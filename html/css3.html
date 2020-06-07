@@ -4,10 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>css3详解</title>
+    <style>
+         .tu {
+            text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+            margin-top: 50px;
+        }
+
+        .ao {
+            text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;
+            margin-top: 50px;
+        }
+        .box{
+            width: 400px;
+            height: 200px;
+            text-align: center;
+        
+            margin: 20px auto;
+            border: 2px solid red;
+            border-radius: 15px;
+            background: -webkit-linear-gradient(left, green, yellow);
+        }
+    </style>
 </head>
 <body>
     <hr>
     <span style="text-align: center; display: block;">css3选择器详解</span>
+    <hr>
      <ul>
          <span> css的选择器有：</span>
          <li>div 标签选择器</li>
@@ -29,5 +51,70 @@
          <li>伪元素选择器</li>
      </ul>
      <p>属性选择器的标志性符号是 []。匹配含义： ^：开头  $：结尾  *：包含</p>
+     <ul>
+        <span>格式</span>
+         <li>E[title] 选中页面的E元素，并且E存在 title 属性即可。</li>
+         <li>E[title="abc"]选中页面的E元素，并且E需要带有title属性，且属性值完全等于abc</li>
+         <li>E[attr~=val] 选择具有 att 属性且属性值为：用空格分隔的字词列表，其中一个等于 val 的E元素</li>
+         <li>E[attr|=val] 表示要么是一个单独的属性值，要么这个属性值是以“-”分隔的</li>
+         <li>E[title^="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值以 abc 开头</li>
+         <li>E[title$="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值以 abc 结尾</li>
+         <li>E[title*="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值任意位置包含abc</li>
+         <li></li>
+         <li></li>
+         <li></li>
+     </ul>
+     <p>伪类选择器的标志性符号是 :。CSS中有一些伪类选择器，比如:link、:active、:visited、:hover，这些是动态伪类选择器。CSS3又新增了其它的伪类选择器。这一小段，我们来学习CSS3中的结构伪类选择器：即通过结构来进行筛选</p>
+    <ul>
+        <li>E:first-child 匹配父元素的第一个子元素E</li>
+        <li>E:last-child 匹配父元素的最后一个子元素E</li>
+        <li>E:nth-child(n) 匹配父元素的第n个子元素E。注意，盒子的编号是从1开始算起，不是从0开始算起</li>
+        <li>E:nth-child(odd) 匹配奇数</li>
+        <li>E:nth-child(even) 匹配偶数</li>
+        <li>E:nth-last-child(n) 匹配父元素的倒数第n个子元素E</li>
+    </ul>
+    <ul>
+        <span>我们以ul,li为例:</span>
+    <li>如果选择器写成li:nth-child(2)，则表示第2个 li</li>
+    <li>如果选择器写成li:nth-child(n)，则表示所有的li</li>
+    <li>如果选择器写成li:nth-child(2n)，则表示所有的第偶数个 li</li>
+    <li>如果选择器写成li:nth-child(2n+1)，则表示所有的第奇数个 li</li>
+    <li>如果选择器写成li:nth-child(-n+5)，则表示前5个 li</li>
+    <li>如果选择器写成li:nth-last-child(-n+5)，则表示最后5个 li</li>
+    <li>如果选择器写成li:nth-child(7n)，则表示选中7的倍数</li>
+    <li>E:first-of-type 匹配同类型中的第一个同级兄弟元素E</li>
+    <li>E:last-of-type 匹配同类型中的最后一个同级兄弟元素E</li>
+    <li>E:nth-of-type(n) 匹配同类型中的第n个同级兄弟元素E</li>
+    <li>E:nth-last-of-type(n) 匹配同类型中的倒数第n个同级兄弟元素E</li>
+    <li>E:empty 匹配没有任何子节点（包括空格等text节点）的元素E</li>
+    <li>E:target 匹配相关URL指向的E元素。要配合锚点使用</li>
+    <p>伪元素选择器的标志性符号是 ::。</p>
+    <ul>
+        <li>E::before 设置在 元素E 前面（依据对象树的逻辑结构）的内容，配合content属性一起使用</li>
+        <li>E::after 设置在 元素E 后面（依据对象树的逻辑结构）的内容，配合content属性一起使用</li>
+        <li>通过伪元素选择器，就可以添加出类似于span标签的效果,通过这两个属性添加的伪元素，是行内元素，需要转换成块元素才能设置宽高。</li>
+        <li>E::first-letter 设置元素 E 里面的第一个字符的样式</li>
+        <li>E::first-line 设置元素 E 里面的第一行的样式</li>
+        <li>E::selection 设置元素 E 里面被鼠标选中的区域的样式</li>
+    </ul>
+</ul>
+
+<hr>
+<span style="text-align: center; display: block;">CSS3属性详解</span>
+<hr>
+ <span>text-shadow：设置文本的阴影,text-shadow 可以设置多个阴影，每个阴影之间使用逗号隔开。</span>
+ <p style="display: block; text-shadow: 20px 27px 10px green; text-align: center; width: 100px; height: 30px;">设置文本阴影</p>
+
+ <div class="ao">生命诚可贵</div>
+ <div class="tu">生命诚可贵</div>
+ <span>盒模型中的 box-sizing 属性,它的属性值可以是：content-box(外加模式,css的默认方式,)、border-box(内减模式)。</span>
+ <li>外加模式:此时设置的 width 和 height 是内容区域的宽高。盒子的实际宽度 = 设置的 width + padding + border.此时改变 padding 和 border 的大小，也不会改变内容的宽高，而是盒子的总宽高发生变化。</li>
+ <li>内减模式 :此时设置的 width 和 height 是盒子的总宽高。盒子的实际宽度 = 设置的 width。此时改变 padding 和 border 的大小，会改变内容的宽高，盒子的总宽高不变。</li>
+<div class="box">
+    <span style="margin: 100px auto; display: block;">linear-gradient设置盒子从左到右渐变;border-radius：边框圆角</span>
+</div>
+<hr>
+<span style="text-align: center; display: block;">CSS3动画详解</span>
+<hr>
 </body>
 </html>
