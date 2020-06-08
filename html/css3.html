@@ -24,7 +24,61 @@
             border-radius: 15px;
             background: -webkit-linear-gradient(left, green, yellow);
         }
+        .box_transition{
+           width: 400px; 
+           height: 200px;
+         background-color: aqua;
+         vertical-align: middle;
+         display: table-cell;
+         transition: width,3s,linear,2s;
+        }
+        .box_transition:hover{
+            width: 1000px;
+           background-color: orange;
+        }
+        .box_goods{
+            width: 230px;
+            height: 260px;
+            background-color: #FFF;
+            position: relative; /* 相对布局会影响下面goods_des的展示 */
+             text-align: center; /*div内容居中 */
+            overflow: hidden; /* 让溢出的内容隐藏起来。意思是让下方的橙色方形先躲起来 */
+            transition: all .5s; /* 从最初到鼠标悬停时的过渡 */
+        }
+        .box_goods .goods_des{
+            position: absolute;
+            left: 0;
+            bottom: -80px;
+            width: 100%;
+            height: 80px;
+            background-color: #ff6700;
+            text-align: center;
+            display: block;
+            transition: all .5s;
+        }
+         /* 鼠标悬停时，让 item 整体往上移动5px，且加一点阴影 */
+         .box_goods:hover {
+            top: -5px;
+            box-shadow: 0 0 15px #AAA;
+        }
+         /* 鼠标悬停时，让下方的橙色方形现身 */
+         .box_goods:hover .goods_des {
+            bottom: 0;
+        }
+
+        .box_scale{
+            width: 200px;
+            height: 50px;
+            position: relative;
+            margin-bottom: 50px;
+            background-color: red;
+            text-align: center;
+        }
+        .box_scale:hover{
+         transform:scale(2)
+        }
     </style>
+
 </head>
 <body>
     <hr>
@@ -116,5 +170,14 @@
 <hr>
 <span style="text-align: center; display: block;">CSS3动画详解</span>
 <hr>
+<p>transition的中文含义是过渡。过渡是CSS3中具有颠覆性的一个特征，可以实现元素不同状态间的平滑过渡（补间动画），经常用来制作动画效果。补间动画：自动完成从起始状态到终止状态的的过渡。不用管中间的状态。帧动画：通过一帧一帧的画面按照固定顺序和速度播放。如电影胶片。</p>
+ <div class="box_transition"> <span style="display: block; text-align: center;">transition: 让哪些属性进行过度 过渡的持续时间 运动曲线 延迟时间;</span> </div>
+ <div class="box_goods">
+     <img src="../img/phone.jpg" alt="" width="200px" height="240px">
+     <span class="goods_des">小米手机功能牛逼,质量第一!</span>
+ </div>
+<p>转换是 CSS3 中具有颠覆性的一个特征，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式。在 CSS3 当中，通过 transform 转换来实现 2D 转换或者 3D 转换。2D转换包括：缩放、移动、旋转。</p>
+<div class="box_scale">缩放格式:transform: scale(x, y);</div>
+
 </body>
-</html>
+</html> 
