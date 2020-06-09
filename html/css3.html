@@ -42,15 +42,14 @@
             background-color: #FFF;
             position: relative; /* 相对布局会影响下面goods_des的展示 */
              text-align: center; /*div内容居中 */
-            overflow: hidden; /* 让溢出的内容隐藏起来。意思是让下方的橙色方形先躲起来 */
+             overflow: hidden;/* 让溢出的内容隐藏起来。意思是让下方的橙色方形先躲起来 */
             transition: all .5s; /* 从最初到鼠标悬停时的过渡 */
         }
         .box_goods .goods_des{
             position: absolute;
             left: 0;
-            bottom: -80px;
+             bottom: -80px; 
             width: 100%;
-            height: 80px;
             background-color: #ff6700;
             text-align: center;
             display: block;
@@ -67,7 +66,7 @@
         }
 
         .box_scale{
-            width: 200px;
+            width: 230px;
             height: 50px;
             position: relative;
             margin-bottom: 50px;
@@ -76,6 +75,48 @@
         }
         .box_scale:hover{
          transform:scale(2)
+        }
+
+        .box_transform{
+            width: 230px;
+            height: 50px;
+            position: relative;
+            margin-bottom: 50px;
+            background-color: red;
+            text-align: center;
+            transition: all 1s;
+        }
+        .box_transform:hover{
+            /* 正值：向右和向下。 负值：向左和向上。如果只写一个值，则表示水平移动。 */
+             transform: translate(50%,100%);
+        }
+
+        .box_center{
+            width: 600px;
+            height: 300px;
+            background-color: greenyellow;
+            text-align: center;
+            position: relative;
+        }
+        .box_center .box_center_span{
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 50%;            /* 首先，让左边线居中 */
+		    top: 50%;
+            transform: translate(-50%);      /* 然后，利用translate，往左走自己宽度的一半【推荐写法】 */
+            }
+        
+        .box_rotate{
+            width: 200px;
+            height: 200px;
+            margin: 50px ,auto;
+            position: relative;
+            background-color: hotpink;
+        }
+        .box_rotate:hover{
+            transform: rotate(100deg);
+         /* 鼠标悬停时，让盒子进行旋转 */
         }
     </style>
 
@@ -178,6 +219,9 @@
  </div>
 <p>转换是 CSS3 中具有颠覆性的一个特征，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式。在 CSS3 当中，通过 transform 转换来实现 2D 转换或者 3D 转换。2D转换包括：缩放、移动、旋转。</p>
 <div class="box_scale">缩放格式:transform: scale(x, y);</div>
+<div class="box_transform">位移格式:transform: translate(水平位移, 垂直位移);</div>
+<div class="box_center"> <span class="box_center_span">用偏移 translate 来做absolute的盒子居中</span></div>
+<div class="box_rotate"> transform: rotate(角度),参数解释：正值 顺时针；负值：逆时针. </div>
 
 </body>
 </html> 
