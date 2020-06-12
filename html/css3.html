@@ -118,6 +118,88 @@
             transform: rotate(100deg);
          /* 鼠标悬停时，让盒子进行旋转 */
         }
+
+
+        .rotateX , .rotateY,.rotateZ{
+           width: 300px;
+           height: 300px;
+           overflow: hidden;
+          margin: 100px 100px;
+            text-align: center;
+           /* 透视 :加给变换的父盒子*/
+            /* 设置的是用户的眼睛距离 平面的距离*/
+            /* 透视效果只是视觉上的呈现，并不是正真的3d*/
+            perspective: 110px;
+        }
+
+        .rotateX img{
+             /* 过渡*/
+          transition: transform 2s;
+        }
+        .rotateY img{
+             /* 过渡*/
+          transition: all 2s;
+        }
+        .rotateZ img{
+             /* 过渡*/
+          transition: all 2s;
+        }
+
+        .rotateX:hover img{
+        
+           transform: rotateX(360deg);
+        }
+        
+        .rotateY:hover img{
+        
+        transform: rotateY(360deg);
+     }
+     
+     .rotateZ:hover img{
+        
+        transform: rotateZ(360deg);
+     }
+
+
+     .animation{
+         width: 200px;
+         height: 200px;
+         margin-bottom: 200px;
+       
+         animation: animationFun 4s infinite normal  2s forwards steps(2);
+     }
+
+     @keyframes animationFun{
+        0% {
+                transform: translateX(0px) translateY(0px);
+                background-color: red;
+                border-radius: 0;
+            }
+            25% {
+                transform: translateX(500px) translateY(0px);
+                background-color: red;
+        
+            }
+
+            50% {
+                transform: translateX(500px) translateY(200px);
+                background-color: green;
+                border-radius: 50%;
+            }
+
+            75% {
+                transform: translateX(0px) translateY(200px);
+                background-color: red;
+            
+            }
+            100% {
+                transform: translateX(0px) translateY(0px);
+                background-color: red;
+                border-radius: 0;
+            }
+
+ 
+     }
     </style>
 
 </head>
@@ -223,5 +305,32 @@
 <div class="box_center"> <span class="box_center_span">用偏移 translate 来做absolute的盒子居中</span></div>
 <div class="box_rotate"> transform: rotate(角度),参数解释：正值 顺时针；负值：逆时针. </div>
 
+
+
+<div class="rotateX" > <img src="../img/photo.png" alt="x轴旋转"></div>
+<div class="rotateY" > <img src="../img/photo.png" alt="y轴旋转"></div>
+<div class="rotateZ" > <img src="../img/photo.png" alt="z轴旋转"></div>
+<p>移动：translateX、translateY、translateZ,同上，此处省略</p>
+<P>透视：perspective.电脑显示屏是一个 2D 平面，图像之所以具有立体感（3D效果），其实只是一种视觉呈现，通过透视可以实现此目的电脑显示屏是一个 2D 平面，图像之所以具有立体感（3D效果），其实只是一种视觉呈现，通过透视可以实现此目的</P>
+<ul>
+    格式有两种写法：
+    <li>作为一个属性，设置给父元素，作用于所有3D转换的子元素</li>
+    <li>作为 transform 属性的一个值，做用于元素自身</li>
+</ul>
+<p>3D元素构建是指某个图形是由多个元素构成的，可以给这些元素的父元素设置transform-style: preserve-3d来使其变成一个真正的3D图形。属性值可以如下：transform-style: preserve-3d;     /* 让 子盒子 位于三维空间里 */或者transform-style: flat;            /* 让子盒子位于此元素所在的平面内（子盒子被扁平化） */</p>
+
+<hr>
+<span style="display: block; text-align: center;">动画</span>
+<hr>
+<p>动画是CSS3中具有颠覆性的特征，可通过设置多个节点 来精确控制一个或一组动画，常用来实现复杂的动画效果。</p>]
+<ul>
+    <span>定义动画的步骤</span>
+    <li>通过@keyframes定义动画</li>
+    <li>将这段动画通过百分比，分割成多个节点；然后各节点中分别定义各属性</li>
+    <li>在指定元素里，通过 animation 属性调用动画。</li>
+</ul>
+
+
+<div class="animation"></div>
 </body>
 </html> 
