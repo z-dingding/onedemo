@@ -329,8 +329,51 @@
     <li>将这段动画通过百分比，分割成多个节点；然后各节点中分别定义各属性</li>
     <li>在指定元素里，通过 animation 属性调用动画。</li>
 </ul>
-
-
 <div class="animation"></div>
+
+
+<hr>
+<span style="display: block; text-align: center;">Flex布局图文详解</span>
+<hr>
+<p>默认文档流中，在一个父容器里放置多个块级的子元素，那么，这些子元素会默认从上往下排列。在此基础之上，如果我给父容器仅仅加一个 display: flex属性,子元素们会在水平方向上，从左至右排列.
+    <span style="font-weight: bold;font-size: 20px;">flex 布局的子元素不会脱离文档流，</span> 很好地遵从了“流的特性”.但你如果用 float 来做布局，float 属性的元素会脱离文档流，而且会涉及到各种 BFC、清除浮动的问题。浮动相关的问题，比较麻烦，所以也成了面试必问的经典题目。但有了 flex 布局之后，这些问题都不存在的
+    <span style="font-weight: bold;font-size: 20px;"> flex 是一种现代的布局方式，是 W3C 第一次提供真正用于布局的 CSS 规范。</span> flex 非常提供了丰富的属性，非常灵活，让布局的实现更佳多样化，且方便易用。
+    <span style="font-weight: bold;font-size: 20px;"> flex 唯一的缺点就在于，它不支持低版本的 IE 浏览器。 </span> flex 布局不支持 IE9 及以下的版本；IE10及以上也只是部分支持。如果你的页面不需要处理 IE浏览器的兼容性问题，则可以放心大胆地使用 flex 布局。
+</p>
+<ul>
+    <li>弹性盒子：指的是使用 display:flex 或 display:inline-flex 声明的父容器。</li>
+    <li>子元素/弹性元素：指的是父容器里面的子元素们（父容器被声明为 flex 盒子的情况下）。</li>
+    <li>主轴：flex容器的主轴，默认是水平方向，从左向右。</li>
+    <li>侧轴：与主轴垂直的轴称作侧轴，默认是垂直方向，从上往下。</li>
+    <li>主轴和侧轴并不是固定不变的，可以通过 flex-direction 更换方向</li>
+</ul>
+
+<ul>
+    <span style="display: block; text-align: center;">flex-direction 属性：用于设置盒子中子元素的排列方向</span>
+    <li>row	从左到右水平排列子元素（默认值）</li>
+    <li>column	从上到下垂直排列子元素</li>
+    <li>row-reverse	从右向左排列子元素</li>
+    <li>column-reverse	从下到上垂直排列子元素</li>
+    <li>flex-wrap：控制子元素溢出时的换行处理。</li>
+    <li>justify-content：控制子元素在主轴上的排列方式</li>
+    <li>align-items：设置子元素在侧轴上的对齐方式。</li>
+</ul>
+
+
+<hr>
+<span style="display: block; text-align: center;">web字体</span>
+<hr>
+<ul>
+    <span>字体的常见格式</span>
+    <li>TureTpe格式：.ttf 字体是Windows和Mac的最常见的字体，是一种RAW格式。支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOS Mobile、Safari4.2+.</li>
+    <li>OpenType格式：(.otf),.otf 字体被认为是一种原始的字体格式，其内置在TureType的基础上。支持这种字体的浏览器有Firefox3.5+、Chrome4.0+、Safari3.1+、Opera10.0+、iOS Mobile、Safari4.2+。</li>
+    <li>Web Open Font Format格式：(.woff)woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离。支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+。</li>
+    <li>Embedded Open Type格式：(.eot),.eot字体是IE专用字体，可以从TrueType创建此格式字体，支持这种字体的浏览器有IE4+。</li>
+    <li>SVG格式：(.svg),.svg字体是基于SVG字体渲染的一种格式。支持这种字体的浏览器有Chrome4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+。</li>
+</ul>
+<p>总结：我们就需要为不同的浏览器准备不同格式的字体。通常我们会通过字体生成工具帮我们生成各种格式的字体，因此无需过于在意字体格式之间的区别。也就是同过相关网站的工具帮你生成字体，然后你引入，类似字体图标。</p>
+<hr>
+<span style="display: block; text-align: center;">Sass入门</span>
+<hr>
 </body>
 </html> 
