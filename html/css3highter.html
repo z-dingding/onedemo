@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css3进阶属性</title>
+</head>
+
+<body>
+    <hr>
+    <span style="text-align: center; display: block;">CSS中的非布局样式</span>
+    <hr>
+    <ul>
+        <span style="text-align: center; display: block;">换行相关</span>
+        <li>ovferflow-wrap：通用的属性。用来说明当一个不能被分开的字符串（单词）太长而不能填充其包裹盒时，为防止其溢出，浏览器是否允许这样的单词中断换行。</li>
+        <li>word-break：指定了怎样在单词内断行。这里涉及到CJK（中文/日文/韩文）的文字换行</li>
+        <li>white-space：空白处是否换行</li>
+        <li>直接设置white-space: nowrap,可以让一段很长的文本不换行</li>
+    </ul>
+
+    <ul>
+        <span style="text-align: center; display: block;">css常见属性</span>
+        <li>box-shadow：盒子的阴影</li>
+        <li>text-shadow：文本的阴影</li>
+        <li>border-radius：边框圆角</li>
+        <li>background:背景</li>
+        <li>clip-path:裁剪方式创建元素的可显示区域</li>
+    </ul>
+
+    <hr>
+    <span style="text-align: center; display: block;">css布局</span>
+    <hr>
+    <ul>
+        <span style="text-align: center; display: block;">display 确定元素的显示类型</span>
+        <li>block：块级元素。</li>
+        <li>inline：行内元素。</li>
+        <li>inline-block：对外的表现是行内元素（不会独占一行），对内的表现是块级元素（可以设置宽高）。</li>
+        <li></li>
+    </ul>
+    <ul>
+        <span style="text-align: center; display: block;">positon 确定元素的位置：</span>
+        <li>static：默认属性值。</li>
+        <li>relative：相对定位。相对于元素本身进行偏移，不会改变它所占据的空间</li>
+        <li>absolute：绝对定位。相对于父元素中最近的 relative/absolute 进行偏移，会脱离文档流</li>
+        <li>fixed：固定定位。相对于可视区域固定，会脱离文档流</li>
+        <li>relative、absolute、fixed这三个属性，可以结合 z-index 来设置层级。</li>
+    </ul>
+
+    <ul>
+        <span style="text-align: center; display: block;">常见的布局方法</span>
+        <li>table 表格布局：早期使用的布局，如今用得很少。</li>
+        <li>float 浮动 + margin：为了兼容低版本的IE浏览器，很多网站（比如腾讯新闻、网易新闻、淘宝等）都会采用 float 布局</li>
+        <li>inline-block 布局：对外的表现是行内元素（不会独占一行），对内的表现是块级元素（可以设置宽高）</li>
+        <li>flex 布局：为布局而生，非常灵活，是最为推荐的布局写法,唯一的缺点是兼容性问题,flex 布局不支持 IE9 及以下的版本,flex 是一种现代的布局方式，是 W3C 第一次提供真正用于布局的 CSS 规范。
+        </li>
+        <li>响应式布局。移动端用得较多</li>
+    </ul>
+    <ul>
+        <span style="text-align: center; display: block;">float布局</span>
+        <span style="text-align: center; display: block;">float属性的特点</span>
+        <li>元素浮动</li>
+        <li>脱离文档流，但不脱离文本流,float 本身是用来做图文混排、文字环绕的效果</li>
+        <span style="text-align: center; display: block;">float 所带来的影响</span>
+        <span style="text-align: center; display: block;">对自身的影响：</span>
+        <li>形成“块”（BFC）</li>
+        <li>位置尽量靠上</li>
+        <li>位置尽量靠左/右</li>
+        <span style="text-align: center; display: block;">对兄弟元素的影响：</span>
+        <li>不影响其他块级元素的位置</li>
+        <li>影响其他块级元素的内部文本</li>
+        <span style="text-align: center; display: block;">对父元素的影响：</span>
+        <li>从父级的布局中“消失”</li>
+        <li>造成父级元素的高度塌陷：父级元素撑开 div1 之后（父级元素里没有其他元素的情况下），如果设置 div1 为 float 之后，，会让父级元素的高度变为0。</li>
+    </ul>
+    <span style="text-align: center; display: block;">inline-block 布局</span>
+    <p>对外的表现是行内元素（不会独占一行），对内的表现是块级元素（可以设置宽高）。像文本一样去排列 block 元素，没有清除浮动等问题。存在的问题：需要处理间隙。</p>
+    <p>div1和div2设置为 inline-block之后，这两个盒子之间存在了间隙。这是因为，此时的 div1和div2 已经被当成文本了。文本和文本之间，本身就会存在间隙。</p>
+    <span>为了去掉这个间隙，可以有几种解决办法</span>
+    <li>办法1：设置父元素container的字体大小为0，即font-size: 0，然后设置子元素 div1、div2的字体font-size: 12px。</li>
+    <li>在写法上，去掉div1和div2之间的换行。改为：&lt;div class="div1"&gt;div1&lt;/div&gt;&lt;div
+        class="div2"&gt;div2属性&lt;/div&gt;也就是挨着写</li>
+
+
+    <hr>
+    <span style="text-align: center; display: block;">网页设计和开发中，关于字体的常识</span>
+    <hr>
+    <p>常见的字体可以分为两类：衬线体、无衬线体。</p>
+    <ul>
+        <li>serif（衬线体）：在字的笔画开始、结束的地方有额外的装饰，而且笔画的粗细会有所不同。常见的衬线体有：宋体、楷体</li>
+        <li>sans-serif（无衬线体）：笔划粗细基本一致，只剩下主干，造型简明有力，起源也很晚。适用于标题、广告等，识别性高,常见的无衬线体有：黑体;Windows 平台默认的中文字体：微软雅黑（Microsoft
+            Yahei）</li>
+    </ul>
+    <span>衬线体如今已经很少使用了，你所熟悉的“宋体”，也基本只能在纸质出版物中见到。而非衬线体更符合现代审美。</span>
+    <ul>
+        <span style="text-align: center; display: block;">字体族</span>
+        <li>serif：衬线体。</li>
+        <li>sans-serif：无衬线体。</li>
+        <li>monospace：等宽字体。每一个字母所占的宽度是相同的。写代码的字体尽量用等宽字体。</li>
+        <li>cursive：手写字体。比如徐静蕾手写体</li>
+        <li>fantasy：梦幻字体。比如一些艺术字。</li>
+        <li>这五类字体族不代表某一个具体的字体，而是当你在 CSS 中指定字体族的时候，系统就有可能在字体族中找出一种字体来显示。</li>
+    </ul>
+    <p>多字体 fallback 机制：当指定的字体找不到（或者某些文字不支持这个字体）时，那就接着往后找。比如：.div1{font-family: "PingFang SC", "Microsoft Yahei",
+        monospace;},注意:写 CSS 代码时，字体族不需要带引号。</p>
+    <p>font-weight 属性：在设置字体是否加粗时，属性值既可以直接填写 100 至 900 这样的数字，也可以填写normal、bold这样的单词。normal的值相当于 400，bold的值相当于
+        700。注意:所有这些数值关键字浏览器都是支持的，之所以没有看到任何粗细的变化，是因为你所使用的字体不支持。</p>
+
+    <hr>
+    <span style="text-align: center; display: block;">如何让一个元素水平垂直居中</span>
+    <hr>
+    <div class="center_father" style="text-align: center;  width: 400px; height: 100px; background-color: pink;">
+        <span>行内元素水平居中,通过给父类设置text-align: center;</span></div>
+    <div class="center_father2" style="line-height: 100px; width: 500px; height: 100px; background-color: green;">
+        <span>行内元素垂直居中,设置父类(line-height)让文字的行高等于盒子的高度</span></div>
+    <div class="center_father3"
+        style="margin: 0 auto; width: 600px; height: 100px; background-color: red; margin-top: 20px;">块级元素水平居中，就对它自身应用
+        margin: auto或者 margin: 0 auto </div>
+    <div class="center_father4"
+        style=" width: 500px; height: 100px; background-color: red; margin-top: 20px; position: relative;">
+        <div
+            style="position: absolute;  width: 400px; height: 80px; top: 50%; left: 50%; margin-top: -40px; margin-left: -200px; background-color: green;">
+            块级元素垂直居中方法一：绝对定位 + margin,不足之处要求指定子元素的宽高，才能写出 margin-top 和 margin-left 的属性值</div>
+    </div>
+    <div class="center_father5"
+        style=" width: 500px;  height: 100px; background-color: red;  position: relative; margin-top: 30px;">
+        <div
+            style="position: absolute;  width: 400px; height: 80px; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: green;">
+            块级元素垂直居中方法二：绝对定位 + translate（无需指定子元素的宽高，推荐）</div>
+    </div>
+    <div class="center_father6"
+        style=" width: 500px; min-height: 150px; background-color: red;  margin-top: 30px; display: flex; justify-content: center ; align-items: center; ">
+        <div style="background-color: green;">
+            块级元素垂直居中方法三：将父容器设置为 Flex 布局，再给父容器加个属性justify-content: center，这样的话，子元素就能水平居中了；再给父容器加个属性
+            align-items:center，这样的话，子元素就能垂直居中了。不足之处在于：给父容器设置属性justify-content: center和align-items:
+            center之后，导致父容器里的所有子元素们都垂直居中了
+        </div>
+    </div>
+
+    <div class="center_father7"
+        style=" width: 500px; min-height: 150px; background-color: red;  margin-top: 30px; display: flex; ">
+        <div style="background-color: green; margin: auto;">
+            块级元素垂直居中方法4： flex 布局 + margin: auto（推荐）,先给父容器设置 display: flex，再给指定的子元素设置我们再熟悉不过的 margin:
+            auto，即可让这个指定的子元素在剩余空间里，水平垂直居中。
+        </div>
+    </div>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">开发积累</span>
+    <hr>
+    <ul>
+        <span style="display: block; text-align: center;">让flex盒子中的子元素们，居中</span>
+        <li>display: flex;</li>
+        <li>justify-content: center; // 子元素在横轴的对齐方式 （左右居中）</li>
+        <li>align-items: center; // 子元素在竖轴的对齐方式（上下居中）</li>
+        <span style="display: block; text-align: center;"> 让文字只显示一行，超出显示省略号</span>
+        <li>overflow: hidden;</li>
+        <li>white-space: nowrap;</li>
+        <li>text-overflow: ellipsis;</li>
+        <span style="display: block; text-align: center;">让文字最多只显示两行，超出后显示省略号</span>
+        <li>overflow:hidden;</li>
+        <li>text-overflow:ellipsis;</li>
+        <li>display:-webkit-box;</li>
+        <li>-webkit-box-orient:vertical;</li>
+        <li>-webkit-line-clamp:2;</li>
+        <span style="display: block; text-align: center;">文本内容里自带了换行，但是在前端没有展示出来</span>
+        <li>white-space: pre-wrap;</li>
+
+        <span style="display: block; text-align: center;"> CSS的逗号一般写在()里。不同属性值之间，用的是空格，不是逗号。比如：</span>
+        <li>transform: translate(-50%, -50%); /* 这种写逗号 */</li>
+        <li>transform: translate(-50%, -50%) scale(0.5); /* 不同属性值之间，用的是空格 */</li>
+        <li>background-size: 100% 100%; /* 这里是空格，不是逗号 */</li>
+
+
+
+    </ul>
+
+    <p>价格中的羊角符号，有半角和全角之分：半角的宽度更小。考虑到容器的空间一般比较紧张，所以推荐使用半角</p>
+    <p>图片的宽度固定，高度自适应.这个场景下，别用background。直接放img元素就好了，将图片的高度设置为auto。</p>
+    <p>通过CSS扩大点击热区,代码如下</p>
+    <li>.button {
+        position: relative;
+        /* [其余样式] */
+        }</li>
+    <li>.button::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        bottom: -10px;
+        left: -10px;
+        }</li>
+
+
+    <hr>
+    <span style="display: block; text-align: center;"></span>CSS的一些小知识</span>
+    <hr>
+    <ul>
+        <span style="display: block; text-align: center;"></span>隐藏盒子，有以下几种方式</span>
+        <li>overflow：hidden; //隐藏盒子超出的部分</li>
+        <li>display: none; 隐藏盒子，而且不占位置(用的最多)</li>
+        <li>visibility: hidden; //隐藏盒子，占位置。
+            visibility: visible; //让盒子重新显示</li>
+        <li>opacity: 0; //设置盒子的透明度（不建议，因为内容也会半透明），占位置</li>
+        <li>Position/top/left/...-999px //把盒子移得远远的，占位置。</li>
+        <li>margin-left: 1000px;</li>
+
+
+        <span style="display: block; text-align: center;">设置盒子的半透明方式</span>
+        <li>opacity: 0.4。优点是方便。缺点是：里面的内容也会半透明。</li>
+        <li>css3的技术来解决半透明。如：background: rgba(0,0,0,0.3);a指的是alpha透明度。</li>
+
+        <span style="display: block; text-align: center;"> 给标签的形状设置为圆角矩形</span>
+        <li>border-radius: 50%;</li>
+        <li>border-radius: 10px 0 0 10px;</li>
+
+        <span style="display: block; text-align: center;">行高的问题：儿子把父亲撑开</span>
+        <p>比如对于下面这样的标签：
+            &lt;div&gt;
+            &lt;a href=""&gt;&lt;/a&gt;
+            &lt;/div&gt;,前置条件：如果我们给父亲div的行高设为31px，然后给儿子a的行高也设置为31.结果：当我们给儿子a设置了字体属性之后，会发现，父亲被撑高为32px了。因为font字体自身会比较大，多撑出了一个像素
+            解决办法：行内元素尽量不要设置font属性。对于行内元素而言，如果它和父亲都设置了行高，就不要去给自己设置font属性了。要么就，不要同时设置行高。
+        </p>
+        <p>
+            高和行高都可以城开盒子，但背景图不能撑开盒子。
+        </p>
+        <span style="display: block; text-align: center;">超链接a标签的href跳转</span>
+        <li>href=""//刷新页面</li>
+        <li>href="#"//跳转到当前页面的顶部（不会刷新）</li>
+        <li>href="javascript:void(0)" // 什么都不做</li>
+        <li>href="javascript:;" // 什么都不做</li>
+
+        <span style="display: block; text-align: center;">语义化</span>
+        <p>语义化：指对文本内容的结构化（内容语义化），选择合乎语义的标签（代码语义化）。举例：段落用 p，边栏用 aside，主要内容用 main 标签。
+            好处：便于开发者阅读和维护有利于SEO：让浏览器的爬虫和辅助技术更好的解析，div本身是没有语义的。但是现在，HTML5中加入了一些语义化标签，来更清晰的表达文档结构。
+        </p>
+        <span style="display: block; text-align: center;">viewport的作用</span>
+
+        &lt;meta name="viewport"/&gt;作用:控制页面在移动端不要缩小显示。
+        <span style="display: block; text-align: center;">选择器的优先级如何确定</span>
+        <li>选择器越具体，优先级越高。 #xxx 大于 .yyy</li>
+        <li>同样优先级，写在后面的覆盖前面的。</li>
+        <li>color: red !important; 优先级最高。</li>
+
+
+        <span style="display: block; text-align: center;">BFC 是什么</span>
+        <span>overflow:hidden ：取消父子 margin 合并。 （另一种推荐做法：padding-top: 0.1px;）</span>
+
+        <span style="display: block; text-align: center;">如何清除浮动</span>
+        <li>overflow: hidden</li>
+        <li>.clearfix 清除浮动写在爸爸身上.如下: .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+            }
+
+            /* 兼容 IE */
+            .clearfix {
+            zoom: 1;
+            }
+        </li>
+        <span style="display: block; text-align: center;">伪类和伪元素的区别是什么？</span>
+        <span>概念上的区别</span>
+        <li>伪类表示一种状态</li>
+        <li>伪元素是真的有元素。比如 ::after 是真的有元素，可以在页面上显示内容。</li>
+        <span>使用上的区别</span>
+        <li>伪类：使用单冒号</li>
+        <li>伪元素：使用双冒号</li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
