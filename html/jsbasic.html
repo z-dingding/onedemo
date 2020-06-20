@@ -90,5 +90,31 @@
 <li>控制台输出：console.log("")，alert() 主要用来显示消息给用户，console.log() 用来给程序员自己调试用的。</li>
 <li>弹出输入框：prompt()语句</li>
 
+
+<hr>
+<span style="display: block; text-align: center;">变量</span>
+<hr>
+
+<p>“字面量”即常量，是固定值，不可改变。看见什么，它就是什么。字面量有3种：数字;字符串;布尔字面量.字面量都可以直接使用，但是我们一般不会直接使用字面量。</p>
+<p>变量：是用于存放数据的容器。我们通过「变量名」获取数据，甚至可以修改数据。变量还可以用来保存字面量。本质：变量是程序在内存中申请的一块用来存放数据的空间。</p>
+<span style="display: block; text-align: center;">变量的声明和赋值</span>
+<span>在ES6语法之前，统一使用var关键字来声明一个变量。比如var name;</span>
+<p>在ES6语法及之后,如果你想定义一个常量，就用 const；如果你想定义一个变量，就用 let。</p>
+<ul>
+    <li>同时声明多个变量时，只需要写一个 var， 多个变量名之间用英文逗号隔开。如:var name = '千古壹号', age = 27, number = 100;</li>
+    <li>变量建议先声明，再使用。</li>
+    <span style="display: block; text-align: center;">变量的命名规范</span>
+    <li>只能由字母(A-Z、a-z)、数字(0-9)、下划线(_)、美元符( $ )组成</li>
+    <li>不能以数字开头。也就是说，必须以字母(A-Z、a-z)、下划线(_)或者美元符( $ )开头。变量名中不允许出现空格</li>
+    <li>不用使用 JS 语言中保留的「关键字」和「保留字」作为变量名。</li>
+    <li>建议用驼峰命名规则。比如getElementById</li>
+    <li>变量名会区分大小写(javascript 是区分大小写的语言)。</li>
+    <li>变量名长度不能超过255个字符</li>
+    <li>汉语可以作为变量名。但是不建议使用，因为 low。</li>
+    <span style="display: block; text-align: center;">标识符、关键字、保留字</span>
+  <li>标识符：在JS中所有的可以由我们自主命名的都可以称之为标识符。例如：变量名、函数名、属性名、参数名都是属于标识符。标识符的命名规则和变量的命令规则是一样的。</li>
+  <li>关键字：是指 JS 本身已经使用了的单词，我们不能再用它们充当变量、函数名等标识符。如:undefined,typeof,this</li>
+  <li>保留字：实际上就是预留的“关键字”。意思是现在虽然还不是关键字，但是未来可能会成为关键字，同样不 能使用它们当充当变量名、函数名等标识符。如:transient,debugger,abstract</li>
+</ul>
 </body>
-</html>
+</html> 
