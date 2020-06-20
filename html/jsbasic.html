@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js基础</title>
+</head>
+<body>
+<hr>
+<span style="display: block; text-align: center;">编程语言</span>
+<hr>
+<p>
+    编程：让计算机为解决某个问题而使用某种程序设计语言编写程序代码，并最终得到结果的过程。
+</p>
+<p>
+    计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的，所以人们如果要控制计算机，则需要通过计算机语言向计算机发出命令。
+</p>
+<p>
+    计算机语言的种类非常的多，总的来说可以分成三大类：机器语言、汇编语言和高级语言。
+计算机最终所执行的都是机器语言，它是由“0”和“1”组成的二进制数，二进制是计算机语言的基础。
+</p>
+<p>
+    通过类似于人类语言的 ”语言”来控制计算机，让计算机为我们做事情，这样的语言就叫做编程语言。不同的编程语言，有不同的语法，必须遵守。
+如今通用的编程语言有两种形式：汇编语言和高级语言。汇编语言：与机器语言实质是相同的，都是直接对硬件操作，只不过指令采用了英文缩写的标识符，容易识别和记忆。
+高级语言：主要是相对于低级语言而言，它并不是特指某一种具体的语言，而是包括了很多编程语言，比如：C语言、C++、Java、C#、PHP、JavaScript、Python、Objective-C、Swift、Go语言等。
+</p>
+<p>
+    高级语言所编写的程序不能直接被计算机识别，必须经过转换才能被执行，为此，我们需要一个编译器。
+
+编译器可以将我们所编写的源代码转换（翻译）为机器语言，这也被称为二进制化
+</p>
+
+
+<hr>
+<span style="display: block; text-align: center;">JS简介</span>
+<hr>
+<ul>
+    <span  style="display: block; text-align: center;">web前端有三层</span>
+    <li>HTML：从语义的角度，描述页面结构</li>
+    <li>CSS：从审美的角度，描述样式（美化页面）</li>
+    <li>JavaScript：从交互的角度，描述行为（实现业务逻辑和页面控制）</li>
+</ul>
+<p>JavaScript诞生于1995年。布兰登 • 艾奇（Brendan Eich，1961年～），1995年在网景公司，开发了JavaScript语言.1995年12月与SUN公司合作，因市场宣传需要，改名为 JavaScript。后来 Sun 公司 被Oracle收购，JavaScript版权归Oracle所有。JavaScript是世界上用的最多的脚本语言。</p>
+<ul>
+    <span  style="display: block; text-align: center;">JavaScript介绍</span>
+    <li>JavaScript是弱变量类型的语言，变量只需要用 var/let/const 来声明。而Java中变量的声明，要根据变量的类型来定义。</li>
+    <li>avaScript是前端语言，而不是后台语言。JavaScript运行在用户的终端网页上，而不是服务器上，所以我们称之为“前端语言”。备注：Node.js是用 JavaScript 开发的，现在也可以基于 Node.js 技术进行服务器端编程。</li>
+    <li>JavaScript基础分为三个部分：ECMAScript：JavaScript 的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。DOM：Document Object Model（文档对象模型），操作页面上的元素的API。比如让盒子移动、变色、改变大小、轮播图等等。BOM：Browser Object Model（浏览器对象模型），操作浏览器部分功能的API。通过BOM可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM 浏览器运行环境为 JS提供的API。</li>
+    <li>JavaScript 的特点：特点1：解释型语言,不需要事先被翻译为机器码；而是边翻译边执行（翻译一行，执行一行）。但是解释型语言运行较慢也是它的劣势。不过解释型语言中使用了JIT技术，使得运行速度得以改善。特点2：单线程特点3：ECMAScript标准,简单来说，ECMAScript不是一门语言，而是一个标准。ECMAScript 规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。ECMAScript在2015年6月，发布了ECMAScript 6版本（ES6），语言的能力更强（也包含了很多新特性）。</li>
+    <span  style="display: block; text-align: center;">编程语言的分类</span>
+    <span>程序语言翻译成机器语言的工具，被称为翻译器。由此可见，所谓的“翻译”，指的是翻译成计算机能够执行的指令。翻译器翻译的方式有两种：一种是编译，另一种是解释。两种方式之间的区别在于翻译的时机不同。</span>
+    <li>编译器：在代码执行之前，事前把所有的代码一次性翻译好，生成中间代码文件，然后整体执行。</li>
+    <li>解释器：边翻译，边执行（在代码执行时进行及时翻译，并立即执行）。当编译器以解释的方式运行时，也称之为解释器对应的语言，称之为“编译型语言”、“解释型语言”。</li>
+   <p>
+    编译型语言优点：运行更快。不足：移植性不好，不跨平台。编译型语言举例：c、c++再比如， java 语言的代码文件是.java后缀，翻译之后的文件是.class后缀。（注意，Java 语言不是严格的 编译型语言)
+   </p>
+   <p>
+    解释型语言优点：移植性好，跨平台。缺点：运行更慢。解释型语言举例：JavaScript、php、Python。
+   </p>
+   <p>
+    Java 语言既不是编译型语言，也不是解释型语言。翻译过程：编译：.java代码文件先通过 javac 命令编译成.class文件。执行：.class文件再通过 jvm 虚拟机，解释执行。有了 jvm 的存在，让 java 跨平台了。
+   </p>
+</ul>
+<ul>
+    <span  style="display: block; text-align: center;">引入js代码的方式</span> 
+    <li>方式1：行内式,如: &lt;input type="button" value="点我点我" onclick="alert('千古壹号')" /&gt;</li>
+    <li>方式2、内嵌式,如：
+        &lt;script type="text/javascript"&gt;
+            // 在这里写 js 代码
+            alert('千古壹号的方式2');
+            console.log('qianguyihao 方式2');
+            &lt;/script&gt;
+    </li>
+    <li>方式3：引入外部的 JS 文件,就是&lt;script src="tool.js"&gt;&lt;/script&gt;另外，引用外部 JS文件的 script 标签中间不可以再写代码。</li>
+
+    <span  style="display: block; text-align: center;">JS一些简单的语法规则</span>
+
+<li>JavaScript对换行、缩进、空格不敏感。每一条语句以分号结尾。</li>
+<li>所有的符号，都是英语的。比如括号、引号、分号。</li>
+<li>严格区分大小写。</li>
+
+<span  style="display: block; text-align: center;">注释</span>
+<li>HTML 的注释:<!-- 我是注释  --></li>
+<li>CSS的注释:/* 我是注释 */,注意：CSS只有/* */这种注释，没有//这种注释。而且注释要写在&gt;style&lt;标签里面才算生效</li>
+<li>JavaScript 的注释:单行注释：//;多行注释：/* 多行注释1 */</li>
+<li>补充：VS Code中，单行注释的快捷键是「Ctrl + /」，多行注释的默认快捷键是「Alt + Shift + A」。</li>
+</ul>
+<span  style="display: block; text-align: center;">弹框</span>
+<li>弹出警告框：alert语句</li>
+<li>控制台输出：console.log("")，alert() 主要用来显示消息给用户，console.log() 用来给程序员自己调试用的。</li>
+<li>弹出输入框：prompt()语句</li>
+
+</body>
+</html>
