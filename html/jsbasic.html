@@ -1,120 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js基础</title>
 </head>
+
 <body>
-<hr>
-<span style="display: block; text-align: center;">编程语言</span>
-<hr>
-<p>
-    编程：让计算机为解决某个问题而使用某种程序设计语言编写程序代码，并最终得到结果的过程。
-</p>
-<p>
-    计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的，所以人们如果要控制计算机，则需要通过计算机语言向计算机发出命令。
-</p>
-<p>
-    计算机语言的种类非常的多，总的来说可以分成三大类：机器语言、汇编语言和高级语言。
-计算机最终所执行的都是机器语言，它是由“0”和“1”组成的二进制数，二进制是计算机语言的基础。
-</p>
-<p>
-    通过类似于人类语言的 ”语言”来控制计算机，让计算机为我们做事情，这样的语言就叫做编程语言。不同的编程语言，有不同的语法，必须遵守。
-如今通用的编程语言有两种形式：汇编语言和高级语言。汇编语言：与机器语言实质是相同的，都是直接对硬件操作，只不过指令采用了英文缩写的标识符，容易识别和记忆。
-高级语言：主要是相对于低级语言而言，它并不是特指某一种具体的语言，而是包括了很多编程语言，比如：C语言、C++、Java、C#、PHP、JavaScript、Python、Objective-C、Swift、Go语言等。
-</p>
-<p>
-    高级语言所编写的程序不能直接被计算机识别，必须经过转换才能被执行，为此，我们需要一个编译器。
+    <hr>
+    <span style="display: block; text-align: center;">编程语言</span>
+    <hr>
+    <p>
+        编程：让计算机为解决某个问题而使用某种程序设计语言编写程序代码，并最终得到结果的过程。
+    </p>
+    <p>
+        计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的，所以人们如果要控制计算机，则需要通过计算机语言向计算机发出命令。
+    </p>
+    <p>
+        计算机语言的种类非常的多，总的来说可以分成三大类：机器语言、汇编语言和高级语言。
+        计算机最终所执行的都是机器语言，它是由“0”和“1”组成的二进制数，二进制是计算机语言的基础。
+    </p>
+    <p>
+        通过类似于人类语言的 ”语言”来控制计算机，让计算机为我们做事情，这样的语言就叫做编程语言。不同的编程语言，有不同的语法，必须遵守。
+        如今通用的编程语言有两种形式：汇编语言和高级语言。汇编语言：与机器语言实质是相同的，都是直接对硬件操作，只不过指令采用了英文缩写的标识符，容易识别和记忆。
+        高级语言：主要是相对于低级语言而言，它并不是特指某一种具体的语言，而是包括了很多编程语言，比如：C语言、C++、Java、C#、PHP、JavaScript、Python、Objective-C、Swift、Go语言等。
+    </p>
+    <p>
+        高级语言所编写的程序不能直接被计算机识别，必须经过转换才能被执行，为此，我们需要一个编译器。
 
-编译器可以将我们所编写的源代码转换（翻译）为机器语言，这也被称为二进制化
-</p>
+        编译器可以将我们所编写的源代码转换（翻译）为机器语言，这也被称为二进制化
+    </p>
 
 
-<hr>
-<span style="display: block; text-align: center;">JS简介</span>
-<hr>
-<ul>
-    <span  style="display: block; text-align: center;">web前端有三层</span>
-    <li>HTML：从语义的角度，描述页面结构</li>
-    <li>CSS：从审美的角度，描述样式（美化页面）</li>
-    <li>JavaScript：从交互的角度，描述行为（实现业务逻辑和页面控制）</li>
-</ul>
-<p>JavaScript诞生于1995年。布兰登 • 艾奇（Brendan Eich，1961年～），1995年在网景公司，开发了JavaScript语言.1995年12月与SUN公司合作，因市场宣传需要，改名为 JavaScript。后来 Sun 公司 被Oracle收购，JavaScript版权归Oracle所有。JavaScript是世界上用的最多的脚本语言。</p>
-<ul>
-    <span  style="display: block; text-align: center;">JavaScript介绍</span>
-    <li>JavaScript是弱变量类型的语言，变量只需要用 var/let/const 来声明。而Java中变量的声明，要根据变量的类型来定义。</li>
-    <li>avaScript是前端语言，而不是后台语言。JavaScript运行在用户的终端网页上，而不是服务器上，所以我们称之为“前端语言”。备注：Node.js是用 JavaScript 开发的，现在也可以基于 Node.js 技术进行服务器端编程。</li>
-    <li>JavaScript基础分为三个部分：ECMAScript：JavaScript 的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。DOM：Document Object Model（文档对象模型），操作页面上的元素的API。比如让盒子移动、变色、改变大小、轮播图等等。BOM：Browser Object Model（浏览器对象模型），操作浏览器部分功能的API。通过BOM可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM 浏览器运行环境为 JS提供的API。</li>
-    <li>JavaScript 的特点：特点1：解释型语言,不需要事先被翻译为机器码；而是边翻译边执行（翻译一行，执行一行）。但是解释型语言运行较慢也是它的劣势。不过解释型语言中使用了JIT技术，使得运行速度得以改善。特点2：单线程特点3：ECMAScript标准,简单来说，ECMAScript不是一门语言，而是一个标准。ECMAScript 规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。ECMAScript在2015年6月，发布了ECMAScript 6版本（ES6），语言的能力更强（也包含了很多新特性）。</li>
-    <span  style="display: block; text-align: center;">编程语言的分类</span>
-    <span>程序语言翻译成机器语言的工具，被称为翻译器。由此可见，所谓的“翻译”，指的是翻译成计算机能够执行的指令。翻译器翻译的方式有两种：一种是编译，另一种是解释。两种方式之间的区别在于翻译的时机不同。</span>
-    <li>编译器：在代码执行之前，事前把所有的代码一次性翻译好，生成中间代码文件，然后整体执行。</li>
-    <li>解释器：边翻译，边执行（在代码执行时进行及时翻译，并立即执行）。当编译器以解释的方式运行时，也称之为解释器对应的语言，称之为“编译型语言”、“解释型语言”。</li>
-   <p>
-    编译型语言优点：运行更快。不足：移植性不好，不跨平台。编译型语言举例：c、c++再比如， java 语言的代码文件是.java后缀，翻译之后的文件是.class后缀。（注意，Java 语言不是严格的 编译型语言)
-   </p>
-   <p>
-    解释型语言优点：移植性好，跨平台。缺点：运行更慢。解释型语言举例：JavaScript、php、Python。
-   </p>
-   <p>
-    Java 语言既不是编译型语言，也不是解释型语言。翻译过程：编译：.java代码文件先通过 javac 命令编译成.class文件。执行：.class文件再通过 jvm 虚拟机，解释执行。有了 jvm 的存在，让 java 跨平台了。
-   </p>
-</ul>
-<ul>
-    <span  style="display: block; text-align: center;">引入js代码的方式</span> 
-    <li>方式1：行内式,如: &lt;input type="button" value="点我点我" onclick="alert('千古壹号')" /&gt;</li>
-    <li>方式2、内嵌式,如：
-        &lt;script type="text/javascript"&gt;
+    <hr>
+    <span style="display: block; text-align: center;">JS简介</span>
+    <hr>
+    <ul>
+        <span style="display: block; text-align: center;">web前端有三层</span>
+        <li>HTML：从语义的角度，描述页面结构</li>
+        <li>CSS：从审美的角度，描述样式（美化页面）</li>
+        <li>JavaScript：从交互的角度，描述行为（实现业务逻辑和页面控制）</li>
+    </ul>
+    <p>JavaScript诞生于1995年。布兰登 • 艾奇（Brendan Eich，1961年～），1995年在网景公司，开发了JavaScript语言.1995年12月与SUN公司合作，因市场宣传需要，改名为
+        JavaScript。后来 Sun 公司 被Oracle收购，JavaScript版权归Oracle所有。JavaScript是世界上用的最多的脚本语言。</p>
+    <ul>
+        <span style="display: block; text-align: center;">JavaScript介绍</span>
+        <li>JavaScript是弱变量类型的语言，变量只需要用 var/let/const 来声明。而Java中变量的声明，要根据变量的类型来定义。</li>
+        <li>avaScript是前端语言，而不是后台语言。JavaScript运行在用户的终端网页上，而不是服务器上，所以我们称之为“前端语言”。备注：Node.js是用 JavaScript 开发的，现在也可以基于
+            Node.js 技术进行服务器端编程。</li>
+        <li>JavaScript基础分为三个部分：ECMAScript：JavaScript 的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。DOM：Document Object
+            Model（文档对象模型），操作页面上的元素的API。比如让盒子移动、变色、改变大小、轮播图等等。BOM：Browser Object
+            Model（浏览器对象模型），操作浏览器部分功能的API。通过BOM可以操作浏览器窗口，比如弹框、控制浏览器跳转、获取浏览器分辨率等等。通俗理解就是：ECMAScript 是 JS 的语法；DOM 和 BOM
+            浏览器运行环境为 JS提供的API。</li>
+        <li>JavaScript
+            的特点：特点1：解释型语言,不需要事先被翻译为机器码；而是边翻译边执行（翻译一行，执行一行）。但是解释型语言运行较慢也是它的劣势。不过解释型语言中使用了JIT技术，使得运行速度得以改善。特点2：单线程特点3：ECMAScript标准,简单来说，ECMAScript不是一门语言，而是一个标准。ECMAScript
+            规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。ECMAScript在2015年6月，发布了ECMAScript 6版本（ES6），语言的能力更强（也包含了很多新特性）。</li>
+        <span style="display: block; text-align: center;">编程语言的分类</span>
+        <span>程序语言翻译成机器语言的工具，被称为翻译器。由此可见，所谓的“翻译”，指的是翻译成计算机能够执行的指令。翻译器翻译的方式有两种：一种是编译，另一种是解释。两种方式之间的区别在于翻译的时机不同。</span>
+        <li>编译器：在代码执行之前，事前把所有的代码一次性翻译好，生成中间代码文件，然后整体执行。</li>
+        <li>解释器：边翻译，边执行（在代码执行时进行及时翻译，并立即执行）。当编译器以解释的方式运行时，也称之为解释器对应的语言，称之为“编译型语言”、“解释型语言”。</li>
+        <p>
+            编译型语言优点：运行更快。不足：移植性不好，不跨平台。编译型语言举例：c、c++再比如， java 语言的代码文件是.java后缀，翻译之后的文件是.class后缀。（注意，Java 语言不是严格的 编译型语言)
+        </p>
+        <p>
+            解释型语言优点：移植性好，跨平台。缺点：运行更慢。解释型语言举例：JavaScript、php、Python。
+        </p>
+        <p>
+            Java 语言既不是编译型语言，也不是解释型语言。翻译过程：编译：.java代码文件先通过 javac 命令编译成.class文件。执行：.class文件再通过 jvm 虚拟机，解释执行。有了 jvm 的存在，让
+            java 跨平台了。
+        </p>
+    </ul>
+    <ul>
+        <span style="display: block; text-align: center;">引入js代码的方式</span>
+        <li>方式1：行内式,如: &lt;input type="button" value="点我点我" onclick="alert('千古壹号')" /&gt;</li>
+        <li>方式2、内嵌式,如：
+            &lt;script type="text/javascript"&gt;
             // 在这里写 js 代码
             alert('千古壹号的方式2');
             console.log('qianguyihao 方式2');
             &lt;/script&gt;
-    </li>
-    <li>方式3：引入外部的 JS 文件,就是&lt;script src="tool.js"&gt;&lt;/script&gt;另外，引用外部 JS文件的 script 标签中间不可以再写代码。</li>
+        </li>
+        <li>方式3：引入外部的 JS 文件,就是&lt;script src="tool.js"&gt;&lt;/script&gt;另外，引用外部 JS文件的 script 标签中间不可以再写代码。</li>
 
-    <span  style="display: block; text-align: center;">JS一些简单的语法规则</span>
+        <span style="display: block; text-align: center;">JS一些简单的语法规则</span>
 
-<li>JavaScript对换行、缩进、空格不敏感。每一条语句以分号结尾。</li>
-<li>所有的符号，都是英语的。比如括号、引号、分号。</li>
-<li>严格区分大小写。</li>
+        <li>JavaScript对换行、缩进、空格不敏感。每一条语句以分号结尾。</li>
+        <li>所有的符号，都是英语的。比如括号、引号、分号。</li>
+        <li>严格区分大小写。</li>
 
-<span  style="display: block; text-align: center;">注释</span>
-<li>HTML 的注释:<!-- 我是注释  --></li>
-<li>CSS的注释:/* 我是注释 */,注意：CSS只有/* */这种注释，没有//这种注释。而且注释要写在&gt;style&lt;标签里面才算生效</li>
-<li>JavaScript 的注释:单行注释：//;多行注释：/* 多行注释1 */</li>
-<li>补充：VS Code中，单行注释的快捷键是「Ctrl + /」，多行注释的默认快捷键是「Alt + Shift + A」。</li>
-</ul>
-<span  style="display: block; text-align: center;">弹框</span>
-<li>弹出警告框：alert语句</li>
-<li>控制台输出：console.log("")，alert() 主要用来显示消息给用户，console.log() 用来给程序员自己调试用的。</li>
-<li>弹出输入框：prompt()语句</li>
+        <span style="display: block; text-align: center;">注释</span>
+        <li>HTML 的注释:
+            <!-- 我是注释  -->
+        </li>
+        <li>CSS的注释:/* 我是注释 */,注意：CSS只有/* */这种注释，没有//这种注释。而且注释要写在&gt;style&lt;标签里面才算生效</li>
+        <li>JavaScript 的注释:单行注释：//;多行注释：/* 多行注释1 */</li>
+        <li>补充：VS Code中，单行注释的快捷键是「Ctrl + /」，多行注释的默认快捷键是「Alt + Shift + A」。</li>
+    </ul>
+    <span style="display: block; text-align: center;">弹框</span>
+    <li>弹出警告框：alert语句</li>
+    <li>控制台输出：console.log("")，alert() 主要用来显示消息给用户，console.log() 用来给程序员自己调试用的。</li>
+    <li>弹出输入框：prompt()语句</li>
 
 
-<hr>
-<span style="display: block; text-align: center;">变量</span>
-<hr>
+    <hr>
+    <span style="display: block; text-align: center;">变量</span>
+    <hr>
 
-<p>“字面量”即常量，是固定值，不可改变。看见什么，它就是什么。字面量有3种：数字;字符串;布尔字面量.字面量都可以直接使用，但是我们一般不会直接使用字面量。</p>
-<p>变量：是用于存放数据的容器。我们通过「变量名」获取数据，甚至可以修改数据。变量还可以用来保存字面量。本质：变量是程序在内存中申请的一块用来存放数据的空间。</p>
-<span style="display: block; text-align: center;">变量的声明和赋值</span>
-<span>在ES6语法之前，统一使用var关键字来声明一个变量。比如var name;</span>
-<p>在ES6语法及之后,如果你想定义一个常量，就用 const；如果你想定义一个变量，就用 let。</p>
-<ul>
-    <li>同时声明多个变量时，只需要写一个 var， 多个变量名之间用英文逗号隔开。如:var name = '千古壹号', age = 27, number = 100;</li>
-    <li>变量建议先声明，再使用。</li>
-    <span style="display: block; text-align: center;">变量的命名规范</span>
-    <li>只能由字母(A-Z、a-z)、数字(0-9)、下划线(_)、美元符( $ )组成</li>
-    <li>不能以数字开头。也就是说，必须以字母(A-Z、a-z)、下划线(_)或者美元符( $ )开头。变量名中不允许出现空格</li>
-    <li>不用使用 JS 语言中保留的「关键字」和「保留字」作为变量名。</li>
-    <li>建议用驼峰命名规则。比如getElementById</li>
-    <li>变量名会区分大小写(javascript 是区分大小写的语言)。</li>
-    <li>变量名长度不能超过255个字符</li>
-    <li>汉语可以作为变量名。但是不建议使用，因为 low。</li>
-    <span style="display: block; text-align: center;">标识符、关键字、保留字</span>
-  <li>标识符：在JS中所有的可以由我们自主命名的都可以称之为标识符。例如：变量名、函数名、属性名、参数名都是属于标识符。标识符的命名规则和变量的命令规则是一样的。</li>
-  <li>关键字：是指 JS 本身已经使用了的单词，我们不能再用它们充当变量、函数名等标识符。如:undefined,typeof,this</li>
-  <li>保留字：实际上就是预留的“关键字”。意思是现在虽然还不是关键字，但是未来可能会成为关键字，同样不 能使用它们当充当变量名、函数名等标识符。如:transient,debugger,abstract</li>
-</ul>
+    <p>“字面量”即常量，是固定值，不可改变。看见什么，它就是什么。字面量有3种：数字;字符串;布尔字面量.字面量都可以直接使用，但是我们一般不会直接使用字面量。</p>
+    <p>变量：是用于存放数据的容器。我们通过「变量名」获取数据，甚至可以修改数据。变量还可以用来保存字面量。本质：变量是程序在内存中申请的一块用来存放数据的空间。</p>
+    <span style="display: block; text-align: center;">变量的声明和赋值</span>
+    <span>在ES6语法之前，统一使用var关键字来声明一个变量。比如var name;</span>
+    <p>在ES6语法及之后,如果你想定义一个常量，就用 const；如果你想定义一个变量，就用 let。</p>
+    <ul>
+        <li>同时声明多个变量时，只需要写一个 var， 多个变量名之间用英文逗号隔开。如:var name = '千古壹号', age = 27, number = 100;</li>
+        <li>变量建议先声明，再使用。</li>
+        <span style="display: block; text-align: center;">变量的命名规范</span>
+        <li>只能由字母(A-Z、a-z)、数字(0-9)、下划线(_)、美元符( $ )组成</li>
+        <li>不能以数字开头。也就是说，必须以字母(A-Z、a-z)、下划线(_)或者美元符( $ )开头。变量名中不允许出现空格</li>
+        <li>不用使用 JS 语言中保留的「关键字」和「保留字」作为变量名。</li>
+        <li>建议用驼峰命名规则。比如getElementById</li>
+        <li>变量名会区分大小写(javascript 是区分大小写的语言)。</li>
+        <li>变量名长度不能超过255个字符</li>
+        <li>汉语可以作为变量名。但是不建议使用，因为 low。</li>
+        <span style="display: block; text-align: center;">标识符、关键字、保留字</span>
+        <li>标识符：在JS中所有的可以由我们自主命名的都可以称之为标识符。例如：变量名、函数名、属性名、参数名都是属于标识符。标识符的命名规则和变量的命令规则是一样的。</li>
+        <li>关键字：是指 JS 本身已经使用了的单词，我们不能再用它们充当变量、函数名等标识符。如:undefined,typeof,this</li>
+        <li>保留字：实际上就是预留的“关键字”。意思是现在虽然还不是关键字，但是未来可能会成为关键字，同样不 能使用它们当充当变量名、函数名等标识符。如:transient,debugger,abstract</li>
+    </ul>
+
+
+
+    <hr>
+    <span style="display: block; text-align: center;">变量的数据类型</span>
+    <hr>
+    <p>在计算机中，不同的数据所需占用的存储空间不同，为了充分利用存储空间，于是定义了不同的数据类型。
+        而且，不同的数据类型，寓意也不同。
+        我们都知道，无论这个变量是字符串类型，还是数字类型，我们都可以直接用 var 去定义它。这是因为：
+        JavaScript 是一种「弱类型语言」，或者说是一种「动态语言」，这意味着不需要提前声明变量的类型，
+        在程序运行过程中，类型会自动被确定。
+        JS 的变量数据类型，是在程序运行的过程中，根据等号右边的值来确定的。而且，变量的数据类型是可以变化的。
+    </p>
+    <ul>
+        <span style="display: block; text-align: center;">JS中一共有六种数据类型</span>
+        <li>基本数据类型（值类型）：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义</li>
+        <li>引用数据类型（引用类型）：Object 对象。</li>
+        <li>注意：内置对象 Function、Array、Date、RegExp、Error等都是属于 Object 类型。也就是说，除了那五种基本数据类型之外，其他的，都称之为 Object类型。</li>
+        <span style="display: block; text-align: center;">数据类型之间最大的区别：</span>
+        <li>基本数据类型：参数赋值的时候，传数值</li>
+        <li>引用数据类型：参数赋值的时候，传地址（修改的同一片内存空间）。</li>
+        <span style="display: block; text-align: center;">栈内存和堆内存</span>
+        <span>我们首先记住一句话：JS中，所有的变量都是保存在栈内存中的。</span>
+        <li>基本数据类型的值，直接保存在栈内存中。值与值之间是独立存在，修改一个变量不会影响其他的变量。</li>
+        <li>对象是保存到堆内存中的。每创建一个新的对象，就会在堆内存中开辟出一个新的空间；而变量保存了对象的内存地址（对象的引用），保存在栈内存当中。
+            如果两个变量保存了同一个对象的引用，当一个通过一个变量修改属性时，另一个也会受到影响。</li>
+
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">基本数据类型：String 和 Boolean</span>
+    <hr>
+    <span>String 字符串语法:字符串型可以是引号中的任意文本，其语法为：双引号 "" 或者单引号 ''。注意:单引号里可以嵌套双引号；双引号里可以嵌套单引号。</span>
+    <ul>
+        <span style="display: block; text-align: center;">转义字符</span>
+        <li>\" 表示 " 双引号</li>
+        <li>\' 表示 ' 单引号</li>
+        <li>\\ 表示\</li>
+        <li>\r 表示回车</li>
+        <li>\n 表示换行。n 的意思是 newline。</li>
+        <li>\t 表示缩进。t 的意思是 tab。</li>
+        <li>\b 表示空格。b 的意思是 blank。</li>
+        <span style="display: block; text-align: center;">获取字符串的长度</span>
+        <p>字符串是由若干个字符组成的，这些字符的数量就是字符串的长度。
+            我们可以通过字符串的 length 属性可以获取整个字符串的长度。</p>
+        <li>一个中文算一个字符，一个英文算一个字符</li>
+        <li>一个标点符号（包括中文标点、英文标点）算一个字符</li>
+        <li>一个空格算一个字符</li>
+        <li>多个字符串之间可以使用加号 + 进行拼接,拼接前，会把与字符串相加的这个数据类型转成字符串，然后再拼接成一个新的字符串。</li>
+        <li>字符串里面的值不可被改变。虽然看上去可以改变内容，但其实是地址变了，内存中新开辟了一个内存空间。</li>
+        <li>ES6中引入了模板字面量，让我们省去了字符串拼接的烦恼。
+            如：let name = 'qianguyihao';
+            console.log(`我是${name}`); // 打印结果：我是 qianguyihao</li>
+        <span style="display: block; text-align: center;">布尔值：Boolean</span>
+        <p>布尔型有两个值：true 和 false。主要用来做逻辑判断： true 表示真，false 表示假。布尔值直接使用就可以了，千万不要加上引号。
+            布尔型和数字型相加时， true 按 1 来算 ，false 按 0 来算。
+        </p>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">基本数据类型：Number</span>
+    <hr>
+    <p>在JS中所有的数值都是 Number 类型，包括整数和浮点数（小数）,再次补充：在 JS 中，只要是数，就是 Number 数值型的。无论整浮、浮点数（即小数）、无论大小、无论正负，都是 Number 类型的。</p>
+
+    <span style="display: block; text-align: center;">数值范围</span>
+    <ul>
+        <span>由于内存的限制，ECMAScript 并不能保存世界上所有的数值。如果使用 Number 表示的变量超过了最大值，则会返回Infinity。</span>
+        <li>最大值：Number.MAX_VALUE，这个值为： 1.7976931348623157e+308</li>
+        <li>最小值：Number.MIN_VALUE，这个值为： 5e-324</li>
+        <li>无穷大（正无穷）：Infinity</li>
+        <li>无穷小（负无穷）：-Infinity</li>
+        <span>注意：typeof Infinity的返回结果是number。</span>
+
+        <span style="display: block; text-align: center;">NaN</span>
+        <span>NaN：是一个特殊的数字，表示Not a Number，非数值。如:console.log("abc" / 18);结果是NaN.typeof NaN的返回结果是
+            number。Undefined和任何数值计算的结果为 NaN。NaN 与任何值都不相等，包括 NaN 本身。</span>
+        <span style="display: block; text-align: center;">隐式转换</span>
+        <p>我们知道，"2"+1得到的结果其实是字符串，但是"2"-1得到的结果却是数值1，这是因为计算机自动帮我们进行了“隐式转换”。
+            也就是说，-、*、/、%这几个符号会自动进行隐式转换。</p>
+
+        <span style="display: block; text-align: center;">浮点数的运算</span>
+        <p>在JS中，整数的运算基本可以保证精确；但是小数的运算，可能会得到一个不精确的结果。所以，千万不要使用JS进行对精确度要求比较高的运算。
+            这是因为，计算机在做运算时，所有的运算都要转换成二进制去计算。然而，有些数字转换成二进制之后，无法精确表示。比如说，0.1和0.2转换成二进制之后，是无穷的，因此存在浮点数的计算不精确的问题。
+        </p>
+        <p>那么我们如何处理小数的运算呢?如果只是一些简单的精度问题，可以使用 toFix() 方法进行小数的截取。在实战开发中，关于浮点数计算的精度问题，往往比较复杂。市面上有很多针对数学运算的开源库，比如decimal.js、
+            Math.js。这些开源库都比较成熟，我们可以直接拿来用。</p>
+        <span style="display: block; text-align: center;">变量值的传递（赋值）</span>
+        <span>将等号右边的值，赋给左边的变量；等号右边的变量，值不变。</span>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">基本数据类型：Null 和 Undefined</span>
+    <hr>
 </body>
-</html> 
+
+</html>
