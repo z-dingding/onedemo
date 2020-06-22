@@ -221,6 +221,131 @@
     <hr>
     <span style="display: block; text-align: center;">基本数据类型：Null 和 Undefined</span>
     <hr>
-</body>
+    <span style="display: block; text-align: center;">基本数据类型：Null</span>
+    <p>
+        null 专门用来定义一个空对象（例如：let a = null）。如果你想定义一个变量用来保存引用类型，但是还没想好放什么内容，这个时候，可以在初始化时将其设置为 null。
+        Null 类型的值只有一个，就是 null。比如 let a = null。使用 typeof 检查一个 null 值时，会返回 object。
+    </p>
+    <p>
 
+        <span style="display: block; text-align: center;">Undefined</span>
+
+        <li> 声明了一个变量，但没有赋值，此时它的值就是 undefined。Undefined 类型的值只有一个，就是 undefind。比如 let a = undefined。
+            使用 typeof 检查一个 undefined 值时，会返回 undefined。</li>
+        <li>如果你从未声明一个变量，就去使用它，则会报错（这个大家都知道）；此时，如果用 typeof 检查这个变量时，会返回 undefined。</li>
+        <li>如果一个函数没有返回值，那么，这个函数的返回值就是 undefined。</li>
+        <li>调用函数时，如果没有传参，那么，这个参数的值就是 undefined。</li>
+    </p>
+    <span style="display: block; text-align: center;">Null 和 Undefined的区别</span>
+    <p>
+        null 和 undefined 有很大的相似性。看看 null == undefined 的结果为 true 也更加能说明这点。
+        但是 null === undefined 的结果是 false。
+    </p>
+    <li>任何数据类型和 undefined 运算都是 NaN;</li>
+    <li>任何值和 null 运算，null 可看做 0 运算。</li>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">typeof和数据类型转换</span>
+    <hr>
+    <span>变量的数据类型转换：将一种数据类型转换为另外一种数据类型。
+        通常有三种形式的类型转换：</span>
+        <ul>
+            <li>转换为字符串类型</li>
+            <li>转换为数字型</li>
+            <li>转换为布尔型</li>
+        </ul>
+        <span style="display: block; text-align: center;">   typeof 运算符</span>
+        <p>typeof()表示“获取变量的数据类型”，返回的是小写。</p>
+        <li>typeof null的返回值也是 object 呢？因为 null 代表的是空对象。</li>
+        <li>typeof NaN的返回值是 number，上一篇文章中讲过，NaN 是一个特殊的数字</li>
+
+        <span style="display: block; text-align: center;">变量的类型转换的分类</span>
+  <p>类型转换分为两种：显示类型转换、隐式类型转换</p>
+   <span>显示类型转换</span>
+   <li>toString()</li>
+   <li>String()</li>
+   <li>Number()</li>
+   <li>parseInt(string)</li>
+   <li>parseFloat(string)</li>
+   <li>Boolean()</li>
+   <span>隐式类型转换</span>
+   <li>isNaN ()</li>
+   <li>自增/自减运算符：++、—-</li>
+   <li>正号/负号：+a、-a</li>
+   <li>加号：+</li>
+   <li>运算符：-、*、/</li>
+<span>隐式类型转换（特殊）</span>
+<li>逻辑运算符：&&、||、！ 。非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但运算结果是原值。</li>
+<li>关系运算符：&lt;、&gt; &lt;= &gt;=等。关系运算符，得到的运算结果都是布尔值：要么是true，要么是false。</li>
+
+<span style="display: block; text-align: center;">其他的简单类型 --> String</span>
+<ul>
+    <li>方法一（隐式类型转换）：字符串拼接</li>
+    <li>调用 toString()方法,注意：null 和 undefined 这两个值没有 toString()方法</li>
+    <li>方法三（强制转换）：使用 String()函数,我们在 JS 基础的第 01 篇里，就讲过，prompt()就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。</li>
+    <li></li>
+    <li></li>
+</ul>
+
+<span style="display: block; text-align: center;">其他的数据类型 --> Number 【重要】</span>
+
+
+<ul>
+    <li>使用 Number() 函数，只要字符串中包含了非数字的内容（小数点按数字来算），则转换为 NaN；如果字符串是一个空串或者是一个全是空格的字符串，则转换为 0。</li>
+    <li>使用 parseInt()函数：字符串 -> 整数</li>
+   <p>Number() 函数和 parseInt() 函数的区别：Number(true) ：千方百计地想转换为数字。parseInt(true)/parseFloat(true) ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
+    自动带有截断小数的功能：取整，不四舍五入
+   </p>
+</ul>
+<span style="display: block; text-align: center;">parseFloat()函数：字符串 --> 浮点数（小数）</span>
+<p>parseFloat()的作用是：将字符串转换为浮点数。parseFloat()和 parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。</p>
+
+<span style="display: block; text-align: center;">转换为 Boolean</span>
+<span>其他的数据类型都可以转换为 Boolean类型。情况如下：</span>
+<li>情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，Boolean(NaN)的结果是 false。</li>
+<li>情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，转换结果也是 true。字符串'0'的转换结果也是 true。</li>
+<li>情况三：null 和 undefined 都会转换为 false。</li>
+<li>情况四：引用数据类型会转换为 true。注意，空数组[]和空对象{}，转换结果也是 true，这个一点，很多人都不知道。</li>
+
+<span>隐式转换为 Boolean 类型</span>
+<p>当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较。</p>
+<span>显式转换为 Boolean 类型</span>
+<li>方法1：使用 !!可以显式转换为 Boolean 类型。比如 !!3的结果是true。</li>
+<li>方法2：使用 Boolean()函数可以显式转换为 Boolean 类型。</li>
+
+<span  style="display: block; text-align: center;" >其他进制的数字</span>
+<li>16 进制的数字，以0x开头</li>
+<li>8 进制的数字，以0开头</li>
+<li>2 进制的数字，0b开头（不是所有的浏览器都支持：chrome 和火狐支持，IE 不支持）</li>
+<p>比如070这个字符串，如果我调用 parseInt()转成数字时，有些浏览器会当成 8 进制解析，有些会当成 10 进制解析。
+    所以，比较建议的做法是：可以在 parseInt()中传递第二个参数，来指定当前数字的进制。例如：
+    var a = "070";
+    a = parseInt(a, 8); //将 070 当成八进制来看待，转换结果为十进制。
+    console.log(a); // 打印结果：56。这个地方要好好理解。
+</p>
+
+<span style="display: block; text-align: center;" >隐式类型转换</span>
+<span>重点：隐式类型转换，内部调用的都是显式类型的方法。</span>
+<span>isNaN() 函数,语法：isNaN(参数);隐式类型转换，解释：判断指定的参数是否为NaN（非数字类型），返回结果为 Boolean 类型。也就是说：任何不能被转换为数值的参数,都会让这个函数返回 true。
+    实际先显示调用了Number(参数)函数，然后将Number(参数)的返回结果和NaN进行比较。
+</span>
+<li>自增/自减运算符：++、—-也是先调用Number(参数)函数，然后将Number(参数)的返回结果进行 加 1 操作。</li>
+<li>正号/负号：+a、-a，注意，这里说的是正号/负号，不是加号/减号。任何值做+a、-a、/a运算时，运算结果都会自动转换为 Number 类型。 内部调用的是 Number() 函数</li>
+<li>加号：+，情况一：字符串 + 数字会调用 String() 函数将数字转为字符串，然后再计算。导致最终的运算结果是字符串。
+    情况二：Boolean + 数字：Boolean 型和数字型相加时， true 按 1 来算 ，false 按 0 来算。这里其实是先调 Number() 函数，将 Boolean 类型转换为 Number类型，然后再和 数字相加。
+    情况三： null + 数字：等价于：0 + 数字
+    情况四： undefined + 数字：计算结果：NaN
+</li>
+<li>运算符：-、*、/。</li>
+<p>
+    任何非 Number 类型的值做-、*、/运算时，会将这些值转换为Number然后再运算(内部调用的是 Number() 函数），运算结果是 Number 类型。
+    任何的值和字符串做加法运算，都会先转换为字符串，然后再做拼串操作。
+    任何值和NaN做运算的结果都是NaN。
+</p>
+
+
+
+
+</body>
 </html>
