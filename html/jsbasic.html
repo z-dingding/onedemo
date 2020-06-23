@@ -347,5 +347,259 @@
 
 
 
+<hr>
+<span style="display: block; text-align: center;">运算符</span>
+<hr>
+<span>运算符：也叫操作符，是一种符号。通过运算符可以对一个或多个值进行运算，并获取运算结果。</span>
+<span>表达式：由数字、运算符、变量的组合（组成的式子）。表达式最终都会有一个运算结果，我们将这个结果称为表达式的返回值。
+    比如：+、*、/、( 都是运算符，而（3+5）/2则是表达式。
+</span>
+
+<ul>
+    <span>JS 中的运算符，分类如下：</span>
+    <li>算数运算符</li>
+    <li>自增/自减运算符</li>
+    <li>一元运算符</li>
+    <li>逻辑运算符</li>
+    <li>赋值运算符</li>
+    <li>比较运算符</li>
+    <li>三元运算符（条件运算符）</li>
+</ul>
+
+<span style="display: block; text-align: center;">算术运算符</span>
+<span>算术运算符：用于执行两个变量或值的算术运算。常见的算数运算符有：加，减，乘除及求余</span>
+<span>求余举例:345得到5的方法?345 除以10，余数就是5。即：345 % 10  </span>
+<ul>
+    <span>算数运算符的运算规则</span>
+    <li>先算乘除、后算加减。</li>
+    <li>先算乘除、后算加减。</li>
+    <li>先算乘除、后算加减。</li>
+</ul>
+<span>浮点数值的最高精度是 17 位小数，但在进行算术计算时，会丢失精度，导致计算不够准确。因此，不要直接判断两个浮点数是否相等。
+    举例:console.log(0.1 + 0.2); // 运算结果不是 0.3，而是 0.30000000000000004
+</span>
+
+<span style="display: block; text-align: center;">自增和自减</span>
+<span>自增分成两种：a++和++a。一个变量自增以后，原变量的值会立即自增1。也就是说，无论是 a++ 还是++a，都会立即使原变量的值自增1。
+    我们要注意的是：a是变量，而a++和++a是表达式。
+</span>
+<span>a++和++a的区别</span>
+<li>a++这个表达式的值等于原变量的值（a自增前的值）。你可以这样理解：先把 a 的值赋值给表达式，然后 a 再自增。</li>
+<li>++a这个表达式的值等于新值 （a自增后的值）。 你可以这样理解：a 先自增，然后再把自增后的值赋值给表达式。</li>
+
+<span>自减 --,原理同上.开发时，大多使用后置的自增/自减，并且代码独占一行，例如：num++，或者 num--。</span>
+
+
+<span style="display: block; text-align: center;">一元运算符</span>
+<span>一元运算符，只需要一个操作数。typeof就是典型的一元运算符，因为后面只跟一个操作数。</span>
+<span style="display: block;">正号 +,正号不会对数字产生任何影响。比如说，2和+2是一样的。我们可以对一个其他的数据类型使用+，来将其转换为number【重要的小技巧】。比如：</span>
+    <textarea name="" id="" cols="30" rows="10">
+        var b = '18';
+        b = +b;   // 注意这行代码的一元运算符操作
+        console.log('b：' + b);
+        console.log(typeof b);
+        打印结果：
+        b：18
+        number
+    </textarea>
+<span style="display: block;">负号 -,负号可以对数字进行取反。</span>
+
+<span style="display: block; text-align: center;">逻辑运算符</span>
+<ul>
+    <span>逻辑运算符有三个：注意：能参与逻辑运算的，都是布尔值。</span>
+    <li>&& 与（且）：两个都为真，结果才为真。</li>
+    <li>|| 或：只要有一个是真，结果就是真。</li>
+    <li>! 非：对一个布尔值进行取反。</li>
+</ul>
+ <span style="color: red;">非布尔值的与或运算【重要】</span> 
+<p>之所以重要，是因为在实际开发中，我们经常用这种代码做容错处理或者兜底处理。</p>
+<p>非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但返回结果是原值。比如说</p>
+ <textarea cols="30" rows="10">
+    var result = 5 && 6; // 运算过程：true && true;
+    console.log('result：' + result); // 打印结果：6（也就是说最后面的那个值。）
+    上方代码可以看到，虽然运算过程为布尔值的运算，但返回结果是原值。
+ </textarea>
+<ul>
+     <span>与运算的返回结果：（以多个非布尔值的运算为例,以首个false为返回）</span> 
+    <li>如果第一个值为false，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
+    <li>如果第一个值为true，则继续执行第二条语句，并返回第二个值（如果所有的值都为true，则返回的是最后一个值）。</li>
+    <span>或运算的返回结果：（以多个非布尔值的运算为例，以首个true为返回）</span> 
+    <li>如果第一个值为true，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
+    <li>如果第一个值为false，则继续执行第二条语句，并返回第二个值（（如果所有的值都为false，则返回的是最后一个值）。</li>
+</ul>
+<span>实际开发中,兜底处理举例</span>
+<div>
+    <img src="../img/兜底处理.png" alt="兜底处理">
+</div>
+
+<span style="display: block; text-align: center;">赋值运算符</span>
+<span>可以将符号右侧的值赋值给符号左侧的变量。</span>
+<li>= 直接赋值。比如 var a = 5</li>
+<li>+=。a += 5 等价于 a = a + 5</li>
+<li>-=。a -= 5 等价于 a = a - 5</li>
+<li>*=。a *= 5 等价于 a = a * 5</li>
+<li>/=。a /= 5 等价于 a = a / 5</li>
+<li>%=。a %= 5 等价于 a = a % 5</li>
+
+
+
+<span style="display: block; text-align: center;">比较运算符</span>
+<p>比较运算符可以比较两个值之间的大小关系，如果关系成立它会返回true，如果关系不成立则返回false。
+    比较运算符，得到的结果都是布尔值：要么是true，要么是false。
+</p>
+<ul>
+<li>>	大于号</li>
+<li>&lt;	小于号</li>
+<li>>= 	大于或等于</li>
+<li><=  小于或等于</li>
+<li>== 	等于</li>
+<li>=== 全等于</li>
+<li>!=	不等于</li>
+<li>!== 不全等于</li>
+<span>非数值的比较</span>
+
+<li>对于非数值进行比较时，会将其转换为数字然后再比较。</li>
+<li>特殊情况：如果符号两侧的值都是字符串时，不会将其转换为数字进行比较。比较两个字符串时，比较的是字符串的Unicode编码。
+    因此：当我们在比较两个字符串型的数字时，一定一定要先转型再比较大小，比如 parseInt()
+</li>
+<li>何值和NaN做任何比较都是false</li>
+</ul>
+
+<span style="display: block; text-align: center;">==符号的强调</span>
+<ul>
+    <li>注意==这个符号，它是判断是否等于，而不是赋值。（1）== 这个符号，还可以验证字符串是否相同.</li>
+    <li>== 这个符号并不严谨，会做隐式转换，将不同的数据类型，转为相同类型进行比较（大部分情况下，都是转换为数字）</li>
+    <li>undefined 衍生自 null，所以这两个值做相等判断时，会返回true</li>
+    <li>NaN不和任何值相等，包括他本身</li>
+</ul>
+
+<span style="display: block; text-align: center;">===全等符号的强调</span>
+<ul>
+    <li>全等在比较时，不会做类型转换。如果要保证绝对等于（完全等于），我们就要用三个等号===。</li>
+    <li>==的反面是!=，===的反面是!==</li>
+</ul>
+<span style="display: block; text-align: center;">三元运算符</span>
+<p>三元运算符也叫条件运算符。</p>
+<p>语法：条件表达式 ? 语句1 : 语句2;如果条件的表达式的求值结果是一个非布尔值，会将其转换为布尔值然后再运算。</p>
+
+
+
+<span style="display: block; text-align: center;">Unicode 编码</span>
+<ul>
+    <li>在字符串中可以使用转义字符输入Unicode编码。格式如下：\u四位编码</li>
+    <li>我们还可以在 HTML 网页中使用Unicode编码。格式如下：&#四位编码;</li>
+</ul>
+
+
+<hr>
+<span style="display: block; text-align: center;">流程控制语句：选择结构（if和switch）</span>
+<hr>
+<span style="display: block; text-align: center;">代码块</span>
+<p>用{}包围起来的代码，就是代码块。在 ES5 语法中，代码块，只具有分组的作用，没有其他的用途。代码块中的内容，在外部是完全可见的。</p>
+<ul>
+    <span>流程控制语句分类</span>
+    <li>顺序结构</li>
+    <li>选择结构：if 语句、switch 语句</li>
+    <li>循环结构：while 语句、for 语句</li>
+</ul>
+<span style="display: block; text-align: center;">顺序结构</span>
+ <p>按照代码的先后顺序，依次执行。</p> 
+ <span style="display: block; text-align: center;">if 语句</span>
+ <p>条件成立才执行。如果条件不成立，那就什么都不做。</p>
+ <span style="display: block; text-align: center;"> switch 语句（条件分支语句）</span>
+<span>解释：switch 可以理解为“开关、转换” 。case 可以理解为“案例、选项”</span>
+<p>switch 后面的括号里可以是表达式或者值， 通常是一个变量.JS 是属于弱类型语言，case 后面的值1、值2可以是 'a'、6、true 等任意数据类型的值，也可以是表达式。注意，在这里，字符串'6'和 数字 6 是不一样的。</p>
+
+<hr>
+<span style="display: block; text-align: center;">流程控制语句：循环结构（for和while）</span>
+<hr>
+<p>循环语句：通过循环语句可以反复的执行一段代码多次。</p>
+<textarea name="" id="" cols="60" rows="20">
+    语法：
+
+for(①初始化表达式; ②条件表达式; ④更新表达式){
+	③语句...
+}
+执行流程：
+
+①执行初始化表达式，初始化变量（初始化表达式只会执行一次）
+
+②执行条件表达式，判断是否执行循环：
+	如果为true，则执行循环③
+	如果为false，终止循环
+
+④执行更新表达式，更新表达式执行完毕继续重复②
+</textarea>
+<textarea name="" id="" cols="50" rows="20">
+    while 循环
+    语法：
+    
+    while(条件表达式){
+        语句...
+    }
+    执行流程：
+    
+    while语句在执行时，先对条件表达式进行求值判断：
+    
+        如果值为true，则执行循环体：
+            循环体执行完毕以后，继续对表达式进行判断
+            如果为true，则继续执行循环体，以此类推
+    
+        如果值为false，则终止循环
+
+        如果有必要的话，我们可以使用 break 来终止循环。
+
+</textarea>
+
+<textarea name="" id="" cols="50" rows="20">
+
+    do...while 循环
+    语法：
+    
+    do{
+        语句...
+    }while(条件表达式)
+    执行流程：
+    
+    do...while语句在执行时，会先执行循环体：
+    
+        循环体执行完毕以后，在对while后的条件表达式进行判断：
+            如果结果为true，则继续执行循环体，执行完毕继续判断以此类推
+            如果结果为false，则终止循环
+    
+
+</textarea>
+
+<span style="display: block; text-align: center;">break 和 continue</span>
+<ul>
+    <span>break</span>
+    <li>break 可以用来退出 switch 语句或退出整个循环语句（循环语句包括 for 循环、while 循环。不包括 if。if 里不能用 break 和 continue，否则会报错）。</li>
+    <li>break 会立即终止离它最近的那个循环语句。</li>
+    <li>可以为循环语句创建一个 label，来标识当前的循环（格式：label:循环语句）。使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。</li>
+<textarea name="" id="" cols="50" rows="15">
+    举例 2：label 的使用,如下:
+    outer: for (var i = 0; i &lt; 5; i++) {
+        console.log('外层循环 i 的值：' + i);
+        for (var j = 0; j &lt; 5; j++) {
+            break outer; // 直接跳出outer所在的外层循环（这个outer是我自定义的label）
+            console.log('内层循环 j 的值:' + j);
+        }
+    }
+    打印结果：
+
+外层循环 i 的值：0
+
+</textarea>
+</ul>
+
+
+<ul>
+    <span>continue</span>
+    <li>continue 可以用来跳过当次循环，继续下一次循环。</li>
+    <li>同样，continue 默认只会离他最近的循环起作用。</li>
+    <li>同样，如果需要跳过指定的当次循环，可以使用 label 标签。</li>
+</ul>
+
+
 </body>
 </html>
