@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js基础</title>
+    <style type="text/css">
+        table tr td {
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -250,149 +255,151 @@
     <hr>
     <span>变量的数据类型转换：将一种数据类型转换为另外一种数据类型。
         通常有三种形式的类型转换：</span>
-        <ul>
-            <li>转换为字符串类型</li>
-            <li>转换为数字型</li>
-            <li>转换为布尔型</li>
-        </ul>
-        <span style="display: block; text-align: center;">   typeof 运算符</span>
-        <p>typeof()表示“获取变量的数据类型”，返回的是小写。</p>
-        <li>typeof null的返回值也是 object 呢？因为 null 代表的是空对象。</li>
-        <li>typeof NaN的返回值是 number，上一篇文章中讲过，NaN 是一个特殊的数字</li>
+    <ul>
+        <li>转换为字符串类型</li>
+        <li>转换为数字型</li>
+        <li>转换为布尔型</li>
+    </ul>
+    <span style="display: block; text-align: center;"> typeof 运算符</span>
+    <p>typeof()表示“获取变量的数据类型”，返回的是小写。</p>
+    <li>typeof null的返回值也是 object 呢？因为 null 代表的是空对象。</li>
+    <li>typeof NaN的返回值是 number，上一篇文章中讲过，NaN 是一个特殊的数字</li>
 
-        <span style="display: block; text-align: center;">变量的类型转换的分类</span>
-  <p>类型转换分为两种：显示类型转换、隐式类型转换</p>
-   <span>显示类型转换</span>
-   <li>toString()</li>
-   <li>String()</li>
-   <li>Number()</li>
-   <li>parseInt(string)</li>
-   <li>parseFloat(string)</li>
-   <li>Boolean()</li>
-   <span>隐式类型转换</span>
-   <li>isNaN ()</li>
-   <li>自增/自减运算符：++、—-</li>
-   <li>正号/负号：+a、-a</li>
-   <li>加号：+</li>
-   <li>运算符：-、*、/</li>
-<span>隐式类型转换（特殊）</span>
-<li>逻辑运算符：&&、||、！ 。非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但运算结果是原值。</li>
-<li>关系运算符：&lt;、&gt; &lt;= &gt;=等。关系运算符，得到的运算结果都是布尔值：要么是true，要么是false。</li>
+    <span style="display: block; text-align: center;">变量的类型转换的分类</span>
+    <p>类型转换分为两种：显示类型转换、隐式类型转换</p>
+    <span>显示类型转换</span>
+    <li>toString()</li>
+    <li>String()</li>
+    <li>Number()</li>
+    <li>parseInt(string)</li>
+    <li>parseFloat(string)</li>
+    <li>Boolean()</li>
+    <span>隐式类型转换</span>
+    <li>isNaN ()</li>
+    <li>自增/自减运算符：++、—-</li>
+    <li>正号/负号：+a、-a</li>
+    <li>加号：+</li>
+    <li>运算符：-、*、/</li>
+    <span>隐式类型转换（特殊）</span>
+    <li>逻辑运算符：&&、||、！ 。非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但运算结果是原值。</li>
+    <li>关系运算符：&lt;、&gt; &lt;= &gt;=等。关系运算符，得到的运算结果都是布尔值：要么是true，要么是false。</li>
 
-<span style="display: block; text-align: center;">其他的简单类型 --> String</span>
-<ul>
-    <li>方法一（隐式类型转换）：字符串拼接</li>
-    <li>调用 toString()方法,注意：null 和 undefined 这两个值没有 toString()方法</li>
-    <li>方法三（强制转换）：使用 String()函数,我们在 JS 基础的第 01 篇里，就讲过，prompt()就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。</li>
-    <li></li>
-    <li></li>
-</ul>
+    <span style="display: block; text-align: center;">其他的简单类型 --> String</span>
+    <ul>
+        <li>方法一（隐式类型转换）：字符串拼接</li>
+        <li>调用 toString()方法,注意：null 和 undefined 这两个值没有 toString()方法</li>
+        <li>方法三（强制转换）：使用 String()函数,我们在 JS 基础的第 01 篇里，就讲过，prompt()就是专门用来弹出能够让用户输入的对话框。重要的是：用户不管输入什么，都当字符串处理。</li>
+        <li></li>
+        <li></li>
+    </ul>
 
-<span style="display: block; text-align: center;">其他的数据类型 --> Number 【重要】</span>
-
-
-<ul>
-    <li>使用 Number() 函数，只要字符串中包含了非数字的内容（小数点按数字来算），则转换为 NaN；如果字符串是一个空串或者是一个全是空格的字符串，则转换为 0。</li>
-    <li>使用 parseInt()函数：字符串 -> 整数</li>
-   <p>Number() 函数和 parseInt() 函数的区别：Number(true) ：千方百计地想转换为数字。parseInt(true)/parseFloat(true) ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
-    自动带有截断小数的功能：取整，不四舍五入
-   </p>
-</ul>
-<span style="display: block; text-align: center;">parseFloat()函数：字符串 --> 浮点数（小数）</span>
-<p>parseFloat()的作用是：将字符串转换为浮点数。parseFloat()和 parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。</p>
-
-<span style="display: block; text-align: center;">转换为 Boolean</span>
-<span>其他的数据类型都可以转换为 Boolean类型。情况如下：</span>
-<li>情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，Boolean(NaN)的结果是 false。</li>
-<li>情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，转换结果也是 true。字符串'0'的转换结果也是 true。</li>
-<li>情况三：null 和 undefined 都会转换为 false。</li>
-<li>情况四：引用数据类型会转换为 true。注意，空数组[]和空对象{}，转换结果也是 true，这个一点，很多人都不知道。</li>
-
-<span>隐式转换为 Boolean 类型</span>
-<p>当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较。</p>
-<span>显式转换为 Boolean 类型</span>
-<li>方法1：使用 !!可以显式转换为 Boolean 类型。比如 !!3的结果是true。</li>
-<li>方法2：使用 Boolean()函数可以显式转换为 Boolean 类型。</li>
-
-<span  style="display: block; text-align: center;" >其他进制的数字</span>
-<li>16 进制的数字，以0x开头</li>
-<li>8 进制的数字，以0开头</li>
-<li>2 进制的数字，0b开头（不是所有的浏览器都支持：chrome 和火狐支持，IE 不支持）</li>
-<p>比如070这个字符串，如果我调用 parseInt()转成数字时，有些浏览器会当成 8 进制解析，有些会当成 10 进制解析。
-    所以，比较建议的做法是：可以在 parseInt()中传递第二个参数，来指定当前数字的进制。例如：
-    var a = "070";
-    a = parseInt(a, 8); //将 070 当成八进制来看待，转换结果为十进制。
-    console.log(a); // 打印结果：56。这个地方要好好理解。
-</p>
-
-<span style="display: block; text-align: center;" >隐式类型转换</span>
-<span>重点：隐式类型转换，内部调用的都是显式类型的方法。</span>
-<span>isNaN() 函数,语法：isNaN(参数);隐式类型转换，解释：判断指定的参数是否为NaN（非数字类型），返回结果为 Boolean 类型。也就是说：任何不能被转换为数值的参数,都会让这个函数返回 true。
-    实际先显示调用了Number(参数)函数，然后将Number(参数)的返回结果和NaN进行比较。
-</span>
-<li>自增/自减运算符：++、—-也是先调用Number(参数)函数，然后将Number(参数)的返回结果进行 加 1 操作。</li>
-<li>正号/负号：+a、-a，注意，这里说的是正号/负号，不是加号/减号。任何值做+a、-a、/a运算时，运算结果都会自动转换为 Number 类型。 内部调用的是 Number() 函数</li>
-<li>加号：+，情况一：字符串 + 数字会调用 String() 函数将数字转为字符串，然后再计算。导致最终的运算结果是字符串。
-    情况二：Boolean + 数字：Boolean 型和数字型相加时， true 按 1 来算 ，false 按 0 来算。这里其实是先调 Number() 函数，将 Boolean 类型转换为 Number类型，然后再和 数字相加。
-    情况三： null + 数字：等价于：0 + 数字
-    情况四： undefined + 数字：计算结果：NaN
-</li>
-<li>运算符：-、*、/。</li>
-<p>
-    任何非 Number 类型的值做-、*、/运算时，会将这些值转换为Number然后再运算(内部调用的是 Number() 函数），运算结果是 Number 类型。
-    任何的值和字符串做加法运算，都会先转换为字符串，然后再做拼串操作。
-    任何值和NaN做运算的结果都是NaN。
-</p>
+    <span style="display: block; text-align: center;">其他的数据类型 --> Number 【重要】</span>
 
 
+    <ul>
+        <li>使用 Number() 函数，只要字符串中包含了非数字的内容（小数点按数字来算），则转换为 NaN；如果字符串是一个空串或者是一个全是空格的字符串，则转换为 0。</li>
+        <li>使用 parseInt()函数：字符串 -> 整数</li>
+        <p>Number() 函数和 parseInt() 函数的区别：Number(true) ：千方百计地想转换为数字。parseInt(true)/parseFloat(true)
+            ：先转为字符串，再提取出最前面的数字部分；没提取出来，那就返回 NaN。
+            自动带有截断小数的功能：取整，不四舍五入
+        </p>
+    </ul>
+    <span style="display: block; text-align: center;">parseFloat()函数：字符串 --> 浮点数（小数）</span>
+    <p>parseFloat()的作用是：将字符串转换为浮点数。parseFloat()和 parseInt()的作用类似，不同的是，parseFloat()可以获得有效的小数部分。</p>
+
+    <span style="display: block; text-align: center;">转换为 Boolean</span>
+    <span>其他的数据类型都可以转换为 Boolean类型。情况如下：</span>
+    <li>情况一：数字 --> 布尔。除了 0 和 NaN，其余的都是 true。也就是说，Boolean(NaN)的结果是 false。</li>
+    <li>情况二：字符串 ---> 布尔。除了空串，其余的都是 true。全是空格的字符串，转换结果也是 true。字符串'0'的转换结果也是 true。</li>
+    <li>情况三：null 和 undefined 都会转换为 false。</li>
+    <li>情况四：引用数据类型会转换为 true。注意，空数组[]和空对象{}，转换结果也是 true，这个一点，很多人都不知道。</li>
+
+    <span>隐式转换为 Boolean 类型</span>
+    <p>当非 Boolean 类型的数值和 Boolean类型的数值做比较时，会先把前者进行隐式转换为 Boolean类型，然后再做比较。</p>
+    <span>显式转换为 Boolean 类型</span>
+    <li>方法1：使用 !!可以显式转换为 Boolean 类型。比如 !!3的结果是true。</li>
+    <li>方法2：使用 Boolean()函数可以显式转换为 Boolean 类型。</li>
+
+    <span style="display: block; text-align: center;">其他进制的数字</span>
+    <li>16 进制的数字，以0x开头</li>
+    <li>8 进制的数字，以0开头</li>
+    <li>2 进制的数字，0b开头（不是所有的浏览器都支持：chrome 和火狐支持，IE 不支持）</li>
+    <p>比如070这个字符串，如果我调用 parseInt()转成数字时，有些浏览器会当成 8 进制解析，有些会当成 10 进制解析。
+        所以，比较建议的做法是：可以在 parseInt()中传递第二个参数，来指定当前数字的进制。例如：
+        var a = "070";
+        a = parseInt(a, 8); //将 070 当成八进制来看待，转换结果为十进制。
+        console.log(a); // 打印结果：56。这个地方要好好理解。
+    </p>
+
+    <span style="display: block; text-align: center;">隐式类型转换</span>
+    <span>重点：隐式类型转换，内部调用的都是显式类型的方法。</span>
+    <span>isNaN() 函数,语法：isNaN(参数);隐式类型转换，解释：判断指定的参数是否为NaN（非数字类型），返回结果为 Boolean 类型。也就是说：任何不能被转换为数值的参数,都会让这个函数返回 true。
+        实际先显示调用了Number(参数)函数，然后将Number(参数)的返回结果和NaN进行比较。
+    </span>
+    <li>自增/自减运算符：++、—-也是先调用Number(参数)函数，然后将Number(参数)的返回结果进行 加 1 操作。</li>
+    <li>正号/负号：+a、-a，注意，这里说的是正号/负号，不是加号/减号。任何值做+a、-a、/a运算时，运算结果都会自动转换为 Number 类型。 内部调用的是 Number() 函数</li>
+    <li>加号：+，情况一：字符串 + 数字会调用 String() 函数将数字转为字符串，然后再计算。导致最终的运算结果是字符串。
+        情况二：Boolean + 数字：Boolean 型和数字型相加时， true 按 1 来算 ，false 按 0 来算。这里其实是先调 Number() 函数，将 Boolean 类型转换为 Number类型，然后再和
+        数字相加。
+        情况三： null + 数字：等价于：0 + 数字
+        情况四： undefined + 数字：计算结果：NaN
+    </li>
+    <li>运算符：-、*、/。</li>
+    <p>
+        任何非 Number 类型的值做-、*、/运算时，会将这些值转换为Number然后再运算(内部调用的是 Number() 函数），运算结果是 Number 类型。
+        任何的值和字符串做加法运算，都会先转换为字符串，然后再做拼串操作。
+        任何值和NaN做运算的结果都是NaN。
+    </p>
 
 
-<hr>
-<span style="display: block; text-align: center;">运算符</span>
-<hr>
-<span>运算符：也叫操作符，是一种符号。通过运算符可以对一个或多个值进行运算，并获取运算结果。</span>
-<span>表达式：由数字、运算符、变量的组合（组成的式子）。表达式最终都会有一个运算结果，我们将这个结果称为表达式的返回值。
-    比如：+、*、/、( 都是运算符，而（3+5）/2则是表达式。
-</span>
-
-<ul>
-    <span>JS 中的运算符，分类如下：</span>
-    <li>算数运算符</li>
-    <li>自增/自减运算符</li>
-    <li>一元运算符</li>
-    <li>逻辑运算符</li>
-    <li>赋值运算符</li>
-    <li>比较运算符</li>
-    <li>三元运算符（条件运算符）</li>
-</ul>
-
-<span style="display: block; text-align: center;">算术运算符</span>
-<span>算术运算符：用于执行两个变量或值的算术运算。常见的算数运算符有：加，减，乘除及求余</span>
-<span>求余举例:345得到5的方法?345 除以10，余数就是5。即：345 % 10  </span>
-<ul>
-    <span>算数运算符的运算规则</span>
-    <li>先算乘除、后算加减。</li>
-    <li>先算乘除、后算加减。</li>
-    <li>先算乘除、后算加减。</li>
-</ul>
-<span>浮点数值的最高精度是 17 位小数，但在进行算术计算时，会丢失精度，导致计算不够准确。因此，不要直接判断两个浮点数是否相等。
-    举例:console.log(0.1 + 0.2); // 运算结果不是 0.3，而是 0.30000000000000004
-</span>
-
-<span style="display: block; text-align: center;">自增和自减</span>
-<span>自增分成两种：a++和++a。一个变量自增以后，原变量的值会立即自增1。也就是说，无论是 a++ 还是++a，都会立即使原变量的值自增1。
-    我们要注意的是：a是变量，而a++和++a是表达式。
-</span>
-<span>a++和++a的区别</span>
-<li>a++这个表达式的值等于原变量的值（a自增前的值）。你可以这样理解：先把 a 的值赋值给表达式，然后 a 再自增。</li>
-<li>++a这个表达式的值等于新值 （a自增后的值）。 你可以这样理解：a 先自增，然后再把自增后的值赋值给表达式。</li>
-
-<span>自减 --,原理同上.开发时，大多使用后置的自增/自减，并且代码独占一行，例如：num++，或者 num--。</span>
 
 
-<span style="display: block; text-align: center;">一元运算符</span>
-<span>一元运算符，只需要一个操作数。typeof就是典型的一元运算符，因为后面只跟一个操作数。</span>
-<span style="display: block;">正号 +,正号不会对数字产生任何影响。比如说，2和+2是一样的。我们可以对一个其他的数据类型使用+，来将其转换为number【重要的小技巧】。比如：</span>
+    <hr>
+    <span style="display: block; text-align: center;">运算符</span>
+    <hr>
+    <span>运算符：也叫操作符，是一种符号。通过运算符可以对一个或多个值进行运算，并获取运算结果。</span>
+    <span>表达式：由数字、运算符、变量的组合（组成的式子）。表达式最终都会有一个运算结果，我们将这个结果称为表达式的返回值。
+        比如：+、*、/、( 都是运算符，而（3+5）/2则是表达式。
+    </span>
+
+    <ul>
+        <span>JS 中的运算符，分类如下：</span>
+        <li>算数运算符</li>
+        <li>自增/自减运算符</li>
+        <li>一元运算符</li>
+        <li>逻辑运算符</li>
+        <li>赋值运算符</li>
+        <li>比较运算符</li>
+        <li>三元运算符（条件运算符）</li>
+    </ul>
+
+    <span style="display: block; text-align: center;">算术运算符</span>
+    <span>算术运算符：用于执行两个变量或值的算术运算。常见的算数运算符有：加，减，乘除及求余</span>
+    <span>求余举例:345得到5的方法?345 除以10，余数就是5。即：345 % 10 </span>
+    <ul>
+        <span>算数运算符的运算规则</span>
+        <li>先算乘除、后算加减。</li>
+        <li>先算乘除、后算加减。</li>
+        <li>先算乘除、后算加减。</li>
+    </ul>
+    <span>浮点数值的最高精度是 17 位小数，但在进行算术计算时，会丢失精度，导致计算不够准确。因此，不要直接判断两个浮点数是否相等。
+        举例:console.log(0.1 + 0.2); // 运算结果不是 0.3，而是 0.30000000000000004
+    </span>
+
+    <span style="display: block; text-align: center;">自增和自减</span>
+    <span>自增分成两种：a++和++a。一个变量自增以后，原变量的值会立即自增1。也就是说，无论是 a++ 还是++a，都会立即使原变量的值自增1。
+        我们要注意的是：a是变量，而a++和++a是表达式。
+    </span>
+    <span>a++和++a的区别</span>
+    <li>a++这个表达式的值等于原变量的值（a自增前的值）。你可以这样理解：先把 a 的值赋值给表达式，然后 a 再自增。</li>
+    <li>++a这个表达式的值等于新值 （a自增后的值）。 你可以这样理解：a 先自增，然后再把自增后的值赋值给表达式。</li>
+
+    <span>自减 --,原理同上.开发时，大多使用后置的自增/自减，并且代码独占一行，例如：num++，或者 num--。</span>
+
+
+    <span style="display: block; text-align: center;">一元运算符</span>
+    <span>一元运算符，只需要一个操作数。typeof就是典型的一元运算符，因为后面只跟一个操作数。</span>
+    <span style="display: block;">正号 +,正号不会对数字产生任何影响。比如说，2和+2是一样的。我们可以对一个其他的数据类型使用+，来将其转换为number【重要的小技巧】。比如：</span>
     <textarea name="" id="" cols="30" rows="10">
         var b = '18';
         b = +b;   // 注意这行代码的一元运算符操作
@@ -402,119 +409,121 @@
         b：18
         number
     </textarea>
-<span style="display: block;">负号 -,负号可以对数字进行取反。</span>
+    <span style="display: block;">负号 -,负号可以对数字进行取反。</span>
 
-<span style="display: block; text-align: center;">逻辑运算符</span>
-<ul>
-    <span>逻辑运算符有三个：注意：能参与逻辑运算的，都是布尔值。</span>
-    <li>&& 与（且）：两个都为真，结果才为真。</li>
-    <li>|| 或：只要有一个是真，结果就是真。</li>
-    <li>! 非：对一个布尔值进行取反。</li>
-</ul>
- <span style="color: red;">非布尔值的与或运算【重要】</span> 
-<p>之所以重要，是因为在实际开发中，我们经常用这种代码做容错处理或者兜底处理。</p>
-<p>非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但返回结果是原值。比如说</p>
- <textarea cols="30" rows="10">
+    <span style="display: block; text-align: center;">逻辑运算符</span>
+    <ul>
+        <span>逻辑运算符有三个：注意：能参与逻辑运算的，都是布尔值。</span>
+        <li>&& 与（且）：两个都为真，结果才为真。</li>
+        <li>|| 或：只要有一个是真，结果就是真。</li>
+        <li>! 非：对一个布尔值进行取反。</li>
+    </ul>
+    <span style="color: red;">非布尔值的与或运算【重要】</span>
+    <p>之所以重要，是因为在实际开发中，我们经常用这种代码做容错处理或者兜底处理。</p>
+    <p>非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，但返回结果是原值。比如说</p>
+    <textarea cols="30" rows="10">
     var result = 5 && 6; // 运算过程：true && true;
     console.log('result：' + result); // 打印结果：6（也就是说最后面的那个值。）
     上方代码可以看到，虽然运算过程为布尔值的运算，但返回结果是原值。
  </textarea>
-<ul>
-     <span>与运算的返回结果：（以多个非布尔值的运算为例,以首个false为返回）</span> 
-    <li>如果第一个值为false，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
-    <li>如果第一个值为true，则继续执行第二条语句，并返回第二个值（如果所有的值都为true，则返回的是最后一个值）。</li>
-    <span>或运算的返回结果：（以多个非布尔值的运算为例，以首个true为返回）</span> 
-    <li>如果第一个值为true，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
-    <li>如果第一个值为false，则继续执行第二条语句，并返回第二个值（（如果所有的值都为false，则返回的是最后一个值）。</li>
-</ul>
-<span>实际开发中,兜底处理举例</span>
-<div>
-    <img src="../img/兜底处理.png" alt="兜底处理">
-</div>
+    <ul>
+        <span>与运算的返回结果：（以多个非布尔值的运算为例,以首个false为返回）</span>
+        <li>如果第一个值为false，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
+        <li>如果第一个值为true，则继续执行第二条语句，并返回第二个值（如果所有的值都为true，则返回的是最后一个值）。</li>
+        <span>或运算的返回结果：（以多个非布尔值的运算为例，以首个true为返回）</span>
+        <li>如果第一个值为true，则执行第一条语句，并直接返回第一个值；不会再往后执行。</li>
+        <li>如果第一个值为false，则继续执行第二条语句，并返回第二个值（（如果所有的值都为false，则返回的是最后一个值）。</li>
+    </ul>
+    <span>实际开发中,兜底处理举例</span>
+    <div>
+        <img src="../img/兜底处理.png" alt="兜底处理">
+    </div>
 
-<span style="display: block; text-align: center;">赋值运算符</span>
-<span>可以将符号右侧的值赋值给符号左侧的变量。</span>
-<li>= 直接赋值。比如 var a = 5</li>
-<li>+=。a += 5 等价于 a = a + 5</li>
-<li>-=。a -= 5 等价于 a = a - 5</li>
-<li>*=。a *= 5 等价于 a = a * 5</li>
-<li>/=。a /= 5 等价于 a = a / 5</li>
-<li>%=。a %= 5 等价于 a = a % 5</li>
-
-
-
-<span style="display: block; text-align: center;">比较运算符</span>
-<p>比较运算符可以比较两个值之间的大小关系，如果关系成立它会返回true，如果关系不成立则返回false。
-    比较运算符，得到的结果都是布尔值：要么是true，要么是false。
-</p>
-<ul>
-<li>>	大于号</li>
-<li>&lt;	小于号</li>
-<li>>= 	大于或等于</li>
-<li><=  小于或等于</li>
-<li>== 	等于</li>
-<li>=== 全等于</li>
-<li>!=	不等于</li>
-<li>!== 不全等于</li>
-<span>非数值的比较</span>
-
-<li>对于非数值进行比较时，会将其转换为数字然后再比较。</li>
-<li>特殊情况：如果符号两侧的值都是字符串时，不会将其转换为数字进行比较。比较两个字符串时，比较的是字符串的Unicode编码。
-    因此：当我们在比较两个字符串型的数字时，一定一定要先转型再比较大小，比如 parseInt()
-</li>
-<li>何值和NaN做任何比较都是false</li>
-</ul>
-
-<span style="display: block; text-align: center;">==符号的强调</span>
-<ul>
-    <li>注意==这个符号，它是判断是否等于，而不是赋值。（1）== 这个符号，还可以验证字符串是否相同.</li>
-    <li>== 这个符号并不严谨，会做隐式转换，将不同的数据类型，转为相同类型进行比较（大部分情况下，都是转换为数字）</li>
-    <li>undefined 衍生自 null，所以这两个值做相等判断时，会返回true</li>
-    <li>NaN不和任何值相等，包括他本身</li>
-</ul>
-
-<span style="display: block; text-align: center;">===全等符号的强调</span>
-<ul>
-    <li>全等在比较时，不会做类型转换。如果要保证绝对等于（完全等于），我们就要用三个等号===。</li>
-    <li>==的反面是!=，===的反面是!==</li>
-</ul>
-<span style="display: block; text-align: center;">三元运算符</span>
-<p>三元运算符也叫条件运算符。</p>
-<p>语法：条件表达式 ? 语句1 : 语句2;如果条件的表达式的求值结果是一个非布尔值，会将其转换为布尔值然后再运算。</p>
+    <span style="display: block; text-align: center;">赋值运算符</span>
+    <span>可以将符号右侧的值赋值给符号左侧的变量。</span>
+    <li>= 直接赋值。比如 var a = 5</li>
+    <li>+=。a += 5 等价于 a = a + 5</li>
+    <li>-=。a -= 5 等价于 a = a - 5</li>
+    <li>*=。a *= 5 等价于 a = a * 5</li>
+    <li>/=。a /= 5 等价于 a = a / 5</li>
+    <li>%=。a %= 5 等价于 a = a % 5</li>
 
 
 
-<span style="display: block; text-align: center;">Unicode 编码</span>
-<ul>
-    <li>在字符串中可以使用转义字符输入Unicode编码。格式如下：\u四位编码</li>
-    <li>我们还可以在 HTML 网页中使用Unicode编码。格式如下：&#四位编码;</li>
-</ul>
+    <span style="display: block; text-align: center;">比较运算符</span>
+    <p>比较运算符可以比较两个值之间的大小关系，如果关系成立它会返回true，如果关系不成立则返回false。
+        比较运算符，得到的结果都是布尔值：要么是true，要么是false。
+    </p>
+    <ul>
+        <li>> 大于号</li>
+        <li>&lt; 小于号</li>
+        <li>>= 大于或等于</li>
+        <li>
+            <= 小于或等于</li>
+        <li>== 等于</li>
+        <li>=== 全等于</li>
+        <li>!= 不等于</li>
+        <li>!== 不全等于</li>
+        <span>非数值的比较</span>
+
+        <li>对于非数值进行比较时，会将其转换为数字然后再比较。</li>
+        <li>特殊情况：如果符号两侧的值都是字符串时，不会将其转换为数字进行比较。比较两个字符串时，比较的是字符串的Unicode编码。
+            因此：当我们在比较两个字符串型的数字时，一定一定要先转型再比较大小，比如 parseInt()
+        </li>
+        <li>何值和NaN做任何比较都是false</li>
+    </ul>
+
+    <span style="display: block; text-align: center;">==符号的强调</span>
+    <ul>
+        <li>注意==这个符号，它是判断是否等于，而不是赋值。（1）== 这个符号，还可以验证字符串是否相同.</li>
+        <li>== 这个符号并不严谨，会做隐式转换，将不同的数据类型，转为相同类型进行比较（大部分情况下，都是转换为数字）</li>
+        <li>undefined 衍生自 null，所以这两个值做相等判断时，会返回true</li>
+        <li>NaN不和任何值相等，包括他本身</li>
+    </ul>
+
+    <span style="display: block; text-align: center;">===全等符号的强调</span>
+    <ul>
+        <li>全等在比较时，不会做类型转换。如果要保证绝对等于（完全等于），我们就要用三个等号===。</li>
+        <li>==的反面是!=，===的反面是!==</li>
+    </ul>
+    <span style="display: block; text-align: center;">三元运算符</span>
+    <p>三元运算符也叫条件运算符。</p>
+    <p>语法：条件表达式 ? 语句1 : 语句2;如果条件的表达式的求值结果是一个非布尔值，会将其转换为布尔值然后再运算。</p>
 
 
-<hr>
-<span style="display: block; text-align: center;">流程控制语句：选择结构（if和switch）</span>
-<hr>
-<span style="display: block; text-align: center;">代码块</span>
-<p>用{}包围起来的代码，就是代码块。在 ES5 语法中，代码块，只具有分组的作用，没有其他的用途。代码块中的内容，在外部是完全可见的。</p>
-<ul>
-    <span>流程控制语句分类</span>
-    <li>顺序结构</li>
-    <li>选择结构：if 语句、switch 语句</li>
-    <li>循环结构：while 语句、for 语句</li>
-</ul>
-<span style="display: block; text-align: center;">顺序结构</span>
- <p>按照代码的先后顺序，依次执行。</p> 
- <span style="display: block; text-align: center;">if 语句</span>
- <p>条件成立才执行。如果条件不成立，那就什么都不做。</p>
- <span style="display: block; text-align: center;"> switch 语句（条件分支语句）</span>
-<span>解释：switch 可以理解为“开关、转换” 。case 可以理解为“案例、选项”</span>
-<p>switch 后面的括号里可以是表达式或者值， 通常是一个变量.JS 是属于弱类型语言，case 后面的值1、值2可以是 'a'、6、true 等任意数据类型的值，也可以是表达式。注意，在这里，字符串'6'和 数字 6 是不一样的。</p>
 
-<hr>
-<span style="display: block; text-align: center;">流程控制语句：循环结构（for和while）</span>
-<hr>
-<p>循环语句：通过循环语句可以反复的执行一段代码多次。</p>
-<textarea name="" id="" cols="60" rows="20">
+    <span style="display: block; text-align: center;">Unicode 编码</span>
+    <ul>
+        <li>在字符串中可以使用转义字符输入Unicode编码。格式如下：\u四位编码</li>
+        <li>我们还可以在 HTML 网页中使用Unicode编码。格式如下：&#四位编码;</li>
+    </ul>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">流程控制语句：选择结构（if和switch）</span>
+    <hr>
+    <span style="display: block; text-align: center;">代码块</span>
+    <p>用{}包围起来的代码，就是代码块。在 ES5 语法中，代码块，只具有分组的作用，没有其他的用途。代码块中的内容，在外部是完全可见的。</p>
+    <ul>
+        <span>流程控制语句分类</span>
+        <li>顺序结构</li>
+        <li>选择结构：if 语句、switch 语句</li>
+        <li>循环结构：while 语句、for 语句</li>
+    </ul>
+    <span style="display: block; text-align: center;">顺序结构</span>
+    <p>按照代码的先后顺序，依次执行。</p>
+    <span style="display: block; text-align: center;">if 语句</span>
+    <p>条件成立才执行。如果条件不成立，那就什么都不做。</p>
+    <span style="display: block; text-align: center;"> switch 语句（条件分支语句）</span>
+    <span>解释：switch 可以理解为“开关、转换” 。case 可以理解为“案例、选项”</span>
+    <p>switch 后面的括号里可以是表达式或者值， 通常是一个变量.JS 是属于弱类型语言，case 后面的值1、值2可以是 'a'、6、true 等任意数据类型的值，也可以是表达式。注意，在这里，字符串'6'和 数字 6
+        是不一样的。</p>
+
+    <hr>
+    <span style="display: block; text-align: center;">流程控制语句：循环结构（for和while）</span>
+    <hr>
+    <p>循环语句：通过循环语句可以反复的执行一段代码多次。</p>
+    <textarea name="" id="" cols="60" rows="20">
     语法：
 
 for(①初始化表达式; ②条件表达式; ④更新表达式){
@@ -530,7 +539,7 @@ for(①初始化表达式; ②条件表达式; ④更新表达式){
 
 ④执行更新表达式，更新表达式执行完毕继续重复②
 </textarea>
-<textarea name="" id="" cols="50" rows="20">
+    <textarea name="" id="" cols="50" rows="20">
     while 循环
     语法：
     
@@ -551,7 +560,7 @@ for(①初始化表达式; ②条件表达式; ④更新表达式){
 
 </textarea>
 
-<textarea name="" id="" cols="50" rows="20">
+    <textarea name="" id="" cols="50" rows="20">
 
     do...while 循环
     语法：
@@ -570,13 +579,13 @@ for(①初始化表达式; ②条件表达式; ④更新表达式){
 
 </textarea>
 
-<span style="display: block; text-align: center;">break 和 continue</span>
-<ul>
-    <span>break</span>
-    <li>break 可以用来退出 switch 语句或退出整个循环语句（循环语句包括 for 循环、while 循环。不包括 if。if 里不能用 break 和 continue，否则会报错）。</li>
-    <li>break 会立即终止离它最近的那个循环语句。</li>
-    <li>可以为循环语句创建一个 label，来标识当前的循环（格式：label:循环语句）。使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。</li>
-<textarea name="" id="" cols="50" rows="15">
+    <span style="display: block; text-align: center;">break 和 continue</span>
+    <ul>
+        <span>break</span>
+        <li>break 可以用来退出 switch 语句或退出整个循环语句（循环语句包括 for 循环、while 循环。不包括 if。if 里不能用 break 和 continue，否则会报错）。</li>
+        <li>break 会立即终止离它最近的那个循环语句。</li>
+        <li>可以为循环语句创建一个 label，来标识当前的循环（格式：label:循环语句）。使用 break 语句时，可以在 break 后跟着一个 label，这样 break 将会结束指定的循环，而不是最近的。</li>
+        <textarea name="" id="" cols="50" rows="15">
     举例 2：label 的使用,如下:
     outer: for (var i = 0; i &lt; 5; i++) {
         console.log('外层循环 i 的值：' + i);
@@ -590,16 +599,1263 @@ for(①初始化表达式; ②条件表达式; ④更新表达式){
 外层循环 i 的值：0
 
 </textarea>
-</ul>
+    </ul>
+    <ul>
+        <span>continue</span>
+        <li>continue 可以用来跳过当次循环，继续下一次循环。</li>
+        <li>同样，continue 默认只会离他最近的循环起作用。</li>
+        <li>同样，如果需要跳过指定的当次循环，可以使用 label 标签。</li>
+    </ul>
 
 
+
+    <hr>
+    <span style="display: block; text-align: center;">对象简介</span>
+    <hr>
+
+    <span style="display: block; text-align: center;">面向对象简介</span>
+    <p>面向对象：可以创建自定义的类型，很好的支持继承和多态。面向对象的特征：封装、继承、多态。</p>
+    <span style="display: block; text-align: center;">对象的概念</span>
+    <p>在 JavaScript 中，对象是一组无序的相关属性和方法的集合。对象的作用是：封装信息。比如Student类里可以封装学生的姓名、年龄、成绩等。
+        对象具有特征（属性）和行为（方法）。
+    </p>
+
+    <p>对象里面的属性均是键值对：键：相当于属性名。值：相当于属性值，可以是任意类型的值（数字类型、字符串类型、布尔类型，函数类型等）。</p>
+    <li>对象的属性值可以是任何的数据类型，也可以是个函数：（也称之为方法）</li>
+    <li>对象中的属性值，也可以是一个对象。</li>
+
+    <span style="display: block; text-align: center;">对象和数据类型之间的关系</span>
+    <li>基本数据类型（值类型）：String 字符串、Number 数值、Boolean 布尔值、Null 空值、Undefined 未定义。</li>
+    <li>引用数据类型（引用类型）：Object 对象。</li>
+    <p>基本数据类型： 基本数据类型的值直接保存在栈内存中，值与值之间是独立存在，修改一个变量不会影响其他的变量。</p>
+    <p>只要不是那五种基本数据类型，就全都是对象。对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性。
+        对象是保存到堆内存中的，每创建一个新的对象，就会在堆内存中开辟出一个新的空间。变量保存的是对象的内存地址（对象的引用）。
+        换而言之，对象的值是保存在堆内存中的，而对象的引用（即变量）是保存在栈内存中的。
+        如果两个变量保存的是同一个对象引用，当一个通过一个变量修改属性时，另一个也会受到影响。
+    </p>
+    <p>
+        对于引用类型的数据，赋值相当于地址拷贝，a、b指向了同一个堆内存地址。所以改了b，a也会变；本质上a、b就是一个东西。
+        如果你打算把引用类型 A 的值赋值给 B，让A和B相互不受影响的话，可以通过 Object.assign() 来复制对象。效果如下：
+    </p>
+    <textarea name="" id="" cols="30" rows="10">
+    var obj1 = {name: '孙悟空'};
+
+// 复制对象：把 obj1 赋值给 obj3。两者之间互不影响
+var obj3 = Object.assign({}, obj1);
+</textarea>
+
+    <span style="display: block; text-align: center;">对象的分类</span>
+    <li>1.内置对象：由ES标准中定义的对象，在任何的ES的实现中都可以使用.比如：Object、Math、Date、String、Array、Number、Boolean、Function等。</li>
+    <li>2.宿主对象：由JS的运行环境提供的对象，目前来讲主要指由浏览器提供的对象。比如 BOM DOM。比如console、document。</li>
+    <li>3.自定义对象：由开发人员自己创建的对象。通过 new 关键字创建出来的对象实例，都是属于对象类型，比如Object、Array、Date等。</li>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">基本包装类型</span>
+    <hr>
+    <p>基本数据类型不能绑定属性和方法。属性和方法只能添加给对象，不能添加给基本数据类型。注意，基本数据类型string是无法绑定属性和方法的。
+        当然，我们可以打印 str.length、str.indexOf("m")等等。因为这两个方法的底层做了数据类型转换（临时将 string 字符串转换为 String
+        对象，然后再调用内置方法），也就是我们在上一段中讲到的包装类。</p>
+
+    <p>引用数据类型String是可以绑定属性和方法的。</p>
+    <ul>
+        <span>内置对象Number 也有一些自带的方法，比如：</span>
+        <li>Number.MAX_VALUE;</li>
+        <li>Number.MIN_VALUE;</li>
+        <span>内置对象 Boolean 也有一些自带的方法，但是用的不多。</span>
+    </ul>
+    <span style="display: block; text-align: center;">基本包装类型</span>
+    <ul>
+        <span>JS为我们提供了三个基本包装类型：</span>
+        <li>String()：将基本数据类型字符串，转换为 String 对象。</li>
+        <li>Number()：将基本数据类型的数字，转换为 Number 对象。</li>
+        <li>Number()：将基本数据类型的数字，转换为 Number 对象。</li>
+        <span>通过上面这这三个包装类，我们可以将基本数据类型的数据转换为对象。</span>
+    </ul>
+    <p>
+        当我们对一些基本数据类型的值去调用属性和方法时，浏览器会临时使用包装类将基本数据类型转换为引用数据类型，
+        这样的话，基本数据类型就有了属性和方法，然后再调用对象的属性和方法；调用完以后，再将其转换为基本数据类型。
+    </p>
+    <textarea name="" id="" cols="60" rows="20">
+    举例：
+
+    var str = 'qianguyihao';
+    console.log(str.length); // 打印结果：11
+    比如，上面的代码，执行顺序是这样的：
+    
+    // 步骤（1）：把简单数据类型 string 转换为 引用数据类型  String，保存到临时变量中
+    var temp = new String('qianguyihao');
+    
+    // 步骤（2）：把临时变量的值 赋值给 str
+    str = temp;
+    
+    //  步骤（3）：销毁临时变量
+    temp = null;
+
+</textarea>
+    <p>在底层，字符串以字符数组的形式保存</p>
+    <textarea name="" id="" cols="30" rows="10">
+    在底层，字符串是以字符数组的形式保存的。代码举例：
+var str = 'smyhvae';
+console.log(str.length); // 获取字符串的长度
+console.log(str[2]); // 获取字符串中的第2个字符
+</textarea>
+    <p>上方代码中，smyhvae这个字符串在底层是以["s", "m", "y", "h", "v", "a", "e"]的形式保存的。因此，我们既可以获取字符串的长度，也可以获取指定索引 index
+        位置的单个字符。这很像数组中的操作。
+
+        再比如，String 对象的很多内置方法，也可以直接给字符串用。此时，也是临时将字符串转换为 String 对象，然后再调用内置方法。</p>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">内置对象 String：字符串的常见方法</span>
+    <hr>
+    <span style="display: block; text-align: center;">内置对象简介</span>
+    <p>JavaScript 中的对象分为3种：自定义对象 、内置对象、 浏览器对象。前面两种对象：是JS的基础内容，属于 ECMAScript； 第三个浏览器对象：属于JS独有，即 JS 内置的API。
+        内置对象：就是指这个语言自带的一些对象，供开发者使用，这些对象提供了一些常用或者最基本而必要的功能（属性和方法）。
+        内置对象最大的优点就是帮助我们快速开发。
+    </p>
+
+
+    <span>js中的内置对象</span>
+    <table border="2" style="border-collapse:collapse; border-color: blue;">
+        <tr>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>内置对象</td>
+            <td>内置对象说明</td>
+        </tr>
+        <tr>
+            <td>Arguments</td>
+            <td>函数参数集合</td>
+        </tr>
+
+        <tr>
+            <td>Array</td>
+            <td>数组</td>
+        </tr>
+        <tr>
+            <td>Boolean</td>
+            <td>布尔对象</td>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>数学对象</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>日期时间</td>
+        </tr>
+
+        <tr>
+            <td>Error</td>
+            <td>异常对象</td>
+        </tr>
+        <tr>
+            <td>Function</td>
+            <td>函数构造器</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td>数值对象</td>
+        </tr>
+
+        <tr>
+            <td>Object</td>
+            <td>基础对象</td>
+        </tr>
+        <tr>
+            <td>RegExp</td>
+            <td>正则表达式对象</td>
+        </tr>
+        <tr>
+            <td>String</td>
+            <td>字符串对象</td>
+        </tr>
+    </table>
+    <p>需要注意的是：字符串的所有方法，都不会改变原字符串（字符串的不可变性），操作完成后会返回一个新的值。</p>
+    <ul>
+        <li>indexOf()/lastIndexOf()：获取字符串中指定内容的索引,如果获取的索引值为 0，说明字符串是以查询的参数为开头的.如果获取的索引值为-1，说明这个字符串中没有指定的内容。</li>
+        <li>search()：获取字符串中指定内容的索引（参数里一般是正则）</li>
+        <li>includes()：字符串中是否包含指定的内容</li>
+        <li>startsWith()：字符串是否以指定的内容开头</li>
+        <li>endsWith()：字符串是否以指定的内容结尾</li>
+        <li>charAt(index)：获取指定位置的字符</li>
+        <li>str[index]str.charAt(index)和str[index]的效果是一样的，不再赘述。区别在于：str[index]是 H5 标准里新增的特性。</li>
+        <li>charCodeAt(index)：返回字符串指定位置的字符的 Unicode 编码。不会修改原字符串，通过这个方法，我们可以判断用户按下了哪个按键。如果Unicode编码在0-127说明是英文</li>
+        <li>slice():从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回。包左不包右(包前不包后)</li>
+        <li>substring()：解释：从字符串中截取指定的内容。和slice()类似。</li>
+        <li>substr():语法:字符串 = str.substr(开始索引, 截取的长度);从字符串中截取指定的内容。不会修改原字符串，而是将及截取到的内容返回</li>
+        <li>String.fromCharCode()：根据字符的 Unicode 编码获取字符。举例:console.log(result2); // 打印结果：中</li>
+        <li>concat()：解释：字符串的连接。这种方法基本不用，直接把两个字符串相加就好。</li>
+        <li>split()：字符串转换为数组 【重要】</li>
+        <li>replace():语法:新的字符串 = str.replace(被替换的字符，新的字符);注意：这个方法，默认只会替换第一个被匹配到的字符。如果要全局替换，需要使用正则。</li>
+        <li>repeat()：重复字符串,相当于字符串的拼接</li>
+        <li>trim()：去除字符串前后的空白。注意只是前后，不包括中间部分</li>
+        <li>str.toLowerCase()，转换成小写</li>
+        <li>str.toUpperCase()，转换成大写</li>
+    </ul>
+    <span style="display: block; text-align: center;">html 方法</span>
+    <img src="../img/photo_htmlfun.png" alt="">
+
+
+
+    <hr>
+    <span style="display: block; text-align: center;">内置对象：Number和Math</span>
+    <hr>
+    <ul>
+        <span>内置对象 Number 的常见方法</span>
+        <li>Number.isInteger() 判断是否为整数</li>
+        <li>toFixed() 小数点后面保留多少位（四舍五入）注意，返回结果是字符串。</li>
+    </ul>
+    <p>Math 和其他的对象不同，它不是一个构造函数，不需要创建对象。所以我们不需要 通过 new 来调用，而是直接使用里面的属性和方法即可。
+        Math属于一个工具类，里面封装了数学运算相关的属性和方法。</p>
+    <table border="2" style="border-collapse:collapse; border-color: blue;">
+        <tr>
+            <td colspan="3">内置对象 Math 的常见方法</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+
+        </tr>
+        <tr>
+            <td>Math.PI</td>
+            <td>圆周率</td>
+            <td>Math对象的属性</td>
+
+        </tr>
+        <tr>
+            <td>Math.abs()</td>
+            <td> 返回绝对值</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.random()</td>
+            <td>生成0-1之间的随机浮点数</td>
+            <td>取值范围是 [0，1)</td>
+
+        </tr>
+        <tr>
+            <td>Math.floor()</td>
+            <td>向下取整（往小取值）</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.ceil()</td>
+            <td>向上取整（往大取值）</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.round()</td>
+            <td>四舍五入取整（正数四舍五入，负数五舍六入）</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.max(x, y, z)</td>
+            <td>返回多个数中的最大值</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.min(x, y, z)</td>
+            <td>返回多个数中的最小值</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.pow(x,y)</td>
+            <td>乘方：返回 x 的 y 次幂</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>Math.sqrt()</td>
+            <td>开方：对一个数进行开方运算</td>
+            <td></td>
+        </tr>
+
+    </table>
+    <ul>
+        <li>生成 [0, x) 之间的随机数:Math.round(Math.random()*x)</li>
+        <li>生成 [x, y) 之间的随机数: Math.round(Math.random()*(y-x)+x)</li>
+        <li>【重要】生成 [x, y]之间的随机整数:Math.floor(Math.random() * (max - min + 1)) + min;</li>
+    </ul>
+    <p>url 编码和解码:URI (Uniform ResourceIdentifiers,通用资源标识符)进行编码，
+        以便发送给浏览器。有效的URI中不能包含某些字符，例如空格。而这URI编码方法就可以对URI进行编码，
+        它们用特殊的UTF-8编码替换所有无效的字符，从而让浏览器能够接受和理解。</p>
+    <textarea name="" id="" cols="50" rows="15">
+    encodeURIComponent();   //把字符串作为 URI 组件进行编码
+    decodeURIComponent();   //把字符串作为 URI 组件进行解码
+    var url = "http://www.cnblogs.com/smyhvae/";
+    var str = encodeURIComponent(url);
+    console.log(str);                           //打印url的编码
+    console.log(decodeURIComponent(str));       //对url进行编码后，再解码，还原为url
+</textarea>
+
+    <hr>
+    <span style="display: block; text-align: center;">内置对象：Date</span>
+    <hr>
+    <p>内置对象 Date 用来处理日期和时间。需要注意的是：与 Math 对象不同，Date 对象是一个构造函数 ，需要先实例化后才能使用。</p>
+    <p>创建Date对象有两种写法：写法一：如果Date()不写参数，就返回当前时间对象。也可以理解成是：获取当前代码执行的时间。
+        结果格式为:Mon Feb 17 2020 21:57:22 GMT+0800 (中国标准时间);写法二：传递参数,传递参数时，表示获取指定时间的时间对象。参数中既可以传递字符串，也可以传递数字，也可以传递时间戳。
+    </p>
+
+    <table border="2" style="border-collapse:collapse; border-color: blue;">
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td>方法名</td>
+            <td>含义</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>getFullYear()</td>
+            <td>获取年份</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>getMonth()</td>
+            <td>获取月： 0-11</td>
+            <td>0代表一月</td>
+        </tr>
+        <tr>
+            <td>getDate()</td>
+            <td>获取日：1-31</td>
+            <td>获取的是几号</td>
+        </tr>
+        <tr>
+            <td>getDay()</td>
+            <td>获取星期：0-6</td>
+            <td>0代表周日，1代表周一</td>
+        </tr>
+        <tr>
+            <td>getHours()</td>
+            <td>获取小时：0-23</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>getMinutes()</td>
+            <td>获取分钟：0-59</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>getSeconds()</td>
+            <td>获取秒：0-59</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>getMilliseconds()</td>
+            <td>获取毫秒</td>
+            <td>1s = 1000ms</td>
+        </tr>
+    </table>
+
+    <span style="display: block; text-align: center;">获取时间戳</span>
+    <p>时间戳：指的是从格林威治标准时间的1970年1月1日，0时0分0秒到当前日期所花费的毫秒数（1秒 = 1000毫秒）。
+        计算机底层在保存时间时，使用的都是时间戳。时间戳的存在，就是为了统一时间的单位。
+        我们经常会利用时间戳来计算时间，因为它更精确。而且，在实战开发中，接口返回给前端的日期数据，都是以时间戳的形式。
+    </p>
+    <textarea name="" id="" cols="50" rows="15">
+    // 方式一：获取 Date 对象的时间戳（最常用的写法）
+const timestamp1 = +new Date();
+console.log(timestamp1); // 打印结果举例：1589448165370
+
+// 方式二：获取 Date 对象的时间戳（较常用的写法）
+const timestamp2 = new Date().getTime();
+console.log(timestamp2); // 打印结果举例：1589448165370
+// 方式三：获取当前时间的时间戳（很常用的写法）
+//Date.now()是H5标准中新增的特性，如果你的项目需要兼容低版本的IE浏览器，就不要用了。
+console.log(Date.now()); // 打印结果举例：1589448165370
+</textarea>
+
+    <p>format()将时间对象转换为指定格式。</p>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">数组简介</span>
+    <hr>
+    <p>数组（Array）是属于内置对象，我们可以在MDN网站上查询它的各种方法。数组和普通对象的功能类似，也是用来存储一些值的。不同的是：</p>
+    <li>普通对象是使用字符串作为属性名的，而数组是使用数字作为索引来操作元素。索引：从 0 开始的整数就是索引。数组的存储性能比普通对象要好。在实际开发中我们经常使用数组来存储一些数据（尤其是列表数据），使用频率非常高。</li>
+    <p>数组中的元素可以是任意的数据类型，也可以是对象，也可以是函数，也可以是数组。数组的元素中，如果存放的是数组，我们就称这种数组为二维数组。</p>
+
+    <ul>
+        <span>创建数组的方式:</span>
+        <li>方式一：使用字面量创建数组,举例：var arr2 = [1, 2, 3]; // 创建带初始值的数组</li>
+        <li>方式二：使用构造函数创建数组，举例:let arr = new Array(参数);如果参数为空，则表示创建一个空数组；如果参数是一个数值时，表示数组的长度；如果有多个参数时，表示数组中的元素。</li>
+    </ul>
+
+    <span style="display: block; text-align: center;">数组的基本操作</span>
+    <li>数组的索引:索引 (下标) ：用来访问数组元素的序号，代表的是数组中的元素在数组中的位置（下标从 0 开始算起）。</li>
+    <li>向数组中添加元素:语法:数组[索引] = 值;</li>
+    <li>获取数组的长度:可以使用length属性来获取数组的长度(即“元素的个数”)。</li>
+    <li>修改数组的长度（修改 length）:如果修改的 length 大于原长度，则多出部分会空出来，置为 null。如果修改的 length 小于原长度，则多出的元素会被删除，数组将从后面删除元素。（特例：伪数组
+        arguments 的长度可以修改，但是不能修改里面的元素，后面单独讲。）</li>
+    <li>遍历: 就是把数组中的每个元素从头到尾都访问一次。最简单的做法是通过 for 循环，遍历数组中的每一项。</li>
+
+
+    <hr>
+    <span style="display: block; text-align: center;">数组的常见方法</span>
+    <hr>
+
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="2">数组的方法清单</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+        </tr>
+        <tr>
+            <td>Array.isArray()</td>
+            <td>判断是否为数组</td>
+        </tr>
+        <tr>
+            <td>toString()</td>
+            <td>将数组转换为字符串</td>
+        </tr>
+        <tr>
+            <td>Array.from(arrayLike)</td>
+            <td>将伪数组或可遍历对象转换为真数组</td>
+        </tr>
+        <tr>
+            <td>Array.of(value1, value2, value3)</td>
+            <td>创建数组：将一系列值转换成数组 </td>
+        </tr>
+    </table>
+
+
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="3">数组元素的添加和删除</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>Apush()</td>
+            <td>向数组的最后面插入一个或多个元素，返回结果为新数组的长度</td>
+            <td>会改变原数组</td>
+        </tr>
+        <tr>
+            <td>pop()</td>
+            <td>删除数组中的最后一个元素，返回结果为被删除的元素</td>
+            <td>会改变原数组</td>
+        </tr>
+        <tr>
+            <td>unshift()</td>
+            <td>在数组最前面插入一个或多个元素，返回结果为新数组的长度</td>
+            <td>会改变原数组</td>
+        </tr>
+        <tr>
+            <td>shift()</td>
+            <td>删除数组中的第一个元素，返回结果为被删除的元素</td>
+            <td>会改变原数组</td>
+        </tr>
+        <tr>
+            <td>slice()</td>
+            <td>从数组中提取指定的一个或多个元素，返回结果为新的数组</td>
+            <td>不会改变原数组</td>
+        </tr>
+        <tr>
+            <td>splice()</td>
+            <td>从数组中删除指定的一个或多个元素，返回结果为被删除元素组成的新数组</td>
+            <td>会改变原数组</td>
+        </tr>
+        <tr>
+            <td>fill()</td>
+            <td>填充数组：用固定的值填充数组，返回结果为新的数组</td>
+            <td>不会改变原数组</td>
+        </tr>
+    </table>
+
+
+
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="3">数组的合并和拆分</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>concat()</td>
+            <td>合并数组：连接两个或多个数组，返回结果为新的数组</td>
+            <td>不会改变原数组</td>
+        </tr>
+        <tr>
+            <td>join()</td>
+            <td>将数组转换为字符串，返回结果为转换后的字符串</td>
+            <td>不会改变原数组</td>
+        </tr>
+        <tr>
+            <td>split()</td>
+            <td>将字符串按照指定的分隔符，组装为数组</td>
+            <td>不会改变原字符串,注意，split()是字符串的方法，不是数组的方法。</td>
+        </tr>
+    </table>
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="3">数组排序</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>reverse()</td>
+            <td>反转数组，返回结果为反转后的数组</td>
+            <td> 会改变原数组</td>
+        </tr>
+        <tr>
+            <td>sort()</td>
+            <td>对数组的元素,默认按照Unicode 编码，从小到大进行排序</td>
+            <td>会改变原数组</td>
+        </tr>
+    </table>
+
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="3">查找数组的元素</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+        </tr>
+
+        <tr>
+            <td>indexOf(value)</td>
+            <td>从前往后索引，检索一个数组中是否含有指定的元素</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>lastIndexOf(value)</td>
+            <td>从后往前索引，检索一个数组中是否含有指定的元素</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>find(function())</td>
+            <td>找出第一个满足「指定条件返回 true」的元素</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>findIndex(function())</td>
+            <td>找出第一个满足「指定条件返回 true」的元素的 index</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>every()</td>
+            <td>确保数组中的每个元素都满足「指定条件返回 true」，则停止遍历，此方法才返回 true</td>
+            <td>全真才为真。要求每一项都返回 true，最终的结果才返回 true</td>
+        </tr>
+        <tr>
+            <td>some()</td>
+            <td>数组中只要有一个元素满足「指定条件返回 true」，则停止遍历，此方法就返回 true</td>
+            <td>一真即真。只要有一项返回 true，最终的结果就返回 true</td>
+        </tr>
+    </table>
+
+
+    <table border="2" style="border-collapse: collapse; color: blue;">
+        <tr>
+            <td colspan="3">遍历数组</td>
+        </tr>
+        <tr>
+            <td>方法</td>
+            <td>描述</td>
+            <td>备注</td>
+        </tr>
+        <tr>
+            <td>for 循环</td>
+            <td>依次遍历</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>forEach()</td>
+            <td>和 for 循环类似，但需要兼容 IE8 以上</td>
+            <td>forEach() 没有返回值。也就是说，它的返回值是 undefined</td>
+        </tr>
+        <tr>
+            <td>map()</td>
+            <td>对原数组中的每一项进行加工，将组成新的数组</td>
+            <td> 不会改变原数组</td>
+        </tr>
+        <tr>
+            <td>filter()</td>
+            <td>过滤数组：返回结果是 true 的项，将组成新的数组，返回结果为新的数组</td>
+            <td>不会改变原数组</td>
+        </tr>
+        <tr>
+            <td>reduce</td>
+            <td>接收一个函数作为累加器，返回值是回调函数累计处理的结果</td>
+            <td></td>
+        </tr>
+    </table>
+    <span style="display: block; text-align: center;">Array.from()</span>
+    <span style="display: block;">作用：将伪数组或可遍历对象转换为真数组。</span>
+    <textarea name="" id="" cols="50" rows="15">
+ //代码举例：将字符常量转化为数组
+const name = 'qianguyihao';
+console.log(Array.from(name)); // 打印结果是数组：["q","i","a","n","g","u","y","i","h","a","o"]
+//代码举例将页面中的button元素转为数组存放
+let btnArray = document.getElementsByTagName('button');
+//既然btnArray是伪数组，它就不能使用数组的一般方法比如forEach，否则会报错：
+//所以通过Array.form转化为真数组
+Array.form(btnArray).forEach(function(item , index){
+console.log(item)
+})
+</textarea>
+
+    <span style="display: block; text-align: center;">slice()</span>
+    <p>语法:slice()：从数组中提取指定的一个或者多个元素，返回结果为新的数组（不会改变原来的数组）。</p>
+    <p>新数组 = 原数组.slice(开始位置的索引, 结束位置的索引); //注意：包含开始索引，不包含结束索引,不加参数时，则获取所有的元素。
+        // 如果只有一个参数，就从那个值开始提取，直到末尾
+        //如果是一个负值,比如-2,则提取最后两个元素
+        //如果第一个参数大于第二个参数，则获取集合为空
+    </p>
+
+    <span style="display: block; text-align: center;">splice()</span>
+    <textarea name="" id="" cols="50" rows="15">splice()：从数组中删除指定的一个或多个元素，返回结果为被删除元素组成的新数组（会改变原来的数组）。
+    备注：该方法会改变原数组，会将指定元素从原数组中删除；被删除的元素会封装到一个新的数组中返回。
+    语法：
+    新数组 = 原数组.splice(起始索引index, 需要删除的个数);
+    新数组 = 原数组.splice(起始索引index, 需要删除的个数, 新的元素1, 新的元素2...);
+    上方语法中，第三个及之后的参数，表示：删除元素之后，向原数组中添加新的元素，这些元素将会自动插入到起始位置索引的前面。也可以理解成：删除了哪些元素，就在那些元素的所在位置补充新的内容。
+</textarea>
+
+    <span style="display: block; text-align: center;">fill()</span>
+    <p>fill()：用一个固定值填充数组，返回结果为新的数组。不会改变原数组。语法：新数组 = 数组.fill(固定值);// 用一个固定值填充数组。数组里的每个元素都会被这个固定值填充</p>
+
+    <span style="display: block; text-align: center;">sort()方法</span>
+    <p>sort() 方法时不带参，则默认按照Unicode 编码，从小到大进行排序。如果数组的元素是数字，那么排序后不会按数字大小排序，而是Unicode编码</p>
+    <textarea name="" id="" cols="70" rows="45">
+//如何将数字类型的数组按大小排序呢?
+我们就可以自定义排序规则。具体做法如下：我们可以在 sort()添加一个回调函数，来指定排序规则。回调函数中需要定义两个形参，浏览器将会分别使用数组中的元素作为实参去调用回调函数。
 <ul>
-    <span>continue</span>
-    <li>continue 可以用来跳过当次循环，继续下一次循环。</li>
-    <li>同样，continue 默认只会离他最近的循环起作用。</li>
-    <li>同样，如果需要跳过指定的当次循环，可以使用 label 标签。</li>
+    <span>浏览器根据回调函数的返回值来决定元素的排序：（重要）</span> 
+    <li>如果返回一个大于 0 的值，则元素会交换位置</li>
+    <li>如果返回一个小于 0 的值，则元素位置不变</li>
+    <li>如果返回一个等于 0 的值，则认为两个元素相等，则不交换位置</li>
 </ul>
+//代码如下:
+var arr = [5, 2, 11, 3, 4, 1];
+
+// 自定义排序规则
+var result = arr.sort(function (a, b) {
+    if (a > b) {
+        // 如果 a 大于 b，则交换 a 和 b 的位置
+        return 1;
+    } else if (a &lt; b) {
+        // 如果 a 小于 b，则位置不变
+        return -1;
+    } else {
+        // 如果 a 等于 b，则位置不变
+        return 0;
+    }
+});
+//代码精简(冒泡排序)
+let arr = [5, 2, 11, 3, 4, 1];
+
+// 自定义排序规则
+let result = arr.sort(function (a, b) {
+    return a - b; // 升序排列
+    // return b - a; // 降序排列
+});
+
+
+//ES6 中的箭头函数写法(推荐)
+let arr = [5, 2, 11, 3, 4, 1];
+
+// 自定义排序规则：升序排列
+let result = arr.sort((a, b) => a - b);
+</textarea>
+
+
+    <span style="display: block; text-align: center;">find()方法</span>
+    <textarea name="" id="" cols="60" rows="20">
+    语法：
+
+    find((item, index, arr) => {
+        return true;
+    });
+    作用：找出第一个满足「指定条件返回 true」的元素；如果没找到，则返回 undefined。
+
+    备注：一旦找到符合条件的第一个元素，将不再继续往下遍历。
+    举例：
+
+    let arr = [2, 3, 2, 5, 7, 6];
+    
+    let result = arr.find((item, index) => {
+        return item > 4; //遍历数组arr，一旦发现有第一个元素大于4，就把这个元素返回
+    });
+    
+    console.log(result); //打印结果：5
+</textarea>
+
+    <span style="display: block; text-align: center;">every()方法</span>
+    <textarea name="" id="" cols="60" rows="30">
+        //every()：对数组中每一项运行回调函数，如果都返回 true，every 就返回 true；如果有一项返回 false，则停止遍历，此方法返回 false。
+        //注意：every()方法的返回值是 boolean 值，参数是回调函数。
+        举例：
+var arr1 = ['千古', '宿敌', '南山忆', '素颜'];
+var bool1 = arr1.every(function (element, index, array) {
+    if (element.length > 2) {
+        return false;
+    }
+    return true;
+});
+console.log(bool1); //输出结果：false。只要有一个元素的长度是超过两个字符的，就返回false
+
+var arr2 = ['千古', '宿敌', '南山', '素颜'];
+var bool2 = arr2.every(function (element, index, array) {
+    if (element.length > 2) {
+        return false;
+    }
+    return true;
+});
+console.log(bool2); //输出结果：true。因为每个元素的长度都是两个字符。
+    </textarea>
+
+    <span style="display: block; text-align: center;">forEach() 遍历</span>
+    <textarea name="" id="" cols="100" rows="10" style="display: block;">
+forEach() 这种遍历方法只支持 IE8 以上的浏览器。IE8 及以下的浏览器均不支持该方法。所以如果需要兼容 IE8，则不要使用 forEach，改为使用 for 循环来遍历即可。
+forEach()方法需要一个函数作为参数。这种函数，是由我们创建但是不由我们调用的，我们称为回调函数。
+数组中有几个元素，该回调函数就会执行几次。
+回调函数中传递三个参数：
+第一个参数，就是当前正在遍历的元素
+第二个参数，就是当前正在遍历的元素的索引
+第三个参数，就是正在遍历的数组
+</textarea>
+    <textarea name="" id="" cols="50" rows="40">
+//通过forEach()改变原数组
+// 1、数组的元素是基本数据类型
+let numArr = [1, 2, 3];
+
+numArr.forEach((item, index, arr) => {
+    arr[index] = arr[index] * 2;
+});
+console.log(JSON.stringify(numArr)); // 打印结果：[2,4,6]
+
+// 2、数组的元素是引用数据类型时，直接修改对象
+let objArr = [
+    { name: '千古壹号', age: 28 },
+    { name: '许嵩', age: 34 },
+];
+
+objArr.forEach((item, index, arr) => {
+    arr[index] = {
+        name: '小明',
+        age: '10',
+    };
+});
+console.log(JSON.stringify(objArr)); // 打印结果：[{"name":"小明","age":"10"},{"name":"小明","age":"10"}]
+
+// 3、数组的元素是引用数据类型时，修改对象的某个属性
+let objArr2 = [
+    { name: '千古壹号', age: 28 },
+    { name: '许嵩', age: 34 },
+];
+
+objArr2.forEach((item, index, arr) => {
+    arr[index].name = '小明';
+});
+console.log(JSON.stringify(objArr2)); // 打印结果：[{"name":"小明","age":28},{"name":"小明","age":34}]
+</textarea>
+
+    <span style="display: block; text-align: center;">reduce()方法</span>
+    <p>reduce 的发音：[rɪ'djuːs]。中文含义是减少，但这个方法跟“减少”没有任何关系。
+        reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。返回值是回调函数累计处理的结果。</p>
+    <p>语法：
+        arr.reduce(function (previousValue, currentValue, currentIndex, arr) {}, initialValue);</p>
+
+    <ul>
+        <span> 参数解释：</span>
+        <li>previousValue：必填，上一次调用回调函数时的返回值</li>
+        <li>currentValue：必填，当前正在处理的数组元素</li>
+        <li>currentIndex：选填，当前正在处理的数组元素下标</li>
+        <li>arr：选填，调用 reduce()方法的数组</li>
+        <li>initialValue：选填，可选的初始值（作为第一次调用回调函数时传给 previousValue 的值）</li>
+    </ul>
+    <textarea name="" id="" cols="50" rows="50">
+    //代码举例
+    举例 1、求和：
+
+计算数组中所有元素项的总和。代码实现：
+
+const arr = [2, 0, 1, 9, 6];
+// 数组求和
+const total = arr.reduce((prev, item) => {
+    return prev + item;
+});
+
+console.log('total:' + total); // 打印结果：18
+举例 2、统计某个元素出现的次数：
+
+代码实现：
+
+// 定义方法：统一 value 这个元素在数组 arr 中出现的次数
+function repeatCount(arr, value) {
+    if (!arr || arr.length == 0) return 0;
+
+    return arr.reduce((totalCount, item) => {
+        totalCount += item == value ? 1 : 0;
+        return totalCount;
+    }, 0);
+}
+
+let arr1 = [1, 2, 6, 5, 6, 1, 6];
+
+console.log(repeatCount(arr1, 6)); // 打印结果：3
+举例 3、求元素的最大值：
+
+代码实现：
+
+const arr = [2, 0, 1, 9, 6];
+// 数组求最大值
+const maxValue = arr.reduce((prev, item) => {
+    return prev > item ? prev : item;
+});
+
+console.log(maxValue); // 打印结果：9
+</textarea>
+
+
+
+
+    <hr>
+    <span style="display: block; text-align: center;">18-函数</span>
+    <hr>
+    <p>函数：就是将一些功能或语句进行封装，在需要的时候，通过调用的形式，执行这些语句。</p>
+    <ul>
+        <span>函数的介绍</span>
+        <li>函数也是一个对象</li>
+        <li>使用typeof检查一个函数对象时，会返回function</li>
+        <span>函数的作用：</span>
+        <li>将大量重复的语句抽取出来，写在函数里，以后需要这些语句的时候，可以直接调用函数，避免重复劳动</li>
+        <li>简化编程，让编程模块化。高内聚、低耦合。</li>
+        <span>函数的定义/声明</span>
+        <li>利用函数关键字自定义函数（命名函数）,使用函数声明来创建一个函数（也就是 function 关键字）</li>
+        <li>方式二：函数表达式（匿名函数）,使用函数表达式来创建一个函数。语法var 变量名 = function([形参1,形参2...形参N]){：语句....},所谓的“函数表达式”，其实就是将匿名函数赋值给一个变量。
+        </li>
+        <li>方式三：使用构造函数 new Function(),使用构造函数new Function()来创建一个对象。语法:var 变量名/函数名 = new Function('形参1', '形参2', '函数体');
+            注意，Function 里面的参数都必须是字符串格式。也就是说，形参也必须放在字符串里；函数体也是放在字符串里包裹起来，放在 Function 的最后一个参数的位置。
+        </li>
+        <li>总结:所有的函数，都是 Fuction 的“实例”（或者说是“实例对象”）。函数本质上都是通过 new Function 得到的。函数既然是实例对象，那么，函数也属于“对象”。</li>
+        <span>函数的调用</span>
+        <li>方式1：普通函数的调用,函数调用的语法：函数名();或者函数名.call();</li>
+        <li>方式2：通过对象的方法来调用</li>
+        <textarea name="" id="" cols="60" rows="10">
+            var obj = {
+                a: 'qianguyihao',
+                fn2: function() {
+                    console.log('千古壹号，永不止步!');
+                },
+            };
+            obj.fn2(); // 调用函数
+        </textarea>
+        <li>方式3：立即执行函数</li>
+        <textarea name="" id="" cols="60" rows="10">
+            代码举例：
+
+(function() {
+	console.log('我是立即执行函数');
+})();
+立即执行函数在定义后，会自动调用。
+        </textarea>
+        <li>方式4：通过构造函数来调用</li>
+        <textarea name="" id="" cols="60" rows="10">
+            代码举例：
+            function Fun3() {
+                console.log('千古壹号，永不止步~');
+            }
+            new Fun3();
+        </textarea>
+        <li>方式5：绑定事件函数</li>
+        <textarea name="" id="" cols="60" rows="10">
+            btn.onclick = function() {
+                console.log('点击按钮后，要做的事情');
+            };
+        </textarea>
+        <li>方式6：定时器函数</li>
+        <textarea name="" id="" cols="60" rows="10" style="display: block;">
+            let num = 1;
+            setInterval(function () {
+                num ++;
+                console.log(num);
+            }, 1000);
+        </textarea>
+        <span>函数的参数：形参和实参</span>
+        <li>实参的类型: 函数的实参可以是任意的数据类型。调用函数时，解析器不会检查实参的类型，所以要注意，是否有可能会接收到非法的参数，如果有可能则需要对参数进行类型的检查。</li>
+        <li>
+            调用函数时，解析器也不会检查实参的数量。
+            实参的数量（实参和形参的个数不匹配时）:如果实参的数量多余形参的数量，多余实参不会被赋值。
+            如果实参的数量少于形参的数量，多余的形参会被定义为 undefined。表达式的运行结果为 NaN。
+            注意：在 JS 中，形参的默认值是 undefined。
+        </li>
+        <span>函数的返回值</span>
+        <li>eturn 的作用是结束方法（终止函数）。</li>
+        <li>return 的值将会作为函数的执行结果返回，可以定义一个变量，来接收该结果。</li>
+        <li>在函数中，return后的语句都不会执行（函数在执行完 return 语句之后停止并立即退出函数）</li>
+        <li>如果return语句后不跟任何值，就相当于返回一个undefined</li>
+        <li>如果函数中不写return，则也会返回undefined</li>
+        <li>返回值可以是任意的数据类型，可以是对象，也可以是函数。</li>
+        <li>return 只能返回一个值。如果用逗号隔开多个值，则以最后一个为准。</li>
+        <span style="display: block;">函数名、函数体和函数加载问题（重要，请记住）</span>
+        <textarea name="" id="" cols="50" rows="10">
+        我们要记住：函数名 == 整个函数。举例：
+        console.log(fn) == console.log(function fn(){alert(1)});
+        //定义fn方法
+        function fn(){
+            alert(1)
+        };
+      </textarea>
+        <p>我们知道，当我们在调用一个函数时，通常使用函数()这种格式；可如果，我们是直接使用函数这种格式，它的作用相当于整个函数。函数的加载问题：JS加载的时候，只加载函数名，不加载函数体。所以如果想使用内部的成员变量，需要调用函数。
+        </p>
+
+        <span>fn() 和 fn 的区别【重要】</span>
+        <li>fn()：调用函数。调用之后，还获取了函数的返回值。</li>
+        <li>fn：函数对象。相当于直接获取了整个函数对象。</li>
+        <span>break、continue、return 的区别</span>
+        <li>break ：结束当前的循环体（如 for、while）</li>
+        <li>continue ：跳出本次循环，继续执行下次循环（如 for、while）</li>
+        <li>return ：1、退出循环。2、返回 return 语句中的值，同时结束当前的函数体内的代码，退出当前函数。</li>
+        <span>立即执行函数</span>
+        <textarea name="" id="" cols="60" rows="10">
+            立即执行函数如下：
+            (function(a, b) {
+                console.log("a = " + a);
+                console.log("b = " + b);
+            })(123, 456);
+            //立即执行函数往往只会执行一次。为什么呢？因为没有变量保存它，执行完了之后，就找不到它了。
+        </textarea>
+        <span>方法</span>
+        <li>函数也可以成为对象的属性。如果一个函数是作为一个对象的属性保存，那么，我们称这个函数是这个对象的方法。调用这个函数就说调用对象的方法（method）。函数和方法，有什么本质的区别吗？它只是名称上的区别，并没有其他的区别。
+            我们可以这样说，如果直接是fn()，那就说明是函数调用。如果是XX.fn()的这种形式，那就说明是方法调用</li>
+
+        <span>arguments 的使用</span>
+        <p>当我们不确定有多少个参数传递的时候，可以用 arguments 来获取。在 JavaScript 中，arguments 实际上是当前函数的一个内置对象。所有函数都内置了一个 arguments 对象（只有函数才有
+            arguments 对象），arguments 对象中存储了传递的所有实参.</p>
+        <span>arguments的展示形式是一个伪数组。伪数组具有以下特点：</span>
+        <li>可以进行遍历；具有数组的 length 属性。</li>
+        <li>按索引方式存储数据。</li>
+        <li>不具有数组的 push()、pop() 等方法。</li>
+        <textarea name="" id="" cols="60" rows="15">
+            //代码举例：利用 arguments 求函数实参中的最大值
+            function getMaxValue() {
+                var max = arguments[0];
+                // 通过 arguments 遍历实参
+                for (var i = 0; i < arguments.length; i++) {
+                    if (max < arguments[i]) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            }
+        
+            console.log(getMaxValue(1, 3, 7, 5));
+
+        </textarea>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">19-作用域和变量提升</span>
+    <hr>
+    <p>通俗来讲，作用域是一个变量或函数的作用范围。作用域在函数定义时，就已经确定了。目的：为了提高程序的可靠性，同时减少命名冲突。</p>
+    <ul>
+        <span>在 JS 中，一共有两种作用域：（ES6 之前）</span>
+        <li>全局作用域：作用于整个 script 标签内部，或者作用域一个独立的 JS 文件。</li>
+        <li>函数作用域（局部作用域）：作用于函数内的代码环境。</li>
+    </ul>
+    <p>在内部作用域中可以访问到外部作用域的变量，在外部作用域中无法访问到内部作用域的变量。</p>
+    <p>根据作用域的不同，变量可以分为两类：全局变量、布局变量。</p>
+    <ul>
+        <span>全局变量：</span>
+        <li>在全局作用域下声明的变量，叫「全局变量」。在全局作用域的任何一地方，都可以访问这个变量。</li>
+        <li>在全局作用域下，使用 var 声明的变量是全局变量。</li>
+        <li>特殊情况：在函数内不使用 var 声明的变量也是全局变量（不建议这么用）。</li>
+        <span>局部变量：</span>
+        <li>定义在函数作用域的变量，叫「局部变量」。</li>
+        <li>在函数内部，使用 var 声明的变量是局部变量。</li>
+        <li>函数的形参也是属于局部变量。</li>
+        <span>从执行效率来看全局变量和局部变量：</span>
+        <li>全局变量：只有浏览器关闭时才会被销毁，比较占内存。</li>
+        <li>局部变量：当其所在的代码块运行结束后，就会被销毁，比较节约内存空间。</li>
+    </ul>
+    <span style="display: block; text-align: center;">作用域的上下级关系</span>
+    <p>
+        当在函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用（就近原则）。如果没有则向上一级作用域中寻找，
+        直到找到全局作用域；如果全局作用域中依然没有找到，则会报错 ReferenceError。
+        在函数中要访问全局变量可以使用window对象。（比如说，全局作用域和函数作用域都定义了变量a，如果想访问全局变量，可以使用window.a）
+    </p>
+    <span style="display: block; text-align: center;">全局作用域</span>
+    <span>直接编写在script标签中的JS代码，都在全局作用域。</span>
+    <li>全局作用域在页面打开时创建，在页面关闭时销毁</li>
+    <li>在全局作用域中有一个全局对象window，它代表的是一个浏览器的窗口，由浏览器创建，我们可以直接使用。</li>
+    <li>在全局作用域中：创建的变量都会作为window对象的属性保存。比如在全局作用域内写 var a = 100，这里的 a 等价于 window.a。</li>
+    <li>在全局作用域中：创建的函数都会作为window对象的方法保存。</li>
+    <span style="display: block; text-align: center;">变量的声明提前（变量提升）</span>
+    <p>使用var关键字声明的变量（ 比如 var a = 1），会在所有的代码执行之前被声明（但是不会赋值），但是如果声明变量时不是用var关键字（比如直接写a = 1），则变量不会被声明提前。
+        既然JS中存在变量提升的现象，那么，在实战开发中，为了避免出错，建议先声明一个变量，然后再使用这个变量。
+    </p>
+    <textarea name="" id="" cols="60" rows="10">
+        举例1：
+        console.log(a);
+        var a = 123;
+    打印结果：undefined。注意，打印结果并没有报错，而是 undefined，说明变量 a 被提前声明了，只是尚未被赋值。
+    举例2：
+        console.log(a);
+        a = 123;   //此时a相当于window.a
+    程序会报错：Uncaught ReferenceError: a is not defined。
+    </textarea>
+    <span style="display: block; text-align: center;">函数的声明提前</span>
+    <p>函数声明：使用函数声明的形式创建的函数function foo(){}，会被声明提前。也就是说，整个函数会在所有的代码执行之前就被创建完成。所以，在代码顺序里，我们可以先调用函数，再定义函数。
+        使用函数表达式创建的函数var foo = function(){}，不会被声明提前，所以不能在声明前调用。
+        很好理解，因为此时foo被声明了（这里只是变量声明），且为undefined，并没有把 function(){} 赋值给 foo。
+    </p>
+    <textarea name="" id="" cols="60" rows="10">
+    代码举例：
+    fn1();  // 虽然 函数 fn1 的定义是在后面，但是因为被提前声明了， 所以此处可以调用函数
+    function fn1() {
+        console.log('我是函数 fn1');
+    }
+</textarea>
+
+    <span style="display: block; text-align: center;">函数作用域</span>
+    <li>在函数作用域中，也有声明提前的特性：函数中，使用var关键字声明的变量，会在函数中所有的代码执行之前被声明。函数中，没有var声明的变量都是全局变量，而且并不会提前声明。</li>
+    <li>定义形参就相当于在函数作用域中声明了变量。</li>
+    <span style="display: block; text-align: center;">JavaScript 没有块级作用域（ES6之前）</span>
+    <p>在其他编程语言中（如 Java、C#等），存在块级作用域，由{}包括起来。比如在 Java 语言中，if 语句里创建的变量，只能在if语句内部使用.但是，在 JS 中没有块级作用域（ES6之前）。</p>
+
+    <span style="display: block; text-align: center;">作用域链</span>
+    <li>只要是代码，就至少有一个作用域</li>
+    <li>写在函数内部的局部作用域</li>
+    <li>如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域</li>
+    <li>作用域链：内部函数访问外部函数的变量，采用的是链式查找的方式来决定取哪个值，这种结构称之为作用域链。查找时，采用的是就近原则。</li>
+
+    <hr>
+    <span style="display: block; text-align: center;">20-预编译</span>
+    <hr>
+
+    <ul>
+        <span>JavaScript 运行三部曲</span>
+        <li>语法分析</li>
+        <li>预编译</li>
+        <li>解释执行</li>
+        <span>预编译前奏</span>
+        <li>规律1：任何变量，如果未经声明就赋值，此变量是属于 window 的属性，而且不会做变量提升。（注意，无论在哪个作用域内赋值）</li>
+        <li>规律2：一切声明的全局变量，全是window的属性。由此，我们可以看出：window 代表了全局作用域（是说「代表」，没说「等于」）。</li>
+    </ul>
+    <span style="display: block; text-align: center;">预编译</span>
+    <ul>
+        <span>函数预编译的步骤:函数预编译，发生在函数执行的前一刻。</span>
+        <li>创建AO对象。AO即 Activation Object 活跃对象，其实就是「执行期上下文」。</li>
+        <li>找形参和变量声明，将形参名和变量作为 AO 的属性名，值为undefined。</li>
+        <li>将实参值和形参统一，实参的值赋给形参。</li>
+        <li>查找函数声明，函数名作为 AO 对象的属性名，值为整个函数体。</li>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">21-执行期上下文</span>
+    <hr>
+    <p>当函数执行时（准确来说，是在函数发生预编译的前一刻），会创建一个执行期上下文的内部对象。一个执行期上下文定义了一个函数执行时的环境。
+        每调用一次函数，就会创建一个新的上下文对象，他们之间是相互独立且独一无二的。当函数执行完毕，它所产生的执行期上下文会被销毁。
+    </p>
+
+    <hr>
+    <span style="display: block; text-align: center;">22-this</span>
+    <hr>
+    <p>解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个隐含的参数就是this，this指向的是一个对象，这个对象我们称为函数执行的 上下文对象。</p>
+    <ul>
+        <span>根据函数的调用方式的不同，this会指向不同的对象：【重要】</span>
+        <li>1.以函数的形式调用时，this永远都是window。比如fun();相当于window.fun();</li>
+        <li>2.以方法的形式调用时，this是调用方法的那个对象</li>
+        <li>3.以构造函数的形式调用时，this是新创建的那个对象</li>
+        <li>4.使用call和apply调用时，this是指定的那个对象</li>
+        <li>5.ES6中的箭头函数并不会使用上面四条标准的绑定规则，而是会继承外层函数调用的this绑定（无论this绑定到什么）。</li>
+    </ul>
+    <span>类数组 arguments</span>
+    <ul>
+        <span>在调用函数时，浏览器每次都会传递进两个隐含的参数：</span>
+        <li>1.函数的上下文对象 this</li>
+        <li>2.封装实参的对象 arguments,arguments是一个类数组对象，它可以通过索引来操作数据，也可以获取长度
+            arguments代表的是实参。在调用函数时，我们所传递的实参都会在arguments中保存。有个讲究的地方是：arguments只在函数中使用。
+        </li>
+        <span>arguments</span>
+        <li>1、返回函数实参的个数：arguments.length。arguments.length可以用来获取实参的长度。</li>
+        <li>2.返回正在执行的函数：arguments.callee。arguments里边有一个属性叫做callee，这个属性对应一个函数对象，就是当前正在指向的函数对象。</li>
+        <li>3.arguments可以修改元素。之所以说arguments是伪数组，是因为：arguments可以修改元素，但不能改变数组的长短。</li>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">对象的创建&构造函数</span>
+    <hr>
+    <ul>
+        <span>创建自定义对象的几种方法</span>
+        <li>方式一：对象字面量。对象的字面量就是一个{}。里面的属性和方法均是键值对。对象字面量的属性名可以加引号也可以不加，建议不加。如果要使用一些特殊的名字，则必须加引号。
+            键和值之间使用:连接,对象的最后一个属性不要写,。
+        </li>
+        <textarea name="" id="" cols="60" rows="20">
+        var obj = {
+            name: "千古壹号",
+            age: 26,
+            isBoy: true,
+            // 还可以存放一个签到的对象
+            test: {
+                id: 123,
+                tel: 180
+            }
+		    //我们还可以在对象中增加一个方法。以后可以通过obj.sayName()的方式调用这个方法
+            sayName: function() {
+                console.log(this.name);
+            }
+        };
+console.log(JSON.stringify(obj));
+    </textarea>
+        <li>方式二：工厂模式。通过该方法可以大批量的创建对象。弊端:使用工厂方法创建的对象，使用的构造函数都是Object。所以创建的对象都是Object这个类型，就导致我们无法区分出多种不同类型的对象。</li>
+        <textarea name="" id="" cols="30" rows="10">
+        var obj = new Obect();
+obj.name = '猪八戒';
+obj.age = 28;
+obj.gender = '男';
+obj.sayHi = function() {
+    alert('hello world');
+};
+    </textarea>
+        <li>方式三：利用构造函数</li>
+        <textarea name="" id="" cols="60" rows="20">
+            //利用构造函数自定义对象
+            var stu1 = new Student("smyh");
+            console.log(stu1);
+            stu1.sayHi();
+    
+            var stu2 = new Student("vae");
+            console.log(stu2);
+            stu2.sayHi();
+    
+    
+            // 创建一个构造函数
+            function Student(name) {
+                this.name = name;    //this指的是当前对象实例【重要】
+                this.sayHi = function () {
+                    console.log(this.name + "厉害了");
+                }
+            }
+        </textarea>
+    </ul>
+    <span style="display: block; text-align: center;">构造函数</span>
+    <p>构造函数：是一种特殊的函数，主要用来创建和初始化对象，也就是为对象的成员变量赋初始值。它与 new 一起使用才有意义。
+        我们可以把对象中一些公共的属性和方法抽取出来，然后封装到这个构造函数里面。</p>
+    <span>构造函数和普通函数的区别</span>
+    <p>构造函数的创建方式和普通函数没有区别，不同的是构造函数习惯上首字母大写。构造函数和普通函数的区别就是调用方式的不同：普通函数是直接调用，而构造函数需要使用new关键字来调用。</p>
+    <ul>
+        <span>this的指向也有所不同</span>
+        <li>1.以函数的形式调用时，this永远都是window。比如fun();相当于window.fun();</li>
+        <li>2.以方法的形式调用时，this是调用方法的那个对象</li>
+        <li>3.以构造函数的形式调用时，this是新创建的实例对象</li>
+        <span>new 一个构造函数的执行流程</span>
+        <li>开辟内存空间，在内存中创建一个新的空对象。</li>
+        <li>让 this 指向这个新的对象。</li>
+        <li>执行构造函数里面的代码，给这个新对象添加属性和方法。</li>
+        <li>返回这个新对象（所以构造函数里面不需要return）。</li>
+    </ul>
+    <span style="display: block; text-align: center;">类、实例</span>
+    <p>使用同一个构造函数创建的对象，我们称为一类对象，也将一个构造函数称为一个类。通过一个构造函数创建的对象，称为该类的实例。使用 instanceof 可以检查一个对象是否为一个类的实例。</p>
+
+    <span style="display: block; text-align: center;">others</span>
+    <p>json的介绍:对象字面量和json比较像。JSON：JavaScript Object Notation（JavaScript对象表示形式）。
+        JSON和对象字面量的区别：JSON的属性必须用双引号引号引起来，对象字面量可以省略。
+        注：json里一般放常量、数组、对象等，但很少放function。
+        对象和json没有长度，json.length的打印结果是undefined。于是乎，自然也就不能用for循环遍历（因为遍历时需要获取长度length）。
+        json 采用 for...in...进行遍历，和数组的遍历方式不同。如下：
+    </p>
+    <textarea name="" id="" cols="60" rows="10">
+    <script>
+        var myJson = {
+            "name": "smyhvae",
+            "aaa": 111,
+            "bbb": 222
+        };
+
+        //json遍历的方法：for...in...
+        for (var key in myJson) {
+            console.log(key);   //获取 键
+            console.log(myJson[key]); //获取 值（第二种属性绑定和获取值的方法）
+            console.log("------");
+        }
+    </script>
+
+</textarea>
+
+    <hr>
+    <span style="display: block; text-align: center;">对象的基本操作</span>
+    <hr>
+    <p>使用 new 关键字调用的函数，是构造函数 constructor。构造函数是专门用来创建对象的函数。使用typeof检查一个对象时，会返回object。</p>
+    <ul>
+        <span>向对象中添加属性</span>
+        <li>向对象添加属性的语法：对象.属性名 = 属性值;</li>
+        <span>获取对象中的属性</span>
+        <li>方式 1：语法：对象.属性名;</li>
+        <li>方式 2：可以使用[]这种形式去操作属性,语法格式如下：（读取时，也是采用这种方式）对象['属性名'] = 属性值;// 注意，括号里的属性名，必须要加引号。
+            重要：使用[]这种形式去操作属性，更加的灵活，因为，我们可以在[]中直接传递一个变量。
+        </li>
+        <span>修改对象的属性值</span>
+        <li>语法:对象.属性名 = 新值;</li>
+        <span>删除对象的属性</span>
+        <li>语法:delete obj.name;</li>
+        <span>in 运算符,通过该运算符可以检查一个对象中是否含有指定的属性。如果有则返回 true，没有则返回 false。</span>
+        <li>语法:'属性名' in 对象;等同于if (obj.name) </li>
+        <span>遍历对象的属性名：for in。主要用于遍历对象，不建议用来遍历数组。</span>
+        <li>语法：for (const 变量 in 对象名) {}。解释：对象中有几个属性，循环体就会执行几次。每次执行时，会将对象中的每个属性的 属性名 赋值给变量。</li>
+    </ul>
+
+    <hr>
+    <span style="display: block; text-align: center;">25-对象的高级操作：Object.assign()</span>
+    <hr>
+    <p>Object.assgin()的作用是:把 对象 obj1 复制给 obj2（两者之间互不影响）</p>
+    <textarea name="" id="" cols="50" rows="6">
+    代码举例：
+// 复制对象：把 obj1 赋值给 obj1。两者之间互不影响
+var obj2 = Object.assign({}, obj1);
+</textarea>
+    <p>Object.freeze() 冻结对象,Object.freeze() 方法可以冻结一个对象。
+        一个被冻结的对象再也不能被修改；冻结了一个对象则不能向这个对象添加新的属性，
+        不能删除已有属性，不能修改该对象已有属性的可枚举性、可配置性、可写性，以及不能修改已有属性的值。
+        此外，冻结一个对象后该对象的原型也不能被修改。freeze() 返回和传入的参数相同的对象。</p>
+<textarea name="" id="" cols="60" rows="10">
+代码举例：
+const params = {
+    name: 'qianguyihao';
+    port: '8899';
+}
+Object.freeze(params); // 冻结对象 params
+params.port = '8080';// 修改无效
+上方代码中，把 params 对象冻结后，如果想再改变 params 里面的属性值，是无效的。
+</textarea>
+
+
 
 
 </body>
+
 </html>
