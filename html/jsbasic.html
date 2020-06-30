@@ -1854,8 +1854,217 @@ params.port = '8080';// 修改无效
 </textarea>
 
 
+<hr>
+<span  style="display: block; text-align: center;">31-正则表达式</span>
+<hr>
+<p>正则表达式用于定义一些字符串的规则。计算机可以根据正则表达式，来检查一个字符串是否符合指定的规则；或者将字符串中符合规则的内容提取出来。
+</p>
+<ul>
+    <span>创建正则表达式的对象</span>
+    <li>方式一：使用构造函数创建正则表达式的对象。</li>
+    <textarea name="" id="" cols="60" rows="10">
+        // 注意，参数是字符串
+        var 变量 = new RegExp("正则表达式"); 
+        // 注意，两个参数都是字符串
+        var 变量 = new RegExp("正则表达式", "匹配模式"); 
+    </textarea>
+    <li>方式二：使用字面量创建正则表达式</li>
+    <textarea name="" id="" cols="60" rows="10">
+        // 注意，这个语法里没有引号
+        var 变量 = /正则表达式/;  
+        var 变量 = /正则表达式/匹配模式; 
+    </textarea>
+    <span> 传两个参数时：匹配模式 【重要】</span>
+     <li>i 忽略大小写。这里的 i 指的是 ignore。</li>
+     <li>g 全局匹配模式。这里的 g 指的是 global。</li>
+    <li>正则表达式的test()方法</li>
+    <textarea name="" id="" cols="60" rows="10">
+        // 判断字符串 str 是否符合 指定的 myReg 这个正则表达式的规则
+        myReg.test(str); 
+    </textarea>
+    <span>以上两种方式的对比</span>
+    <li>方式一：使用构造函数创建时，更加灵活，因为参数中还可以传递变量。</li>
+    <li>方式二：使用字面量的方式创建，更加简单。</li>
+    <span>全局匹配和非全局匹配的区别</span>
+    <li>对于非全局匹配的正则表达式，test()只会检测是否存在某个目标字符串（只要存在就为 true），多次检测的结果都相同。</li>
+    <li>当设置全局标志 /g 时，一旦字符串中还存在匹配，test() 方法都将返回 true，同时匹配成功后将把 lastIndex 属性的值设置为上次匹配成功结果之后的第一个字符所在的位置，下次匹配将从 lastIndex 指示的位置开始；
+        匹配不成功时返回 false，同时将 lastIndex 属性的值重置为 0。</li>
+</ul>
+<span style="display: block; text-align: center;">正则表达式的简单语法</span>
+<ul>
+    <span>检查一个字符串中是否包含 a或b</span>
+    <li>写法1： var reg = /a|b/;解释：使用 | 表示或的意思。</li>
+    <li>写法2:var reg = /[ab]/;解释：这里的[]也是表示或的意思。 </li>
+    <span>[]表示：或</span>
+    <li>/[ab]/ 等价于 /a|b/：检查一个字符串中是否包含 a或b</li>
+    <li>/[a-z]/：检查一个字符串那种是否包含任意小写字母</li>
+    <li>/[A-Z]/：任意大写字母</li>
+    <li>/[A-z]/：任意字母</li>
+    <li>/[0-9]/：任意数字</li>
+    <li>/a[bde]c/：检查一个字符串中是否包含 abc 或 adc 或 aec</li>
+    <span>[^ ] 表示：除了</span>
+    <textarea name="" id="" cols="70" rows="6">
+        // 规则：字符串中，除了a、b之外，还有没有其他的字符内容？
+        var reg = /[^ab]/;
+        var str = "acb";
+        console.log(reg.test(str)); // 打印结果：true
+    </textarea>
+</ul>
+<span  style="display: block; text-align: center;">支持正则表达式的 String 对象的方法</span>
+<li>split(),将一个字符串拆分成一个数组。可以接受一个正则表达式作为参数。</li>
+<textarea name="" id="" cols="60" rows="10">
+    //代码实现：（通过正则）
+	var str = "1a2b3c4d5e6f7g";
+	var result = str.split(/[A-z]/); // 参数是一个正则表达式：表示所有字母
+	console.log(result);
+//打印结果：
+	["1", "2", "3", "4", "5", "6", "7", ""]
+</textarea>
+<li>search(),搜索字符串中是否含有指定内容。如果搜索到指定内容，则会返回第一次出现的索引；否则返回-1。serach()只会查找第一个，即使设置全局匹配也没用。</li>
+<textarea name="" id="" cols="60" rows="10">
+    //举例：
+	var str = "hello abc hello aec afc";
+	/*
+	* 搜索字符串中是否含有abc 或 aec 或 afc
+	*/
+	result = str.search(/a[bef]c/);
+	console.log(result); // 打印结果：6
+</textarea>
+<li>match(),根据正则表达式，从一个字符串中将符合条件的内容提取出来，封装到一个数组中返回（即使只查询到一个结果）。注意：默认情况下，match()方法只会找到第一个符合要求的内容，找到以后就停止检索。我们可以设置正则表达式为全局匹配模式，这样就会匹配到所有的内容，并以数组的形式返回。</li>
+<textarea name="" id="" cols="100" rows="15">
+    //代码举例
+    var str = "1a2a3a4a5e6f7A8B9C";
+	var result1 = str.match(/[a-z]/);   // 找到符合要求的第一个内容，然后返回
+	var result2 = str.match(/[a-z]/g);  // 设置为“全局匹配”模式，匹配字符串中 所有的小写字母
+	var result3 = str.match(/[a-z]/gi); // 设置多个匹配模式，匹配字符串中 所有的字母（忽略大小写）
+	console.log(result1); // 打印结果：["a"]
+	console.log(result2); // 打印结果：["a", "a", "a", "a", "e", "f"]
+	console.log(result3); // 打印结果：["a", "a", "a", "a", "e", "f", "A", "B", "C"]
+</textarea>
+<li>replace()，将字符串中的指定内容，替换为新的内容并返回。不会修改原字符串。语法：新的字符串 = str.replace(被替换的内容，新的内容);
+    被替换的内容：可以接受一个正则表达式作为参数。
+    新的内容：默认只会替换第一个。如果需要替换全部符合条件的内容，可以设置正则表达式为全局匹配模式。
+</li>
+<textarea name="" id="" cols="60" rows="10">
+    //代码举例：
+    //replace()方法：替换
+    var str2 = "Today is fine day,today is fine day !!!"
+    console.log(str2);
+    //只能替换第一个today
+    console.log(str2.replace("today","tomorrow"));  
+    //这里用到了正则，且为“全局匹配”模式，才能替换所有的today
+    console.log(str2.replace(/today/gi,"tomorrow"));
+</textarea>
+<hr>
+<span style="display: block; text-align: center;">39-事件简介</span>
+<hr>
+<p>事件：就是文档或浏览器窗口中发生的一些特定的交互瞬间。JavaScript 是以事件驱动为核心的一门语言。JavaScript 与 HTML 之间的交互是通过事件实现的。
+</p>
+<ul>
+    <span>事件的三要素：事件源、事件、事件驱动程序。</span>
+    <li>事件源：引发后续事件的html标签。</li>
+    <li>事件：js已经定义好了（见下图）。</li>
+    <li>事件驱动程序：对样式和html的操作。也就是DOM。</li>
+    <span>获取事件源的方式（DOM节点的获取）</span>
+    <li>var div1 = document.getElementById("box1");//方式一：通过id获取单个标签</li>
+    <li>var arr1 = document.getElementsByTagName("div");//方式二：通过 标签名 获得 标签数组，所以有s</li>
+    <li>var arr2 = document.getElementsByClassName("hehe");  //方式三：通过 类名 获得 标签数组，所以有s</li>
+    <span>绑定事件的方式</span>
+<li>方式一：直接绑定匿名函数</li>
+<li>方式二：先单独定义函数，再绑定,绑定的时候，是写fn，不是写fn()。fn代表的是整个函数，而fn()代表的是返回值。</li>
+<li>方式三：行内绑定,是写的"fn()"，不是写的"fn"。因为绑定的这段代码不是写在js代码里的，而是被识别成了字符串。</li>
+</ul>
+<p>onload事件,当页面加载（文本和图片）完毕的时候，触发onload事件。js的加载是和html同步加载的。因此，如果使用元素在定义元素之前，容易报错。这个时候，onload事件就能派上用场了，我们可以把使用元素的代码放在onload里，就能保证这段代码是最后执行。</p>
+
+<hr>
+<span style="display: block ; text-align: center;">40-DOM简介和DOM操作</span>
+<hr>
+<ul>
+    <span>JavaScript基础分为三个部分：</span>
+    <li>ECMAScript：JavaScript的语法标准。包括变量、表达式、运算符、函数、if语句、for语句等。</li>
+    <li>DOM：文档对象模型（Document object Model），操作网页上的元素的API。比如让盒子移动、变色、轮播图等。</li>
+    <li>BOM：浏览器对象模型（Browser Object Model），操作浏览器部分功能的API。比如让浏览器自动滚动。</li>
+    <p>节点（Node）：构成 HTML 网页的最基本单元。网页中的每一个部分都可以称为是一个节点，比如：html标签、属性、文本、注释、整个文档等都是一个节点。
+        节点的类型不同，属性和方法也都不尽相同。所有的节点都是Object。
+    </p>
+     <span>常见节点分为四类：</span>
+     <li>文档节点（文档）：整个 HTML 文档。整个 HTML 文档就是一个文档节点</li>
+     <li>元素节点（标签）：HTML标签。</li>
+     <li>属性节点（属性）：元素的属性。</li>
+     <li>文本节点（文本）：HTML标签中的文本内容（包括标签之间的空格、换行）。</li>
+</ul>
+
+<span style="display: block ; text-align: center;">DOM</span>
+<p>DOM：Document Object Model，文档对象模型。DOM 为文档提供了结构化表示，并定义了如何通过脚本来访问文档结构。目的其实就是为了能让js操作html元素而制定的一个规范。
+    DOM就是由节点组成的.解析过程： HTML加载完毕，渲染引擎会在内存中把HTML文档，生成一个DOM树，getElementById是获取内中DOM上的元素节点。然后操作的时候修改的是该元素的属性。
+</p>
+<img src="../img/dom.png" alt="dom树">
+<ul>
+    <span>DOM可以做什么</span>
+    <li>找对象（元素节点）</li>
+    <li>设置元素的属性值</li>
+    <li>设置元素的样式</li>
+    <li>动态创建和删除元素</li>
+    <li>事件的触发响应：事件源、事件、事件的驱动程序</li>
+</ul>
+<p>DOM访问关系的获取,节点的访问关系，是以属性的方式存在的。要重点知道parentNode和children这两个属性的用法。</p>
+<ul>
+    <li>获取父节点:调用者就是节点。一个节点只有一个父节点，调用方式就是:节点.parentNode</li>
+    <li>获取下一个节点:下一个兄弟节点 = 节点.nextElementSibling || 节点.nextSibling</li>
+    <li>前一个节点:节点.previousElementSibling || 节点.previousSibling</li>
+    <li>获得任意一个兄弟节点：节点自己.parentNode.children[index]</li>
+    <li>第一个子节点:第一个子元素节点 = 节点.firstElementChild || 节点.firstChild</li>
+    <li>最后一个子节点:最后一个子元素节点 = 节点.lastElementChild || 节点.lastChild</li>
+    <li>获取所有的子节点:子节点数组 = 父节点.childNodes; 或者子节点数组 = 父节点.children;   //获取所有节点。用的最多。</li>
+</ul>
+<p>节点的访问关系都是属性。节点的操作都是函数（方法）。</p>
+<span style="display: block ; text-align: center;">DOM节点的操作（重要）</span>
+<li>创建节点格式如下：新的标签(元素节点) = document.createElement("标签名");</li>
+<li>插入节点方式一:父节点.appendChild(新的子节点);解释：父节点的最后插入一个新的子节点。</li>
+<li>插入节点方式二:父节点.insertBefore(新的子节点,作为参考的子节点)。解释:在参考节点前插入一个新的节点。如果参考节点为null，那么他将在父节点里面的最后插入一个子节点。</li>
+<li>删除节点格式如下：父节点.removeChild(子节点);解释：用父节点删除子节点。必须要指定是删除哪个子节点。</li>
+<li>如果我想删除自己这个节点，可以这么做：node1.parentNode.removeChild(node1);</li>
+<li>复制节点（克隆节点）格式如下：要复制的节点.cloneNode(false); 不带参数/带参数false：只复制节点本身，不复制子节点。带参数true：既复制节点本身，也复制其所有的子节点。 </li>
+
+<span style="display: block ; text-align: center;">设置节点的属性</span>
+<li>获取节点的属性值:方式1：元素节点.属性名;或者方式2：设置节点的属性值元素节点.getAttribute("属性名称");方式1和方式2的区别在于：前者是直接操作标签，后者是把标签作为DOM节点。推荐方式2。</li>
+<li>设置节点的属性值，同上方式1：元素节点.属性名方式2：元素节点.setAttribute("属性名", "新的属性值");</li>
+<li>删除节点的属性：元素节点.removeAttribute(属性名);</li>
+
+<span style="display: block ; text-align: center;">DOM对象的属性-补充</span>
+<ul>
+    <span>innerHTML和innerText的区别</span>
+    <li>value：标签的value属性。</li>
+    <li>innerHTML：双闭合标签里面的内容（包含标签）。</li>
+    <li>innerText：双闭合标签里面的内容（不包含标签）。（老版本的火狐用textContent）</li>
+    <span>nodeType属性</span>
+    <li>nodeType == 1 表示的是元素节点（标签） 。记住：在这里，元素就是标签。</li>
+    <li>nodeType == 2 表示是属性节点。</li>
+    <li>nodeType == 3 是文本节点。</li>
+</ul>
+
+<span style="display: block ; text-align: center;">文档的加载</span>
+<p>浏览器在加载一个页面时，是按照自上向下的顺序加载的，读取到一行就运行一行。如果将script标签写到页面的上边，在代码执行时，页面还没有加载，页面没有加载DOM对象也没有加载，会导致无法获取到DOM对象。</p>
+<p>onload 事件会在整个页面加载完成之后才触发。为 window 绑定一个onload事件，该事件对应的响应函数将会在页面加载完成之后执行，这样可以确保我们的代码执行时所有的DOM对象已经加载完毕了。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
-
 </html>
