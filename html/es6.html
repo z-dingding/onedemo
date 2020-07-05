@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es6学习</title>
+</head>
+<body>
+    <hr>
+<span style="display: block; text-align: center;">01-ES5中的严格模式</span>
+<hr>
+    <p>严格模式的理解:理解：除了正常运行模式(混杂模式)，ES5添加了第二种运行模式："严格模式"（strict mode）。
+        顾名思义，这种模式使得Javascript在更严格的语法条件下运行。目的是:消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+        消除代码运行的一些不安全之处，为代码的安全运行保驾护航;为未来新版本的Javascript做好铺垫
+    </p>
+    <p>使用:针对整个脚本文件：将use strict放在脚本文件的第一行，则整个脚本文件将以严格模式运行。
+        针对单个函数：将use strict放在函数体的第一行，则整个函数以严格模式运行。
+        如果浏览器不支持，则这句话只解析为一条简单的语句, 没有任何副作用。
+        脚本文件的变通写法：因为第一种调用方法不利于文件合并，所以更好的做法是，
+        借用第二种方法，将整个脚本文件放在一个立即执行的匿名函数之中。
+    </p>
+    <ul>
+        <span>语法和行为改变</span>
+        <li>必须用var声明变量</li>
+        <li>禁止自定义的函数中的this指向window</li>
+        <li>创建eval作用域</li>
+        <li>对象不能有重名的属性</li>
+    </ul>
+    <span style="display: block; text-align: center;">严格模式和普通模式的区别</span>
+     <ul>
+         <li>全局变量显式声明:在正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式禁止这种用法，全局变量必须显式声明。</li>
+         <li>禁止this关键字指向全局对象</li>
+         <li>创设eval作用域</li>
+         <li>禁止使用with语句,因为with语句无法在编译时就确定，属性到底归属哪个对象。
+        </li>
+         <li>构造函数必须通过new实例化对象</li>
+         <li>为了让代码更安全，禁止函数内部遍历调用栈</li>
+         <li>严格模式下无法删除变量</li>
+         <li>属性相关:严格模式下，对禁止扩展的对象添加新属性，会报错等，这里只是一个举例</li>
+         <li>函数必须声明在顶层：将来Javascript的新版本会引入"块级作用域"。为了与新版本接轨，
+             严格模式只允许在全局作用域或函数作用域的顶层声明函数。也就是说，不允许在非函数的代码块内声明函数。</li>
+         <li>新增关键字：为了向将来Javascript的新版本过渡，严格模式新增了一些保留字：implements, interface, let, package, private, protected, public, static, yield。</li>
+     </ul>
+
+     <hr>
+     <span style="display: block; text-align: center;">02-ES5中的一些扩展</span>
+     <hr>
+    <span style="display: block; text-align: center;">JSON 对象</span>
+     <textarea name="" id="" cols="60" rows="10">
+        1、js对象(数组) --> json对象(数组)：
+        JSON.stringify(obj/arr)
+        2。json对象(数组) --> js对象(数组)：
+        JSON.parse(json)
+        上面这两个方法是ES5中提供的。
+我们要记住，我们通常说的“json字符串”，只有两种：json对象、json数组。
+typeof json字符串的返回结果是string。
+     </textarea>
+     <span style="display: block; text-align: center;">Object的扩展</span>
+     <p>ES5给Object扩展了一些静态方法，常用的有2个</p>
+     <ul>
+         <li>Object.create(prototype, [descriptors]);作用: 以指定对象为原型，创建新的对象。
+             同时，第二个参数可以为为新的对象添加新的属性，并对此属性进行描述。</li>
+             <textarea name="" id="" cols="60" rows="20">
+                var obj1 = {username: 'smyhvae', age: 26};
+                var obj2 = {address: 'shenzhen'};
+            
+                obj2 = Object.create(obj1, {
+                    sex: {
+                        //给obj2添加新的属性`sex`。注意，这一行的冒号不要漏掉
+                        value: '男',  //通过value关键字设置sex的属性值
+                        writable: false, //writable：标识当前属性值是否可修改。如果不写的话，默认为false，不可修改。
+                        configurable: true, //configurable：标识当前属性是否可以被删除。默认为false，不可删除。
+                        enumerable: true //enumerable：标识当前属性是否能用 for in 枚举。 默认为false，不可。
+                    }
+                }); 
+                console.log(obj2);
+             </textarea>
+
+         <li>Object.defineProperties(object, descriptors);作用：为指定对象定义扩展多个属性。</li>
+         <textarea name="" id="" cols="80" rows="30">
+            代码举例：
+            var obj2 = {
+                firstName : 'smyh',
+                lastName : 'vae'
+            };
+            Object.defineProperties(obj2, {
+                fullName : {
+                    get : function () {
+                        return this.firstName + '-' + this.lastName
+                    },
+                    set : function (data) {  //监听扩展属性，当扩展属性发生变化的时候自动调用，自动调用后将变化的值作为实参注入到set函数
+                        var names = data.split('-');
+                        this.firstName = names[0];
+                        this.lastName = names[1];
+                    }
+                }
+            });
+            console.log(obj2.fullName);
+            obj2.firstName = 'tim';
+            obj2.lastName = 'duncan';
+            console.log(obj2.fullName);
+            obj2.fullName = 'kobe-bryant';
+            console.log(obj2.fullName);
+            //get ：用来获取当前属性值的回调函数
+            //set ：修改当前属性值得触发的回调函数，并且实参即为修改后的值
+            //存取器属性：setter,getter一个用来存值，一个用来取值。
+         </textarea>
+     </ul>
+     <span style="display: block; text-align: center;">Object的扩展（二）</span>
+ <ul>
+     <span>obj对象本身就自带了两个方法。格式如下：</span>
+     <li>get 属性名(){} 用来得到当前属性值的回调函数</li>
+     <li>set 属性名(){} 用来监视当前属性值变化的回调函数</li>
+ </ul>
+<textarea name="" id="" cols="60" rows="10">
+    //举例如下：
+    var obj = {
+        firstName : 'kobe',
+        lastName : 'bryant',
+        get fullName(){
+            return this.firstName + ' ' + this.lastName
+        },
+        set fullName(data){
+            var names = data.split(' ');
+            this.firstName = names[0];
+            this.lastName = names[1];
+        }
+    };
+    console.log(obj.fullName);
+    obj.fullName = 'curry stephen';
+    console.log(obj.fullName);
+</textarea>
+
+<span  style="display: block; text-align: center;">数组的扩展</span>
+<ul>
+    <li>1.Array.prototype.indexOf(value)作用：获取 value 在数组中的第一个下标</li>
+    <li>2.Array.prototype.lastIndexOf(value)作用：获取 value 在数组中的最后一个下标。</li>
+    <li>3.Array.prototype.forEach(function(item, index){})作用:遍历数组</li>
+    <li>4.Array.prototype.map(function(item, index){})作用：遍历数组返回一个新的数组，返回的是加工之后的新数组。</li>
+    <li>5.Array.prototype.filter(function(item, index){})作用：遍历过滤出一个新的子数组，返回条件为true的值。</li>
+</ul>
+
+<span  style="display: block; text-align: center;">函数function的扩展：bind()</span>
+<p>ES5中新增了bind()函数来改变this的指向。Function.prototype.bind(obj),作用：将函数内的this绑定为obj, 
+    并将函数返回。bind()传参的方式和call()一样。bind()通常使用在回调函数中，因为回调函数并不会立即调用。
+    如果你希望在回调函数中改变this，不妨使用bind()。</p>
+<ul>
+    <span>面试题: call()、apply()和bind()的区别：</span>
+    <li>都能改变this的指向</li>
+    <li>call()/apply()是立即调用函数</li>
+    <li>bind()：绑定完this后，不会立即调用当前函数，而是将函数返回，因此后面还需要再加()才能调用。</li>
+</ul>
+<hr>
+<span style="display: block; text-align: center;">03-ES6的介绍和环境配置</span>
+<hr>
+<p>ECMAScript 是 JS 的语言标准。而 ES6 是新的 JS 语法标准。
+    PS：严格来说，ECMAScript 还包括其他很多语言的语言标准。
+    很多人在做业务选型的时候，会倾向于选jQuery。其实jQuery的语法是偏向于ES3的。而现在主流的框架 Vue.js 和React.js的语法，是用的ES6。
+    ES6中增加了很多功能上的不足。比如：常量、作用域、对象代理、异步处理、类、继承等。这些在ES5中想实现，比较复杂，但是ES6对它们进行了封装。</p>
+    
+  <ul>
+    <span>建立工程目录</span>
+      <li>（1）先建立一个空的工程目录 ES6Demo，并在目录下建立两个文件夹 src和 dist：src：书写ES6代码，我们写的 js 程序都放在这里。dist：利用 Babel 编译生成的 ES5 代码。我们在 HTML 页面需要引入 dist 里的 js 文件。</li>
+      <li>（2）在 src 里新建文件 index.html：</li>
+  </ul>
+
+<ul>
+    <span>全局安装 Babel-cli</span>
+    <li>（1）初始化项目：在安装Babel之前，需要先用 npm init 先初始化我们的项目。
+        打开终端或者通过cmd打开命令行工具，进入项目目录，输入如下命令：
+        npm init -y</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+<hr>
+<span style="display: block; text-align: center;">04-ES6：变量let、const和块级作用域</span>
+<hr>
+<span style="display: block; text-align: center;">ES6 的变量声明</span>
+<span>ES6 中新增了 let 和 const 来定义变量：</span>
+<li>var：ES5 和 ES6 中，定义全局变量（是 variable 的简写）。用 var 定义的全部变量，有时候会污染整个 js 的作用域。</li>
+<li>let：定义局部变量，替代 var。用 let 声明的变量，只在局部（块级作用域内）起作用。let 是防止数据污染。
+    需要说明的是：当我们定义了let a = 1时，如果我们在同一个作用域内继续定义let a = 2，是会报错的。但是var不会。
+</li>
+<li>const：定义常量（定义后，不可修改）。</li>
+<p>用 let/const 声明的变量，只在局部（块级作用域内）起作用。相反， 用var声明的变量：可以重复声明、没有块级作用域、不能限制。</p>
+
+<span style="display: block; text-align: center;">暂时性死区 DTC
+</span>
+<p>
+    ES6 规定：使用 let/const 声明的变量，会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。
+也就是说，在使用 let/const 声明变量时，变量需要先声明，再使用（声明语句必须放在使用之前）。这在语法上，称为 “暂时性死区”（ temporal dead zone，简称 TDZ）。
+DTC 其实是一种保护机制，可以让我们养成良好的编程习惯。
+</p>
+
+<span style="display: block; text-align: center;">块级作用域</span>
+<ul>
+    <span>var/let/const 的共同点</span>
+    <li>全局作用域中定义的变量，可以在函数中使用。</li>
+    <li>函数中声明的变量，只能在函数及其子函数中使用，外部无法使用。</li>
+    <span>var/let/const 的区别</span>
+    <li>使用 var 声明的变量存在于最近的函数或全局作用域中，没有块级作用域的机制。没有块作用域很容易造成全局污染。</li>
+</ul>
+
+
+<hr>
+<span style="display: block; text-align: center;">05-ES6：变量的解构赋值</span>
+<hr>
+
+<p>S6允许我们，通过数组或者对象的方式，对一组变量进行赋值，这被称为解构。
+    解构赋值在实际开发中可以大量减少我们的代码量，并且让程序结构更清晰。在解构赋值时，是允许使用默认值的。</p>
+    <span style="display: block; text-align: center;">数组的解构赋值</span> 
+<textarea name="" id="" cols="60" rows="18">
+    举例：
+通常情况下，我们在为一组变量赋值时，一般是这样写：
+	let a = 0;
+	let b = 1;
+	let c = 2;
+现在我们可以通过数组解构的方式进行赋值：
+	let [a, b, c] = [1, 2, 3];
+二者的效果是一样的。
+在解构赋值时，是允许使用默认值的。举例如下：
+{
+    //一个变量时
+    let [foo = true] = [];
+    console.log(foo); //输出结果：true
+}
+</textarea>
+<p>如果我们在赋值时，采用的是 undefined或者null，那会有什么区别呢？</p>undefined：相当于什么都没有，此时采用默认值。null：相当于有值，但值为 null。
+
+<span style="display: block; text-align: center;">对象的解构赋值</span>
+<textarea name="" id="" cols="70" rows="10">
+    举例如下：
+	let { foo, bar } = { bar: '我是 bar 的值', foo: '我是 foo 的值'};
+	console.log(foo + ',' + bar); //输出结果：我是键 foo 的值,我是键 bar 的值
+</textarea>
+<p>上方代码可以看出，对象的解构与数组的结构，有一个重要的区别：数组的元素是按次序排列的，
+    变量的取值由它的位置决定；而对象的属性没有次序，是根据键来取值的。</p>
+
+    <span style="display: block; text-align: center;">圆括号的使用</span>
+    <textarea name="" id="" cols="70" rows="15">
+        如果变量 foo 在解构之前就已经定义了，此时你再去解构，就会出现问题。下面是错误的代码，编译会报错：
+
+	let foo = 'haha';
+	{ foo } = { foo: 'smyhvae' };
+	console.log(foo);
+要解决报错，只要在解构的语句外边，加一个圆括号即可：
+
+	let foo = 'haha';
+	({ foo } = { foo: 'smyhvae' });
+	console.log(foo); //输出结果：smyhva
+    </textarea>
+
+<span style="display: block; text-align: center;">字符串解构</span>
+<p>字符串也可以解构，这是因为，此时字符串被转换成了一个类似数组的对象。举例如下：</p>
+<textarea name="" id="" cols="60" rows="10">
+const [a, b, c, d] = 'smyhvae';
+console.log(a); //结果:s
+console.log(b); //结果:m
+console.log(c); //结果:y
+console.log(d); //结果:h
+
+console.log(typeof a);  //输出结果：string
+</textarea>
+
+<span style="display: block; text-align: center;">for of 循环</span>
+<p>for…of 的循环可以避免我们开拓内存空间，增加代码运行效率，所以建议大家在以后的工作中使用for…of循环。for of既可以遍历数组，也可以遍历Map对象。
+    注意，上面的数组中，for of获取的是数组里的值；for in获取的是index索引值。ES6 中，如果我们要遍历一个数组，可以这样做：
+</p>
+
+<textarea name="" id="" cols="60" rows="10">
+	let arr1 = [1, 2, 3, 4, 5];
+
+	for (let value of arr1) {
+	    console.log(value);
+	}
+</textarea>
+<span style="display: block; text-align: center;">模板字符串</span>
+<p> 现在有了 ES6 语法，字符串拼接可以这样写：</p>
+<textarea name="" id="" cols="60" rows="10">
+    var name = 'smyhvae';
+    var age = '26';
+    console.log('name:'+name+',age:'+age);   //传统写法
+    console.log(`name:${name},age:${age}`);  //ES6 写法
+    //注意，上方代码中，倒数第二行用的符号是单引号，最后一行用的符号是反引号（在tab键的上方）。
+</textarea>
+
+
+<hr>
+<span style="display: block; text-align: center;">06-ES6：函数扩展</span>
+<hr>
+<span>ES6在函数扩展方面，新增了很多特性。例如：</span>
+<li>箭头函数</li>
+<li>参数默认值</li>
+<li>参数结构赋值</li>
+<li>扩展运算符</li>
+<li>rest参数</li>
+<li>this绑定</li>
+<li>尾调用</li>
+
+<span style="display: block; text-align: center;">箭头函数</span>
+<textarea name="" id="" cols="60" rows="15">
+   // 定义和调用函数：（ES6中的写法）
+   var fn2 = (a, b) => a + b;
+   console.log(fn2(1, 2));  //输出结果：3
+   //在箭头函数中，如果方法体内有两句话，那就需要在方法体外边加上{}括号。如下：
+   var fn2 = (a, b) => {
+    console.log('haha');
+    return a + b;
+};
+console.log(fn2(1, 2));  //输出结果：3
+</textarea>
+<li>如果有且仅有1个参数，则()可以省略</li>
+<li>如果方法体内有且仅有1条语句，则{}可以省略，但前提是，这条语句必须是 return。</li>
+
+<p>this的指向,箭头函数只是为了让函数写起来更优雅吗？当然不是，还有一个很大的作用是与this的指向有关。
+    ES5 中，this指向的是函数被调用的对象；而 ES6 的箭头函数中，this指向的是函数被定义时。
+    简单来说，箭头函数中的this，是不会变的，是永远绑定在当前的环境下。
+</p>
+
+<span style="display: block; text-align: center;">参数默认值</span>
+<textarea name="" id="" cols="60" rows="10">
+    function fn(param = 'hello') {
+        console.log(param);
+    }
+</textarea>
+<li>方法被调用时，如果没有给参数赋值，那就是用默认值；</li>
+<li>方法被调用时，如果给参数赋值了新的值，那就用新的值。</li>
+
+<span style="display: block; text-align: center;">扩展运算符</span>
+<p>扩展运算符的格式为...有了ES6，当我们在定义一个方法，但是不确定其参数的个数时，我们就可以用扩展运算符作为参数。</p>
+
+<span style="display: block; text-align: center;">rest 运算符</span>
+<p>rest运算符的格式为...变量名</p>
+<p>rest运算符适用于：知道前面的一部分参数的数量，但对于后面剩余的参数数量未知的情况。</p>
+<textarea name="" id="" cols="60" rows="10">
+	function fn(first, second, ...arg) {
+	    console.log(arg.length);
+	}
+
+	fn(0, 1, 2, 3, 4, 5, 6);  //调用函数后，输出结果为 5
+
+</textarea>
+
+<span style="display: block; text-align: center;">模块化</span>
+<p>
+    模块化的意义：
+
+比如说，当我需要用到jQuery库时，我会把jQuery.js文件引入到我自己代码的最前面；当我需要用到vue框架时，我会把vue.js文件引入到我自己代码的最前面。
+
+可是，如果有20个这样的文件，就会产生20次http请求。这种做法的性能，肯定是不能接受的。
+
+如果把20个文件直接写在一个文件里，肯定是不方便维护的。可如果写成20个文件，这20个文件又不好排序。这就是一个很矛盾的事情，于是，模块化就诞生了。
+</p>
+
+<p>
+    模块化历程：commonJS、AMD规范（RequireJS）、CMD规范（SeaJS）；import & export
+export：
+静态化：必须在顶部，不能使用条件语句，自动采用严格模式。（静态化有利于性能以及代码的稳定性）
+</p>
+
+
+<hr>
+<span style="display: block; text-align: center;">07-ES6：字符串、数组、对象的扩展</span>
+<hr>
+
+<span style="display: block; text-align: center;">字符串的扩展</span>
+<p>ES6中的字符串扩展，用得少，而且逻辑相对简单。如下：</p>
+<ul>
+   <li>includes(str)：判断是否包含指定的字符串</li>
+   <li>startsWith(str)：判断是否以指定字符串开头</li>
+   <li>endsWith(str)：判断是否以指定字符串结尾</li>
+   <li>repeat(count)：重复指定次数</li>
+</ul>
+
+
+<span style="display: block; text-align: center;">Number 的扩展
+</span>
+
+<ul>
+    <li>二进制与八进制数值表示法: 二进制用0b, 八进制用0o。</li>
+    <li>Number.isFinite(i)：判断是否为有限大的数。比如Infinity这种无穷大的数，返回的就是false。</li>
+    <li>Number.isNaN(i)：判断是否为NaN。</li>
+    <li>Number.isInteger(i)：判断是否为整数。</li>
+    <li>Number.parseInt(str)：将字符串转换为对应的数值。</li>
+    <li>Math.trunc(i)：去除小数部分。</li>
+</ul>
+
+
+<span style="display: block; text-align: center;">数组的扩展</span>
+<ul>
+    <li>扩展1：Array.from()作用：将伪数组或可遍历对象转换为真数组。</li>
+    <li>Array.of()作用：将一系列值转换成数组。</li>
+    <li>find() 作用：找出第一个满足「指定条件返回true」的元素。</li>
+    <li>findIndex()找出第一个满足「指定条件返回true」的元素的index。</li>
+</ul>
+
+<span style="display: block; text-align: center;">对象的扩展</span>
+<li>Object.is(v1, v2)。作用：判断两个数据是否完全相等。底层是通过字符串来判断的。</li>
+<li>Object.assign(目标对象, 源对象1, 源对象2...)；作用： 将源对象的属性追加到目标对象上。如果对象里属性名相同，会被覆盖。其实可以理解成：将多个对象合并为一个新的对象。</li>
+<li>__proto__属性;下方代码中，obj2本身是没有属性的，但是通过__proto__属性和obj1产生关联，于是就可以获得obj1里的属性。</li>
+<textarea name="" id="" cols="60" rows="20">
+    let obj1 = {name:'smyhvae'};
+    let obj2 = {};
+
+    obj2.__proto__ = obj1;
+
+    console.log(obj1);
+    console.log(obj2);
+    console.log(obj2.name); 
+</textarea>
+
+
+<hr>
+<span style="display: block; text-align: center;">Promise入门详解</span>
+<hr>
+
+<span style="display: block; text-align: center;">异步调用</span>
+
+<p>JavaScript 的执行环境是单线程。
+    所谓单线程，是指 JS 引擎中负责解释和执行 JavaScript 代码的线程只有一个，也就是一次只能完成一项任务，这个任务执行完后才能执行下一个，它会「阻塞」其他任务。这个任务可称为主线程。
+    异步模式可以一起执行多个任务。</p>
+<ul>
+    <span>常见的异步模式有以下几种：</span>
+    <li>定时器</li>
+    <li>接口调用</li>
+    <li>事件函数</li>
+</ul>
+
+
+<span style="display: block; text-align: center;">接口调用的方式</span>
+<ul>
+    <span>js 中常见的接口调用方式，有以下几种：</span>
+    <li>原生 ajax</li>
+    <li>基于 jQuery 的 ajax</li>
+    <li>Fetch</li>
+    <li>Promise</li>
+    <li>axios</li>
+    <span> 多次异步调用的依赖分析</span>
+    <li>多次异步调用的结果，顺序可能不同步。</li>
+    <li>异步调用的结果如果存在依赖，则需要嵌套。</li>
+</ul>
+<p>在 ES5 中，当进行多层嵌套回调时，会导致代码层次过多，很难进行维护和二次开发；而且会导致回调地狱的问题。ES6 中的 Promise 就可以解决这两个问题。</p>
+
+<span style="display: block; text-align: center;">Promise</span>
+<span style="display: block; text-align: center;">Promise 的介绍和优点</span>
+<p>ES6 中的 Promise 是异步编程的一种方案。从语法上讲，Promise 是一个对象，它可以获取异步操作的消息。Promise 对象, 可以用同步的表现形式来书写异步代码（也就是说，代码看起来是同步的，但本质上的运行过程是异步的）。使用 Promise 主要有以下好处：</p>
+<li>可以很好地解决回调地狱的问题（避免了层层嵌套的回调函数）</li>
+<li>语法非常简洁、可读性强。Promise 对象提供了简洁的 API，使得控制异步操作更加容易。</li>
+<span style="display: block; text-align: center;">Promise 的基本用法</span>
+<ul>
+    <li>使用 new 实例化一个 Promise 对象，Promise 的构造函数中传递一个参数。这个参数是一个函数，该函数用于处理异步任务。</li>
+    <li>并且传入两个参数：resolve 和 reject，分别表示异步执行成功后的回调函数和异步执行失败后的回调函数；</li>
+    <li>通过 promise.then() 处理返回结果。这里的 promise 指的是 Promise 实例。</li>
+</ul>
+
+<span style="display: block; text-align: center;">promise 对象的 3 个状态（了解即可）</span>
+<ul>
+    <li>初始化状态（等待状态）：pending</li>
+    <li>成功状态：fullfilled</li>
+    <li>失败状态：rejected</li>
+</ul>
+<textarea name="" id="" cols="80" rows="20" style="display: block;">
+    1）当 new Promise()执行之后，promise 对象的状态会被初始化为pending，这个状态是初始化状态。new Promise()这行代码，括号里的内容是同步执行的。括号里定义一个 function，function 有两个参数：resolve 和 reject。如下：
+
+如果请求成功了，则执行 resolve()，此时，promise 的状态会被自动修改为 fullfilled。
+
+如果请求失败了，则执行 reject()，此时，promise 的状态会被自动修改为 rejected
+
+（2）promise.then()方法，括号里面有两个参数，分别代表两个函数 function1 和 function2：
+
+如果 promise 的状态为 fullfilled（意思是：如果请求成功），则执行 function1 里的内容
+
+如果 promise 的状态为 rejected（意思是，如果请求失败），则执行 function2 里的内容
+
+另外，resolve()和 reject()这两个方法，是可以给 promise.then()传递参数的。
+</textarea>
+
+<textarea name="" id="" cols="70" rows="30">
+    let promise = new Promise((resolve, reject) => {
+        //进来之后，状态为pending
+        console.log('111'); //这行代码是同步的
+        //开始执行异步操作（这里开始，写异步的代码，比如ajax请求 or 开启定时器）
+        if (异步的ajax请求成功) {
+          console.log('333');
+          resolve('haha'); //如果请求成功了，请写resolve()，此时，promise的状态会被自动修改为fullfilled
+        } else {
+          reject('555'); //如果请求失败了，请写reject()，此时，promise的状态会被自动修改为rejected
+        }
+      });
+      console.log('222');
+      
+      //调用promise的then()
+      promise.then(
+        (successMsg) => {
+          //如果promise的状态为fullfilled，则执行这里的代码
+          console.log(successMsg, '成功了');
+        },
+        (errorMsg) => {
+          //如果promise的状态为rejected，则执行这里的代码
+          console.log(errorMsg, '失败了');
+        }
+      );
+</textarea>
+
+<span style="display: block; text-align: center;">基于 Promise 处理多次 Ajax 请求（链式调用）【重要】</span>
+<p>接口的多层嵌套调用就是请求 2 必须依赖请求 1 的结果。有了 Promise 之后，我们可以把多层嵌套调用按照线性的方式进行书写，非常优雅。
+    也就是说：Promise 可以把原本的多层嵌套调用改进为链式调用。</p>
+
+<textarea name="" id="" cols="60" rows="20">
+    // 先发起request1，等resolve后再发起request2；紧接着，等 request2有了 resolve之后，再发起 request3
+      request1()
+        .then((res1) => {
+          // 接口1请求成功后，打印接口1的返回结果
+          console.log(res1);
+          return request2();
+        })
+        .then((res2) => {
+          // 接口2请求成功后，打印接口2的返回结果
+          console.log(res2);
+          return request3();
+        })
+        .then((res3) => {
+          // 接口3请求成功后，打印接口3的返回结果
+          console.log(res3);
+        });
+</textarea>
+
+<ul>
+    <span>return 的函数返回值</span>
+    <li>情况 1：返回 Promise 实例对象。返回的该实例对象会调用下一个 then。</li>
+    <li>情况 2：返回普通值。返回的普通值会直接传递给下一个 then，通过 then 参数中函数的参数接收该值。</li>
+</ul>
+
+
+<span  style="display: block; text-align: center;">Promise 的常用 API：实例方法【重要】</span>
+<ul>
+    <li>promise.then()：获取异步任务的正常结果。</li>
+    <li>promise.catch()：获取异步任务的异常结果。</li>
+    <li>promise.finaly()：异步任务无论成功与否，都会执行。</li>
+</ul>
+
+<span style="display: block; text-align: center;">Promise 的常用 API：对象方法【重要】</span>
+<ul>
+    <li>Promise.all()：并发处理多个异步任务，所有任务都执行成功，才能得到结果。</li>
+    <li>Promise.race(): 并发处理多个异步任务，只要有一个任务执行成功，就能得到结果。</li>
+</ul>
+
+<hr>
+<span style="display: block; text-align: center;">09-ES7：async函数详解</span>
+<hr>
+<p>async/await （异步函数）概述:async/await 是在 ES7 中引入的新语法，可以更加方便地进行异步操作。本质： Generator 的语法糖。</p>
+<ul>
+    <li>async 的返回值是 Promise 实例对象。</li>
+    <li>await 可以得到异步结果。</li>
+    <li>我们在普通的函数前面加上 async 关键字，就成了 async 函数。</li>
+</ul>
+<textarea name="" id="" cols="70" rows="28">
+//async/await 的基本用法
+const request1 = function() {
+    const promise = new Promise(resolve => {
+        request('https://www.baidu.com', function(response) {
+            if (response.retCode == 200) {
+                // 这里的 response 是接口1的返回结果
+                resolve('request1 success'+ response);
+            } else {
+                reject('接口请求失败');
+            }
+        });
+    });
+
+    return promise;
+};
+
+async function queryData() {
+    const response = await request1();
+    });
+    return response;
+}
+queryData().then(data => {
+    console.log(data);
+});
+</textarea>
+
+<span  style="display: block; text-align: center;">基于 async/await 处理多次 Ajax 请求【重要】</span>
+
+<p>接口的多层嵌套调用。之前学过 Promise，它可以把原本的多层嵌套调用改进为链式调用。
+    而今天要学习的 async/await ，可以把原本的“多层嵌套调用”改成类似于同步的写法，非常优雅。</p>
+
+
+
+
+</body>
+</html>
+
