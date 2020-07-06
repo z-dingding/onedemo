@@ -2,7 +2,6 @@
 var dragDiv = document.querySelector(".div_drag");
 var targetDiv = document.querySelector(".div_dragTwo");
 
-
 dragDiv.ondragstart = function () {
     console.log("拖拽开始");
 }

@@ -9,3 +9,21 @@ const b = 'qianguyihao';
 console.log(a);
 console.log(b);
 
+
+
+
+
+let mySymbol = Symbol('0');
+let mySymbol2 = Symbol('1');
+
+let obj = {
+    name: 'smyhvae',
+    age: 26
+};
+
+//obj.mySymbol = 'male'; //错误：不能用 . 这个符号给对象添加 Symbol 属性。
+obj[mySymbol] = 'hello';    //正确：通过**属性选择器**给对象添加 Symbol 属性。后面的属性值随便写。
+obj[mySymbol2] = 'hello2';    //正确：通过**属性选择器**给对象添加 Symbol 属性。后面的属性值随便写。
+
+console.log(obj);
+console.log(obj[mySymbol2]);

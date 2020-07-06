@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript进阶</title>
+</head>
+
+<body>
+    <hr>
+    <span style="display: block;text-align: center;">01-var、let、const的区别</span>
+    <hr>
+    <span style="display: block;text-align: center;">var、let、const 的区别</span>
+    <ul>
+        <li>var 声明的变量会挂载在 window 对象上，而 let 和 const 声明的变量不会。var 的这一特性，会造成 window 全局变量的污染。举例如下：</li>
+        <textarea name="" id="" cols="60" rows="10">
+            var innerHeight = 100;
+            console.log(window.innerHeight); // 打印结果：永远都是100  ==> 会覆盖 window 自带的 innerHeight 属性
+         </textarea>
+        <li>var 声明的变量存在变量提升，let 和 const 声明的变量不存在变量提升</li>
+        <textarea name="" id="" cols="60" rows="10">
+            举例：(先使用，再声明)
+            console.log(a); // 打印结果：undefined ==> a已经声明但没有赋值
+            var a = '我是a';
+         </textarea>
+        <li>var 声明不存在块级作用域，let 和 const 声明存在块级作用域</li>
+        <textarea name="" id="" cols="90" rows="13">
+            {
+                var a = '我是a';
+                let b = '我是b';
+                const c = '我是c';
+            }
+            
+            console.log(a); // 我是a
+            // 报错：Uncaught ReferenceError: b is not defined ==> 找不到b这个变量
+            console.log(b); 
+            // 报错：Uncaught ReferenceError: c is not defined ==> 找不到c这个变量
+            console.log(c); 
+         </textarea>
+        <li>同一作用域下，var 可以声明同名变量，let 和 const 不能声明同名变量</li>
+        <textarea name="" id="" cols="60" rows="10">
+            var a = '我是a';
+            var a = 'qianguyihao';
+            console.log(a); // 打印结果：qianguyihao
+            let b = '我是b';
+            let b = 'qianguyihao';
+            console.log(b); //报错：Uncaught SyntaxError: Identifier 'b' has already been declared  ==> 变量 b 已经被声明了
+         </textarea>
+        <li>let 和 const 的暂时性死区（DTC）</li>
+        <textarea name="" id="" cols="60" rows="10">
+            const name = 'qianguyihao';
+
+            function foo() {
+                console.log(name);
+                const name = 'hello';
+            }
+            // 执行函数后，控制台报错：Uncaught ReferenceError: Cannot access 'name' before initialization
+            foo(); 
+         </textarea>
+        <p>代码解释：如果在当前块级作用域中使用了变量 name，并且当前块级作用域中通过 let/const 声明了这个变量，那么，声明语句必须放在使用之前
+            ，也就是所谓的 DTC（暂时性死区）。DTC 其实是一种保护机制，可以让我们养成良好的编程习惯。</p>
+        <li>const：一旦声明必须赋值；声明后不能再修改</li>
+    </ul>
+    <p>总结：基于上面的种种区别，我们可以知道：var 声明的变量，很容易造成全局污染。以后我们尽量使用 let 和 const 声明变量吧。</p>
+
+    <span style="display: block;text-align: center;">const 常量到底能不能被修改</span>
+    <ul>
+        <span>我们知道：用 const 声明的变量无法被修改。但还有一点，我们一定要记住：</span>
+        <li>如果用 const 声明基本数据类型，则无法被修改；</li>
+        <li>如果用 const 声明引用数据类型（即“对象”），这里的“无法被修改”指的是不能改变内存地址的引用；但对象里的内容是可以被修改的。</li>
+    </ul>
+    <textarea name="" id="" cols="100" rows="25">
+    举例 1：（不能修改）
+
+const name = 'qianguyihao';
+name = 'vae'; // 因为无法被修改，所以报错：Uncaught TypeError: Assignment to constant variable
+    举例 2：（不能修改）
+
+const obj = {
+    name: 'qianguyihao',
+    age: 28,
+};
+
+obj = { name: 'vae' }; // 因为无法被修改，所以报错：Uncaught TypeError: Assignment to constant variable
+举例 3：（可以修改）
+
+const obj = {
+    name: 'qianguyihao',
+    age: 28,
+};
+obj.name = 'vae'; // 对象里的 name 属性可以被修改
+</textarea>
+
+
+    <hr>
+    <span style="display: block;text-align: center;">JavaScript开发积累</span>
+    <hr>
+    <ul>
+        <span>方法的注释</span>
+        <li>方法写完之后（注意，一定要先写完整），我们在方法的前面输入/**，然后回车，会发现，注释的格式会自动补齐。</li>
+        <span>断点调试</span>
+        <li>先让程序运行一遍。</li>
+        <li>f12，弹出代码调试工具</li>
+        <li>打断点：</li>
+        <span>给数组、对象赋值</span>
+        <li>数组赋值的正确写法：this.todayList.splice(0, 0, ...dataList);</li>
+        <li>对象赋值的正确写法：Object.assign(obj2, obj1);将obj1 的值追加到obj2中。如果对象里的属性名相同，会被覆盖。</li>
+        <span>在新的窗口中打开url</span>
+        <li>在原来的窗体中跳转到新页面：window.location.href="要跳转的新页面";</li>
+        <li>在新窗体中打开新页面：window.open('你所要跳转的新页面');</li>
+        <li>JavaScript 新特性：Optional Chaining（可选链式调用）语法</li>
+        <textarea name="" id="" cols="100" rows="10" style="display: block;">
+        以往写代码，我们一般都这么写：
+if (result && result.user && result.user.name && result.user.name.length) {
+    console.log('qianguyihao');
+}
+有了 Optinal Chain 语法之后，就简洁很多了，可以这么写：
+if (result?.user?.name?.length) {
+    console.log('qianguyihao');
+}
+    </textarea>
+        <li>判断字符串的包含关系</li>
+        <textarea name="" id="" cols="60" rows="10" tyle="display: block;">
+    如果我们要判断变量 str 是否在 qiangu1、qiangu2的合集里，我们应该这样写：
+
+var str = 'qiangu2';
+if (str == 'qiangu1' || str == 'qiangu2') {
+    console.log('qianguyihao');
+}
+</textarea>
+    </ul>
+
+
+
+    <hr>
+    <span style="display: block;text-align: center;">call、apply、bind的区别</span>
+    <hr>
+    <span style="display: block;text-align: center;">call()和apply()</span>
+    <p>这两个方法都是函数对象的方法，需要通过函数对象来调用。当函数调用call()和apply()时，函数都会立即执行。</p>
+    <ul>
+        <li>都可以用来改变函数的this对象的指向。</li>
+        <li>第一个参数都是this要指向的对象（函数执行时，this将指向这个对象），后续参数用来传实参。</li>
+    </ul>
+    <p>JS提供的绝大多数函数以及我们自己创建的所有函数，都可以使用call 和apply方法。
+        它们的第一个参数是一个对象。因为你可以直接指定 this 绑定的对象，因此我们称之为显式绑定。
+    </p>
+    <textarea name="" id="" cols="60" rows="10">
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2
+    };
+    // 将 this 指向 obj
+    foo.apply(obj); //打印结果：2
+</textarea>
+    <ul>
+        <span>第一个参数的传递</span>
+        <li>thisObj不传或者为null、undefined时，函数中的this会指向window对象（非严格模式）。</li>
+        <li>传递一个别的函数名时，函数中的this将指向这个函数的引用。</li>
+        <li>传递的值为数字、布尔值、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String。</li>
+        <li>传递一个对象时，函数中的this则指向传递的这个对象。</li>
+    </ul>
+    <ul>
+        <span>call()和apply()的区别</span>
+        <li>call()和apply()方法都可以将实参在对象之后依次传递，但是apply()方法需要将实参封装到一个数组中统一传递（即使只有实参只有一个，也要放到数组中）。
+        </li>
+        <span>call()和apply()的作用</span>
+        <li>改变this的指向</li>
+        <li>实现继承。Father.call(this)</li>
+    </ul>
+
+    <span style="display: block;text-align: center;">bind()</span>
+    <ul>
+        <li>都能改变this的指向</li>
+        <li>call()/apply()是立即调用函数</li>
+        <li>bind()是将函数返回，因此后面还需要加()才能调用。</li>
+        <li>bind()传参的方式与call()相同。</li>
+    </ul>
+
+
+<hr>
+<span style="display: block;text-align: center;">this</span>
+<hr>
+<ul>
+    <span>this的作用</span>
+    <li>this可以帮我们简化很多代码。比如xiaoming.name、xiaoming.age可以直接写成this.name、this.age。</li>
+    <li>特别是当我们不知道一个对象是什么，或者这个对象没有名字但又很想调用它的时候，就会使用到this对象。</li>
+    <span>全局作用域中的this</span>
+    <li>当一段代码在浏览器中执行时，所有的全局变量和对象都是在window对象上定义的。换而言之，所有的全局变量和对象都属于window对象。</li>
+    <span>this的定律</span>
+    <li>this关键字永远指向函数（方法）运行时的所有者。</li>
+    <li>函数赋值给变量时，this指向window</li>
+    <li>以函数形式调用时，this永远都是window</li>
+    <li>以方法的形式调用时，this是调用方法的对象</li>
+    <span>解决闭包中的this指向问题</span>
+    <li></li>内部函数是可以访问到外部函数的变量的。</li>
+    <li>方式一：直接通过父函数的名字访问</li>
+    <li>方式二：如果不知道父函数的名字，在父函数里加一句_this = this，此时_this相当于父函数的名字。</li>
+</ul>
+
+
+<hr>
+<span style="display: block;text-align: center;">作用域和闭包</span>
+<hr>
+<span style="display: block;text-align: center;">执行上下文</span>
+<ul>
+    <span>执行上下文主要有两种情况：</span>
+    <li>全局代码： 一段&lt;script&gt;标签里，有一个全局的执行上下文。所做的事情是：变量定义、函数声明</li>
+    <li>函数代码：每个函数里有一个上下文。所做的事情是：变量定义、函数声明、this、arguments</li>
+</ul>
+<p>全局执行上下文:在执行全局代码前将window确定为全局执行上下文。</p>
+<ul>
+    <span>(1)对全局数据进行预处理：（并没有赋值）</span>
+    <li>var定义的全局变量==>undefined, 添加为window的属性</li>
+    <li>function声明的全局函数==>赋值(fun), 添加为window的方法</li>
+    <li>this==>赋值(window)</li>
+    <span>（2）开始执行全局代码</span>
+</ul>
+<p>函数执行上下文:在调用函数, 准备执行函数体之前, 创建对应的函数执行上下文对象(虚拟的, 存在于栈中)。</p>
+<ul>
+    <span>对局部数据进行预处理：</span>
+    <li>形参变量==>赋值(实参)==>添加为执行上下文的属性</li>
+    <li>arguments==>赋值(实参列表), 添加为执行上下文的属性</li>
+    <li>var定义的局部变量==>undefined, 添加为执行上下文的属性</li>
+    <li>function声明的函数 ==>赋值(fun), 添加为执行上下文的方法</li>
+    <li>this==>赋值(调用函数的对象)</li>
+    <span>开始执行函数体代码</span>
+</ul>
+<ul>
+    <span>执行上下文栈:</span>
+    <li>1.在全局代码执行前, JS引擎就会创建一个栈来存储管理所有的执行上下文对象</li>
+    <li>2.在全局执行上下文(window)确定后, 将其添加到栈中(压栈)</li>
+    <li>3.在函数执行上下文创建后, 将其添加到栈中(压栈)</li>
+    <li>4.在当前函数执行完后,将栈顶的对象移除(出栈)</li>
+    <li>5.当所有的代码执行完后, 栈中只剩下window</li>
+</ul>
+
+<p>this指的是，调用函数的那个对象。this永远指向函数运行时所在的对象。解析器在调用函数每次都会向函数内部传递进一个隐含的参数，这个隐含的参数就是this。</p>
+<ul>
+    <span>根据函数的调用方式的不同，this会指向不同的对象：【重要】</span>
+    <li>1.以函数的形式调用时，this永远都是window。比如fun();相当于window.fun();</li>
+    <textarea name="" id="" cols="30" rows="10">
+        function fn() {
+            console.log(this); //this === window
+        }
+        fn();
+    </textarea>
+    <li>2.以方法的形式调用时，this是调用方法的那个对象</li>
+    <textarea name="" id="" cols="30" rows="10">
+        var obj = {
+            name: 'A',
+            printName: function () {
+                console.log(this.name);
+            }
+        }
+        obj.printName();
+    </textarea>
+    <li>3.以构造函数的形式调用时，this是新创建的那个对象</li>
+    <textarea name="" id="" cols="30" rows="10">
+        例如：
+    function Foo(name) {
+        //this = {};
+        this.name = name;
+        //return this;
+    }
+    </textarea>
+    <li>4.使用call和apply调用时，this是指定的那个对象</li>
+    <li>需要特别提醒的是：this的指向在函数定义时无法确认，只有函数执行时才能确定。</li>
+</ul>
+
+<span  style="display: block;text-align: center;">作用域</span>
+<p>作用域指一个变量的作用范围。它是静态的(相对于上下文对象), 在编写代码时就确定了。作用：隔离变量，不同作用域下同名变量不会有冲突。</p>
+<ul>
+    <span>作用域的分类：</span>
+    <li>全局作用域</li>
+    <li>函数作用域</li>
+    <li>没有块级作用域(ES6有了)</li>
+</ul>
+
+<span style="display: block;text-align: center;">全局作用域</span>
+<p>直接编写在script标签中的JS代码，都在全局作用域。全局作用域中的变量都是全局变量，在页面的任意的部分都可以访问到。</p>
+<ul>
+    <span>在全局作用域中：</span>
+    <li>在全局作用域中有一个全局对象window，它代表的是一个浏览器的窗口，它由浏览器创建我们可以直接使用。</li>
+    <li>创建的变量都会作为window对象的属性保存</li>
+    <li>创建的函数都会作为window对象的方法保存。</li>
+</ul>
+<p>变量的声明提前:使用var关键字声明的变量（ 比如 var a = 1），会在所有的代码执行之前被声明（但是不会赋值），但是如果声明变量时不是用var关键字（比如直接写a = 1），
+    此时a相当于window.a，则变量不会被声明提前。</p>
+    <p>
+        函数的声明提前：使用函数声明的形式创建的函数function foo(){}，会被声明提前。也就是说，它会在所有的代码执行之前就被创建，所以我们可以在函数声明之前，调用函数。
+        使用函数表达式创建的函数var foo = function(){}，不会被声明提前，所以不能在声明前调用。很好理解，因为此时foo被声明了，且为undefined，并没有给其赋值function(){}。
+    </p>
+
+<span style="display: block;text-align: center;">函数作用域</span>
+<p>调用函数时创建函数作用域，函数执行完毕以后，函数作用域销毁。每调用一次函数就会创建一个新的函数作用域，他们之间是互相独立的。
+    在函数作用域中可以访问到全局作用域的变量，在全局作用域中无法访问到函数作用域的变量。在函数中要访问全局变量可以使用window对象。
+    （比如说，全局作用域和函数作用域都定义了变量a，如果想访问全局变量，可以使用window.a）
+</p>
+
+<ul>
+    <span>>函数作用域提醒:</span>
+    <li>使用var关键字声明的变量，是在函数作用域内有效，而且会在函数中所有的代码执行之前被声明</li>
+    <li>函数声明也会在函数中所有的代码执行之前执行,因此，在函数中，没有var声明的变量都会成为全局变量，而且并不会提前声明。</li>
+    <li>定义形参就相当于在函数作用域中声明了变量。</li>
+</ul>
+<span style="display: block;text-align: center;">作用域与执行上下文的区别</span>
+<ul>
+    <p>作用域与执行上下文的区别</p>
+    <span>区别1：</span>
+    <li>全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了。而不是在函数调用时</li>
+    <li>全局执行上下文环境是在全局作用域确定之后, js代码马上执行之前创建</li>
+    <li>函数执行上下文是在调用函数时, 函数体代码执行之前创建</li>
+    <span>区别2：</span>
+    <li>作用域是静态的, 只要函数定义好了就一直存在, 且不会再变化</li>
+    <li>执行上下文是动态的, 调用函数时创建, 函数调用结束时就会自动释放</li>
+    <span>联系:</span>
+    <li>执行上下文(对象)是从属于所在的作用域</li>
+    <li>全局上下文环境==>全局作用域</li>
+    <li>函数上下文环境==>对应的函数使用域</li>
+</ul>
+<span style="display: block;text-align: center;">作用域链</span>
+<p>当在函数作用域操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用（就近原则）。如果没有则向上一级作用域中寻找，直到找到全局作用域；如果全局作用域中依然没有找到，则会报错ReferenceError。
+    外部函数定义的变量可以被内部函数所使用，反之则不行。</p>
+<p>作用域链的定义:多个上下级关系的作用域形成的链, 它的方向是从下向上的(从内到外),查找变量时就是沿着作用域链来查找的</p>
+
+<span style="display: block;text-align: center;">闭包</span>
+<p>闭包就是能够读取其他函数内部数据（变量/函数）的函数。只有函数内部的子函数才能读取局部变量，
+    因此可以把闭包简单理解成"定义在一个函数内部的函数"。当一个嵌套的内部(子)函数引用了嵌套的外部(父)函数的变量或函数时, 就产生了闭包。</p>
+
+<ul>
+    <span>产生闭包的条件</span>
+    <li>1.函数嵌套</li>
+    <li>2.内部函数引用了外部函数的数据(变量/函数)。</li>
+</ul>
+<textarea name="" id="" cols="90" rows="25">
+    PS：还有一个条件是外部函数被调用，内部函数被声明。比如：
+    function fn1() {
+        var a = 2
+        var b = 'abc'
+
+        function fn2() { //fn2内部函数被提前声明，就会产生闭包(不用调用内部函数)
+            console.log(a)
+        }
+
+    }
+
+    fn1();
+
+    function fn3() {
+        var a = 3
+        var fun4 = function () {  //fun4采用的是“函数表达式”创建的函数，此时内部函数的声明并没有提前
+            console.log(a)
+        }
+    }
+    fn3();
+</textarea>
+
+<ul>
+    <span>常见的闭包</span>
+    <li>将一个函数作为另一个函数的返回值,要看闭包对象创建了一个，就看：外部函数执行了几次</li>
+    <textarea name="" id="" cols="60" rows="10">
+        function fn1() {
+            var a = 2
+      
+            function fn2() {
+              a++
+              console.log(a)
+            }
+            return fn2
+          }
+          var f = fn1();   //执行外部函数fn1，返回的是内部函数fn2
+    </textarea>
+    <li>将函数作为实参传递给另一个函数调用</li>
+    <textarea name="" id="" cols="70" rows="10">
+        function showDelay(msg, time) {
+            //这个function是闭包，因为是嵌套的子函数，而且引用了外部函数的变量msg
+            setTimeout(function() { 
+              alert(msg)
+            }, time)
+          }
+          showDelay('atguigu', 2000)
+    </textarea>
+</ul>
+<ul>
+    <span>闭包的作用</span>
+    <li>作用1. 使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)</li>
+    <li>作用2. 让函数外部可以操作(读写)到函数内部的数据(变量/函数)</li>
+</ul>
+
+
+<textarea name="" id="" cols="70" rows="10">
+    //问题1. 函数执行完后, 函数内部声明的局部变量是否还存在?
+    答案：一般是不存在, 存在于闭包中的变量才可能存在。
+    //问题2. 在函数外部能直接访问函数内部的局部变量吗?
+    不能，但我们可以通过闭包让外部操作它。
+</textarea>
+<ul>
+    <span>闭包的生命周期</span>
+    <li>产生: 嵌套内部函数fn2被声明时就产生了(不是在调用)</li>
+    <li>死亡: 嵌套的内部函数成为垃圾对象时。（比如f = null，就可以让f成为垃圾对象。意思是，此时f不再引用闭包这个对象了）</li>
+</ul>
+
+<ul>
+    <span>闭包的应用：定义具有特定功能的js模块</span>
+    <li>将所有的数据和功能都封装在一个函数内部(私有的)，只向外暴露一个包含n个方法的对象或函数。</li>
+    <li>模块的使用者, 只需要通过模块暴露的对象调用方法来实现对应的功能。</li>
+</ul>
+<ul>
+    <span>闭包的缺点及解决</span>
+    <li>缺点：函数执行完后, 函数内的局部变量没有释放，占用内存时间会变长，容易造成内存泄露。</li>
+    <li>解决：能不用闭包就不用，及时释放. f = null;  // 让内部函数成为垃圾对象 -->回收闭包</li>
+</ul>
+
+<span style="display: block;text-align: center;">内存溢出和内存泄露</span>
+<p>内存溢出：一种程序运行出现的错误。当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误。</p>
+
+<textarea name="" id="" cols="60" rows="10">
+    代码举例：
+    var obj = {};
+    for (var i = 0; i &lt; 10000; i++) {
+        //把所有的数组内容都放到obj里保存，导致obj占用了很大的内存空间
+    obj[i] = new Array(10000000);  
+    console.log("-----");
+    }
+</textarea>
+<p>内存泄漏：占用的内存没有及时释放。注意，内存泄露的次数积累多了，就容易导致内存溢出。</p>
+
+<ul>
+    <span>常见的内存泄露：</span>
+    <li>1.意外的全局变量</li>
+    <textarea name="" id="" cols="60" rows="10">
+        // 意外的全局变量
+        function fn() {
+            a = new Array(10000000);
+            console.log(a);
+        }
+    
+        fn();
+    </textarea>
+    <li>2.没有及时清理的计时器或回调函数</li>
+    <textarea name="" id="" cols="60" rows="10">
+        // 没有及时清理的计时器或回调函数
+        //启动循环定时器后不清理
+        var intervalId = setInterval(function () { 
+            console.log('----')
+        }, 1000)
+        //清理定时器
+        // clearInterval(intervalId);  
+    </textarea>
+    <li>3.闭包</li>
+    <textarea name="" id="" cols="60" rows="15">
+    <script type="text/javascript">
+        function fn1() {
+          var a = 4;
+          function fn2() {
+            console.log(++a)
+          }
+          return fn2
+        }
+        var f = fn1()
+        f()
+      
+        // f = null //让内部函数成为垃圾对象-->回收闭包
+      </script>
+      </textarea>
+</ul>
+
+
+<hr>
+<span style="display: block;text-align: center;">创建对象和继承</span>
+<hr>
+<ul>
+    <span>创建对象的几种方式</span>
+    <li>通过Object</li>
+    <li>对象字面量</li>
+    <li>工厂模式,方式：通过工厂函数动态创建对象并返回。</li>
+    <textarea name="" id="" cols="60" rows="12">
+        
+        function createStudent(name, price) {
+            var obj = {
+                name: name,
+                price: price
+            }
+            return obj
+        }
+    
+        var s = createStudent('张三', 12000)
+        // s是Object类型
+    </textarea>
+    <li>自定义构造函数</li>
+    <textarea name="" id="" cols="70" rows="10">
+        function Student(name, price) {
+            this.name = name
+            this.price = price
+        }
+    
+        var s = new Student('Bob', 13000)
+        console.log(s instanceof Student)
+    </textarea>
+</ul>
+
+<ul>
+    <span>继承的几种方式</span>
+    <li>通过构造函数继承,在子类型构造函数中通用call()调用父类型构造函数
+    </li>
+    <li>原型链继承,子类型的原型为父类型的一个实例对象</li>
+    <li>组合继承</li>
+</ul>
+
+<hr>
+<span style="display: block;text-align: center;">浅拷贝和深拷贝</span>
+<hr>
+<p>浅拷贝:对于对象或数组类型，当我们将a赋值给b，然后更改b中的属性，a也会随着变化。
+
+    也就是说，a和b指向了同一块堆内存，所以修改其中任意的值，另一个值都会随之变化，这就是浅拷贝。</p>
+
+<p>深拷贝:那么相应的，如果给b放到新的内存中，将a的各个属性都复制到新内存里，就是深拷贝。
+
+    也就是说，当b中的属性有变化的时候，a内的属性不会发生变化。</p>
+
+
+
+
+
+
+</body>
+</html>
