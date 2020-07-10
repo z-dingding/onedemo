@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+    <hr>
+    <span style="display: block; text-align: center;">02-Ajax入门和发送http请求</span>
+    <hr>
+    <p>在浏览器中，我们可以在不刷新页面的情况下，通过ajax的方式去获取一些新的内容。Ajax：Asynchronous Javascript And XML（异步 JavaScript 和 XML）
+        。它并不是凭空出现的新技术，而是对于现有技术的结合。Ajax 的核心是 js 对象：XMLHttpRequest。</p>
+
+    <ul>
+        <span>发送 Ajax 请求的五个步骤：</span>
+        <li>创建异步对象。即 XMLHttpRequest 对象。</li>
+        <li>使用open方法设置请求的参数。open(method, url, async)。参数解释：请求的方法、请求的url、是否异步。</li>
+        <li>发送请求。</li>
+        <li>注册事件。 注册onreadystatechange事件，状态改变时就会调用。</li>
+        <li>获取返回的数据。</li>
+    </ul>
+    <button id="btn_sendrequest_ajax">点我发送get请求</button>
+    <button id="btn_sendrequest_ajaxpost">点我发送post请求</button>
+    <button id="btn_jquerysendrequest_ajaxget">jquery发送get请求</button>
+    <button id="btn_jquerysendrequest_ajaxpost">jquery发送post请求</button>
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#btn_jquerysendrequest_ajaxget').click(function () {
+                $.ajax({
+                    // dataType:"jsonp",
+                    // jsonp:"callback", //传递给B服务器的回调函数的名字（默认为 callback）
+                    //jsonCallBack:"fn"    //自定义的函数名称。默认为 jQuery 自动生成的随机函数名
+                    url: "http://113.16.135.167:9001/gxyjjoa/sms/appsmssendAction!getGateway.do",
+                    type: "get",
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (e) {
+                        console.log("1231" + e.responseText);
+                    }
+
+                })
+            });
+
+            $('#btn_jquerysendrequest_ajaxpost').click(function () {
+                $.ajax({
+                    url: "http://113.16.135.167:9001/gxyjjoa/login!login.do?",
+                    dataType: "text",
+                    type: "post",
+                    data:"user.userName=liujie&user.password=b59c67bf196a4758191e42f76670ceba",
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+
+                })
+            });
+
+
+        });
+    </script>
+
+    <script>
+        document.getElementById('btn_sendrequest_ajax').onclick = function () {
+            var ajaxObject = new XMLHttpRequest();
+            ajaxObject.open('get', 'http://113.16.135.167:9001/gxyjjoa/sms/appsmssendAction!getGateway.do');
+            ajaxObject.send();
+            ajaxObject.onreadystatechange = function () {
+                // 为了保证 数据 完整返回，我们一般会判断 两个值
+                if (ajaxObject.readyState == 4 && ajaxObject.status == 200) {
+                    //console.log(ajaxObject.responseText)
+                    console.log("请求响应")
+                }
+            }
+        }
+
+        document.getElementById("btn_sendrequest_ajaxpost").onclick = function () {
+            var ajaxObject = new XMLHttpRequest();
+            ajaxObject.open('post', 'http://113.16.135.167:9001/gxyjjoa/login!login.do');
+            // 如果想要使用post提交数据,必须添加此行
+            ajaxObject.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            // 将数据通过send方法传递
+            ajaxObject.send('user.userName=liujie&user.password=b59c67bf196a4758191e42f76670ceba&ifLAN=1&code=&IS_JSON=true&loginModel=mobile&VALUE_OBJES_4_JSON=loginUser&userLoginModel=mobile');
+            // 发送并接受返回值
+            ajaxObject.onreadystatechange = function () {
+                // 这步为判断服务器是否正确响应
+                if (ajaxObject.readyState == 4 && ajaxObject.status == 200) {
+                    alert(ajaxObject.responseText);
+                }
+            };
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
